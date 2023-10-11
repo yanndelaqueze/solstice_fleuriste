@@ -1,0 +1,19 @@
+body {
+  background-color: $dark-green;
+  margin: 0;
+  padding: 0;
+
+  .category-header {
+    color: $dark-green;
+    margin-top: 2em;
+  }
+
+  .product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.75rem; /* To define the gap between rows/columns */
+  gap: 0.75rem;
+  padding: 0.75rem;
+  }
+
+}

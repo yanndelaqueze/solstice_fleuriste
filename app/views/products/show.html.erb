@@ -1,22 +1,14 @@
 <div class="product-show">
   <div class="product-info">
-  <!--
-    <% if @product.photos.attached? %>
-      <%= cl_image_tag @product.photos.first.key, class: "product-image"%>
-    <% else %>
-      <%= image_tag "banner_solstice.jpg", alt:"Solstice", class: "product-image"%>
-    <% end %>
-    -->
+    <div class="product-image">
+    </div>
     <div class="product-desc">
       <p><%= @product.description  %></p>
     </div>
   </div>
   <div class="product-customization">
     <h3 class="product-name"><%= @product.name %></h3>
-    <!--
     <p><i class="fa-solid fa-truck"></i> Livraison Petite Île et environs <a class="nav-link" href="<%= polygon_path(Polygon.last) %>"> (voir la zone de livraison)</a></p>
-    -->
-
     <p><i class="fa-solid fa-store"></i> Click & Collect gratuit</p>
     <p>------------------------</p>
     <p>Afin que Solstice réalise le bouquet de vos rêves :</p>

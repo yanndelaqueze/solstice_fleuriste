@@ -1,0 +1,40 @@
+<h1 class= "title">Mon panier</h1>
+<div class="container">
+  <div class="cart">
+    <div class="cart-items">
+    <h4><%= pluralize(current_order.order_items.size, 'article') %> (total : <%= current_order.subtotal  %>€)</h4>
+      <% @order_items.each do |order_item| %>
+        <%= render 'cart_item', order_item: order_item %>
+      <% end %>
+    </div>
+    <div class="order-options">
+      <h3>Livraison / Collecte</h3>
+      <div class="delivery-form">
+        <%= simple_form_for [@order] do |f| %>
+          <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Order::TRANSPORT%>
+          <div id="delivery-fields" style="display: none;" >
+            <div class="address">
+              <% if @order.delivery_address %>
+                <p>Adresse de livraison :</p>
+                <p class="form-control"><%= @order.delivery_address %></p>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <div id="geocoder" class="form-group" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+                <%= f.input :delivery_address, as: :hidden, class: "form-control", label: "Changer l'adresse de livraison :"%>
+              </div>
+            </div>
+          </div>
+            <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
+          </div>
+          <%= f.input :phone, label: "Numéro à contacter :" %>
+          <%= f.input :date, as: :date, html5: true, label: "Date de livraison souhaitée :" ,input_html: { id: "order_date" } %>
+          <%= f.submit "Valider", class: "btn-action"  %>
+        <% end %>
+        <% if !@order.in_delivery_area?  %>
+          <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à cette adresse</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<%= simple_form_for [order_item] do |f| %>
+
+  <%= f.input :price, placeholder: order_item.price, label: 'Budget :', class: 'form-control' %>
+
+  <%= f.input :message, placeholder: order_item.message, label: 'Message :', class: 'form-control' %>
+
+  <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: 'Occasion :', placeholder: order_item.occasion %>
+
+  <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: 'Couleur dominante :', placeholder: order_item.color %>
+
+  <%= f.submit 'Valider', class: "btn btn-action" %>
+
+<% end %>

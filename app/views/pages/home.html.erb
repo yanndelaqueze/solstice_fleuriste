@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+</div>
+
+<div class="text-center">
+  <h1 class="heading-home pb-4">Solstice Fleuriste</h1>
+  <%= link_to "Commander en ligne", creations_path, class:"btn-cta-home" %>
+</div>
+
+<div class="infos">
+  <div class="address">
+    <p>32 Rue Joseph Suacot</p>
+    <p>Petite Île</p>
+    <p>97429, La Réunion</p>
+    <a class="link" href="<%= polygon_path(Polygon.last) %>"><i class="fa-solid fa-truck"></i> Zone de livraison</a>
+  </div>
+  <div class="time">
+  <p><i class="fa-solid fa-clock fw-bold"></i>  Horaires d'ouverture :</p>
+  <p>Lundi : Fermé</p>
+  <p>Mardi : 9h00 - 12h00 |  14h00 - 18h00</p>
+  <p>Mercredi : 9h00 - 12h00 |  14h00 - 18h00</p>
+  <p>Jeudi : 9h00 - 12h30 |  14h30 - 18h30</p>
+  <p>Vendredi : 9h00 - 12h30 |  14h30 - 18h30</p>
+  <p>Samedi : 9h00 - 12h30 |  14h30 - 18h30</p>
+  <p>Dimanche : 9h00 - 12h00</p>
+  </div>
+</div>

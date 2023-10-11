@@ -1,0 +1,25 @@
+.card-order {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+
+  .card-order-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-order-actions {
+    display: flex;
+    align-items: center;
+    width: 10%;
+    justify-content: space-between;
+  }
+
+  .address {
+    display: flex;
+    align-items: center;
+  }
+}

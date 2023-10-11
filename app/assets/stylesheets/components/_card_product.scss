@@ -1,0 +1,58 @@
+.card-product {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+
+  .product-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .product-actions {
+    display: flex;
+    align-items: center;
+    width: 7%;
+    justify-content: space-between;
+  }
+
+  .product-info {
+    display: flex;
+
+    .product-spec1 {
+      display: block;
+      width: 80%;
+      padding-left: 0;
+      padding-top: 1em;
+      padding-right: 1em;
+      padding-bottom: 1em;
+    }
+
+    .product-spec2 {
+      display: block;
+      padding-left: 0;
+      padding-top: 1em;
+      padding-right: 1em;
+      padding-bottom: 1em;
+    }
+  }
+
+  .product-images {
+    display: inline;
+    padding-left: 0;
+  }
+
+  .product-images img {
+    height: 5em;
+  }
+
+  .form-image {
+    height: 3em;
+  }
+
+  .images {
+    display: flex;
+  }
+}
