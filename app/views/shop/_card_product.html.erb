@@ -1,0 +1,10 @@
+<div class="card-product-shop">
+  <div class="product-image-shop">
+    <%= image_tag "default.jpg" %>
+  </div>
+  <div class="product-info-shop">
+    <h5><%= product.name %></h5>
+    <p>à partir de <%= product.min_price %>0€</p>
+    <%= link_to "Personnaliser", product_path(product), class:"btn-action" %>
+  </div>
+</div>

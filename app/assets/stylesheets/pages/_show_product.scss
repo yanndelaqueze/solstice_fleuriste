@@ -1,0 +1,42 @@
+.product-show {
+  display: flex;
+
+  .product-info {
+    padding: 1em;
+    width: 50%;
+
+    .product-image {
+      height: 50%;
+    }
+
+    .product-desc {
+      color: $white
+    }
+  }
+
+  .product-customization {
+    color: $white;
+    width: 50%;
+    padding: 1em;
+
+    .product-name {
+      color: $white;
+    }
+
+    .custom-form {
+
+      .price-form {
+        color: black;
+      }
+
+      .ocassion-form {
+        color: black;
+      }
+
+      .message-form {
+        color: black;
+      }
+    }
+  }
+
+}

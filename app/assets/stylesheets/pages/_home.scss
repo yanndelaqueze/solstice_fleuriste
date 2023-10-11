@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+
+body {
+  background-color: $dark-green;
+  margin: 0;
+  padding: 0;
+
+  .heading-home {
+    color: $white;
+    padding-top: 40px;
+    font-size: 4em;
+  }
+
+  .btn-cta-home {
+    background-color: $pink;
+    border-radius: 5px;
+    padding: 12px;
+    text-decoration: none;
+    font-family: $body-font;
+    font-size: 24px;
+    color: white;
+  }
+
+  .infos {
+    display: flex;
+    margin-top: 2em;
+
+    .address {
+      color: $dark-green;
+      width: 30%;
+      background-color: $pale-green;
+      padding-left: 1em;
+      padding-top: 1em;
+    }
+
+    .time {
+      color: $dark-green;
+      width: 70%;
+      background-color: $eggshell;
+      padding-left: 1em;
+      padding-top: 1em;
+    }
+
+    .link {
+      text-decoration: none;
+      color: $dark-green;
+    }
+  }
+}

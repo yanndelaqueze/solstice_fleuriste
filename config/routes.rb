@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get 'creations', to: 'shop#index'
+  get '/panier', to: 'cart#show'
   get '/admin', to: 'pages#admin'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,7 +10,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :products, only: %i[new create]
 
-  resources :products
+  resources :products do
+    resources :order_items, only: %i[create]
+  end
 
   resources :orders
   resources :polygons, only: %i[index new create show]

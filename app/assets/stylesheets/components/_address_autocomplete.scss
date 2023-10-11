@@ -1,0 +1,37 @@
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100% !important;
+  box-shadow: none !important;
+  background-color: #f4f4f4 !important;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-family: $body-font !important;
+
+  .mapboxgl-ctrl-geocoder--icon-loading {
+    display: none;
+  }
+
+  .mapboxgl-ctrl-geocoder--icon-close {
+    background: transparent !important;
+  }
+
+  .mapboxgl-ctrl-geocoder--button {
+    border: none;
+    background-color: white;
+  }
+
+  .suggestions-wrapper {
+    position: absolute;
+    top: 100%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-size: 0.8em;
+    width: 90%;
+    left: 5%;
+  }
+
+  .form-check-label {
+    color: black !important;
+  }
+}

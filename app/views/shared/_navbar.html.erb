@@ -24,35 +24,38 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Admin", admin_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Categories", categories_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Products", products_path, class: "nav-link" %>
-          </li>
-
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<%= user_session_path %>">Me connecter</a>
-              <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Me déconnecter</a>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
+      <% if user_signed_in? %>
+        <li>
+          <a class="nav-link text-dark" href="#">Hello <%= current_user.email %> !</a>
+        </li>
+      <% end  %>
+      <% if current_user.present? && current_user.admin %>
+        <li>
+          <a class="nav-link admin-btn" href="<%=admin_path%>">Admin</a>
+        </li>
+      <% end %>
+        <li class="nav-item active">
+          <%= link_to "Admin", admin_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Boutique", creations_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Panier", panier_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Livraison", polygon_path(Polygon.last), class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+        <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>
+        </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= user_session_path %>">Me connecter</a>
+            <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>
+            <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Me déconnecter</a>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
