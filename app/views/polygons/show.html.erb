@@ -9,9 +9,11 @@
             <p class="form-control"><%= @order.delivery_address %></p>
         </div>
         <div class="form-group">
-          <div id="geocoder" class="form-group" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-            <%= f.input :delivery_address, as: :hidden, class: "form-control", label: "Vérifier l'adresse de livraison :"%>
-          </div>
+          <%= f.input :delivery_address,
+          input_html: {data: {address_autocomplete_target: "address"}},
+          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+          label: "Vérifier l'adresse de livraison :",
+          as: :hidden%>
         </div>
       <%= f.submit "Valider", class: "btn-action"  %>
     <% end %>
@@ -24,7 +26,11 @@
   <h2 class= "title">Zone de Livraison</h2>
   <div class="container">
     <div class="map">
-      <div id="map" style="width: 100%; height: 400px;" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" data-polygon-coordinates="<%= @polygon.coordinates %>" data-address-coords="[<%= @order.longitude%>, <%= @order.latitude%>]"></div>
+      <div id="map" style="width: 100%; height: 400px;" data-controller="display-delivery-area"
+        data-display-delivery-area-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-display-delivery-area-current-coordinates-value="<%= Polygon.last.coordinates %>"
+        data-display-delivery-area-address-coordinates-value="[<%= @order.longitude%>, <%= @order.latitude%>]">
+      </div>
+
       <% if current_user.present? && current_user.admin %>
         <%= link_to "Modifier", new_polygon_path, class:"btn-action action-button"%>
       <% end %>
