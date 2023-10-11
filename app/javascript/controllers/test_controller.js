@@ -4,11 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["togglableElement"];
 
-  connect() {
-    console.log("Test Stimulus 1 2 3");
-    const testStimulus = document.getElementById("test-stimulus");
-    console.log(testStimulus);
-  }
+  connect() {}
 
   coucou() {
     console.log("COUCOU");
