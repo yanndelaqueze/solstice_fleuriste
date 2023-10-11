@@ -1,0 +1,8 @@
+<h1 class= "title">Zone de Livraison</h1>
+<div class="container">
+  <% @polygons.each do |polygon| %>
+    <%= polygon.name  %>
+    <%= polygon.coordinates  %>
+    <%= link_to "Modifier", new_polygon_path%>
+  <% end %>
+</div>

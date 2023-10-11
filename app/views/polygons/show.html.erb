@@ -1,0 +1,33 @@
+
+<h1 class= "title">Livraison à Domicile :</h1>
+
+<div class="container">
+  <div class="delivery-form">
+    <%= simple_form_for [@order] do |f| %>
+        <div class="address">
+            <p>Adresse de livraison :</p>
+            <p class="form-control"><%= @order.delivery_address %></p>
+        </div>
+        <div class="form-group">
+          <div id="geocoder" class="form-group" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+            <%= f.input :delivery_address, as: :hidden, class: "form-control", label: "Vérifier l'adresse de livraison :"%>
+          </div>
+        </div>
+      <%= f.submit "Valider", class: "btn-action"  %>
+    <% end %>
+    <% if !@order.in_delivery_area?  %>
+      <p class="warning-delivery alert-danger mt-2">Désolé, la livraison est impossible à cette adresse 🙁</p>
+    <% else %>
+      <p class="warning-delivery alert-success mt-2">Youpi ! La livraison est possible à cette adresse 🎉</p>
+    <% end %>
+  </div>
+  <h2 class= "title">Zone de Livraison</h2>
+  <div class="container">
+    <div class="map">
+      <div id="map" style="width: 100%; height: 400px;" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" data-polygon-coordinates="<%= @polygon.coordinates %>" data-address-coords="[<%= @order.longitude%>, <%= @order.latitude%>]"></div>
+      <% if current_user.present? && current_user.admin %>
+        <%= link_to "Modifier", new_polygon_path, class:"btn-action action-button"%>
+      <% end %>
+    </div>
+  </div>
+</div>

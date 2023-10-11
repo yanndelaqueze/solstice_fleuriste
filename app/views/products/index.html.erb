@@ -1,4 +1,11 @@
-<p>hello</p>
+<h1 class= "title">Tous les produits</h1>
+<div class="container">
 
+  <!-- Create New Product-->
+  <%= link_to "Ajouter un Produit", new_product_path, class:"btn-action"%>
 
-<%= link_to "Last Product", product_path(Product.last), class: "nav-link" %>
+  <!-- Create New Product-->
+  <% @products.each do |product| %>
+    <%= render 'products/card_product', product: product%>
+  <% end %>
+</div>

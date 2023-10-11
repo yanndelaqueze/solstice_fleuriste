@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :products
 
   resources :orders
+  resources :polygons, only: %i[index new create show]
 
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

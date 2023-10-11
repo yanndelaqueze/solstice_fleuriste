@@ -1,1 +1,16 @@
-<p>hello</p>
+<h1 class= "title">Commandes</h1>
+<div class="container">
+  <div class="orders">
+    <h4><%= pluralize(@orders.where(status: "En cours").size, 'commande') %> en cours</h4>
+    <%= simple_form_for :filter, url: orders_path, method: :get do |f| %>
+      <div class="form-group">
+        <%= f.label :status, 'Filtrer par statut :'%>
+        <%= f.select :status, @status_options, include_blank: 'Toutes les commandes', selected: @selected_status, class: 'form-control'%>
+        <%= f.submit 'Filtrer', class: 'btn-action' %>
+      </div>
+    <% end %>
+    <% @orders.each do |order| %>
+      <%= render 'card_order', order: order %>
+    <% end %>
+  </div>
+</div>

@@ -1,1 +1,43 @@
-<p>hello</p>
+<div class="product-show">
+  <div class="product-info">
+  <!--
+    <% if @product.photos.attached? %>
+      <%= cl_image_tag @product.photos.first.key, class: "product-image"%>
+    <% else %>
+      <%= image_tag "banner_solstice.jpg", alt:"Solstice", class: "product-image"%>
+    <% end %>
+    -->
+    <div class="product-desc">
+      <p><%= @product.description  %></p>
+    </div>
+  </div>
+  <div class="product-customization">
+    <h3 class="product-name"><%= @product.name %></h3>
+    <!--
+    <p><i class="fa-solid fa-truck"></i> Livraison Petite Île et environs <a class="nav-link" href="<%= polygon_path(Polygon.last) %>"> (voir la zone de livraison)</a></p>
+    -->
+
+    <p><i class="fa-solid fa-store"></i> Click & Collect gratuit</p>
+    <p>------------------------</p>
+    <p>Afin que Solstice réalise le bouquet de vos rêves :</p>
+    <div class="custom-form">
+      <%= simple_form_for [@product, @order_item] do |f| %>
+
+        <p>1- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
+        <%= f.input :price, placeholder: @product.min_price.to_s, label: false %>
+
+        <p>2- Précisez l'occasion célébrée :</p>
+        <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+
+        <p>3- Choisissez une couleur dominante :</p>
+        <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false %>
+
+        <p>4- Rédigez le message que vous souhaitez y joindre :</p>
+        <%= f.input :message, as: :text, placeholder: "", label: false %>
+
+        <%= f.submit 'Valider', class: "btn-action" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
