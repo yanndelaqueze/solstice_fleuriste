@@ -5,7 +5,7 @@
         <div id="map" style="width: 100%; height: 400px;" data-controller="polygon-drawing"
         data-polygon-drawing-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-polygon-drawing-current-coordinates-value="<%= Polygon.last.coordinates %>">
           <div class="field">
-            <%= form.hidden_field :coordinates, id: "polygon_coordinates" %>
+            <%= form.hidden_field :coordinates, {data: {polygon_drawing_target: 'polygonCoordinates'}} %>
           </div>
         </div>
         <div class="actions">

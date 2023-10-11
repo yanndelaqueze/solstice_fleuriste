@@ -9,6 +9,8 @@ export default class extends Controller {
     currentCoordinates: String,
   };
 
+  static targets = ["polygonCoordinates"];
+
   connect() {
     const coordinates = [JSON.parse(this.currentCoordinatesValue)];
 
@@ -26,6 +28,7 @@ export default class extends Controller {
       zoom: 11,
     });
 
+    // Add Controls (check display error)
     this.map.addControl(new mapboxgl.NavigationControl());
 
     // Initialize a drawing tool
@@ -36,16 +39,16 @@ export default class extends Controller {
         trash: true, // Allow users to delete drawn shapes
       },
     });
+
     // Add Drawing tool to Map
     this.map.addControl(this.draw);
 
     // When the user creates a polygon, store its coordinates in the form input
+    const input = this.polygonCoordinatesTarget;
     this.map.on("draw.create", function (e) {
       console.log(e);
       const coordinates = e.features[0].geometry.coordinates[0];
       console.log(coordinates);
-      const input = document.querySelector("#polygon_coordinates");
-      console.log(input);
       input.value = JSON.stringify(coordinates);
     });
 
