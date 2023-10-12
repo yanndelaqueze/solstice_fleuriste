@@ -2,7 +2,6 @@
   <div class="product-header">
     <h3><%= product.name %></h3>
     <div class="product-actions">
-      <!-- Edit the Product (Bootstrap Modal) -->
       <%= link_to ('<i class="fa-solid fa-pen-to-square"></i>').html_safe,  '#', 'data-target' => "#myModal_#{product.id}", 'data-toggle' => 'modal', class: "fs-4"  %>
         <div class="modal fade" id='<%= "myModal_#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -19,8 +18,7 @@
             </div>
           </div>
         </div>
-      <!-- Delete the Product (Bootstrap Modal) -->
-      <%= link_to ('<i class="fa-regular fa-trash-can"></i>').html_safe, product_path(product), class: 'text-danger fs-4', data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <%= link_to ('<i class="fa-regular fa-trash-can"></i>').html_safe, product_path(product), class: 'text-danger fs-4', data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr(e)?" } %>
     </div>
   </div>
   <div class="product-info">

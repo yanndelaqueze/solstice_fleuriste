@@ -3,7 +3,6 @@
 }
 
 .footer {
-  height: 40px;
   width: 100%;
   background-color: $white;
   display: flex;
@@ -16,10 +15,11 @@
   padding: 0px;
 }
 
-
-.list-inline li {
-  display : inline-block;
-  padding: 0px 20px;
+.list-inline {
+  li {
+    display: inline-block;
+    padding: 0px 20px;
+  }
 }
 
 .list-inline i {
@@ -37,7 +37,7 @@ span {
   margin: 0px 30px;
 }
 
-@media(max-width: 1300px) {
+@media (max-width: 1300px) {
   .footer-item:nth-child(2) {
     display: none;
   }
