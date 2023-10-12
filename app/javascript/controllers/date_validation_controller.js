@@ -21,7 +21,7 @@ export default class extends Controller {
       modalElement.style.display = "block";
 
       // Close button event listener
-      const closeButton = modalElement.querySelector(".btn-secondary");
+      const closeButton = modalElement.querySelector(".btn-action");
       if (closeButton) {
         closeButton.addEventListener("click", () => {
           modalElement.classList.remove("show");
