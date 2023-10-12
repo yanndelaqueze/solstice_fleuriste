@@ -1,20 +1,32 @@
 
-<h1 class= "title">Livraison à Domicile :</h1>
+<h1 class= "title">Livraison à Domicile</h1>
 
 <div class="container">
+<h2 class= "title mb-4">Vérifier si mon adresse est disponible à la livraison</h2>
+<p> Solstice livre à domicile à Petite Île et ses alentours. Vérifiez ci-dessous si votre adresse est comprise dans la zone de livraison.
   <div class="delivery-form">
     <%= simple_form_for [@order] do |f| %>
-        <div class="address">
-            <p>Adresse de livraison :</p>
-            <p class="form-control"><%= @order.delivery_address %></p>
-        </div>
-        <div class="form-group">
-          <%= f.input :delivery_address,
-          input_html: {data: {address_autocomplete_target: "address"}},
-          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-          label: "Vérifier l'adresse de livraison :",
-          as: :hidden%>
-        </div>
+        <% if @order.delivery_address %>
+          <div class="address">
+              <p>Adresse de livraison choisie :</p>
+              <p class="input-address"> <%= @order.delivery_address %></p>
+          </div>
+          <div class="form-group">
+            <%= f.input :delivery_address,
+            input_html: {data: {address_autocomplete_target: "address"}},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+            label: "Entrer une autre adresse de livraison :",
+            as: :hidden%>
+          </div>
+        <% else %>
+            <div class="form-group">
+            <%= f.input :delivery_address,
+            input_html: {data: {address_autocomplete_target: "address"}},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+            label: "Vérifier l'adresse de livraison :",
+            as: :hidden%>
+          </div>
+        <% end %>
       <%= f.submit "Valider", class: "btn-action"  %>
     <% end %>
 

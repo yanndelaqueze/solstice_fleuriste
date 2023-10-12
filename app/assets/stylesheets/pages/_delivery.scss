@@ -7,3 +7,19 @@
   top: 3%;
   left: 3%;
 }
+
+.address {
+  display: flex;
+  border-top: solid;
+  border-bottom: solid;
+  padding-top: 1em;
+  margin-bottom: 1em;
+  border-width: thin;
+  margin-top: 2em;
+}
+
+.input-address {
+  font-style: italic;
+  padding-left: 1em;
+  color: $khaki;
+}
