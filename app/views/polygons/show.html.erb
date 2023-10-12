@@ -17,11 +17,15 @@
         </div>
       <%= f.submit "Valider", class: "btn-action"  %>
     <% end %>
-    <% if !@order.in_delivery_area?  %>
-      <p class="warning-delivery alert-danger mt-2">Désolé, la livraison est impossible à cette adresse 🙁</p>
-    <% else %>
-      <p class="warning-delivery alert-success mt-2">Youpi ! La livraison est possible à cette adresse 🎉</p>
+
+    <% if @order.delivery_address %>
+      <% if !@order.in_delivery_area?  %>
+        <p class="warning-delivery alert-danger mt-2">Désolé, la livraison est impossible à cette adresse 🙁</p>
+      <% else %>
+        <p class="warning-delivery alert-success mt-2">Youpi ! La livraison est possible à cette adresse 🎉</p>
+      <% end %>
     <% end %>
+
   </div>
   <h2 class= "title">Zone de Livraison</h2>
   <div class="container">
