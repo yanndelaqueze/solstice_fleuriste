@@ -18,6 +18,7 @@
             label: "Entrer une autre adresse de livraison :",
             as: :hidden%>
           </div>
+          <%= f.submit "Valider", class: "btn-action"  %>
         <% else %>
             <div class="form-group">
             <%= f.input :delivery_address,
@@ -26,8 +27,8 @@
             label: "Vérifier l'adresse de livraison :",
             as: :hidden%>
           </div>
+          <%= f.submit "Valider", class: "btn-action"  %>
         <% end %>
-      <%= f.submit "Valider", class: "btn-action"  %>
     <% end %>
 
     <% if @order.delivery_address %>
