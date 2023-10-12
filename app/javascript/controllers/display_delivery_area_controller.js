@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import mapboxgl from "mapbox-gl"; // Don't forget this!
 
-// Connects to data-controller="polygon-drawing"
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -10,10 +9,8 @@ export default class extends Controller {
   };
 
   connect() {
-    const addressCoordinates = JSON.parse(this.addressCoordinatesValue);
     const polygonCoordinates = [JSON.parse(this.currentCoordinatesValue)];
     console.log(polygonCoordinates);
-    console.log(addressCoordinates);
 
     console.log(JSON.parse(this.currentCoordinatesValue));
     console.log("Polygon Draw - HELLO");
@@ -54,6 +51,9 @@ export default class extends Controller {
     });
 
     // Add Address Marker to Map
+    const addressCoordinates = JSON.parse(this.addressCoordinatesValue);
+    console.log(addressCoordinates);
+
     const marker = new mapboxgl.Marker()
       .setLngLat(addressCoordinates)
       .addTo(this.map);

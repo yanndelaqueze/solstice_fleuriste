@@ -18,7 +18,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li>
-            <a class="nav-link text-dark" href="#">Hello <%= current_user.email %> !</a>
+            <a class="nav-link text-dark hello" href="#">Hello <%= current_user.email %> !</a>
           </li>
         <% end  %>
 
@@ -28,16 +28,16 @@
           </li>
         <% end %>
 
-        <li class="nav-item active">
+        <li class="nav-item <%= 'active' if controller_name == 'shop' && action_name == 'index' %>">
           <a class="nav-link" href="<%= creations_path %>"><i class="fa-solid fa-store"></i> Boutique</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item <%= 'active' if controller_name == 'polygons' && action_name == 'show' %>">
           <a class="nav-link" href="<%= polygon_path(Polygon.last) %>"><i class="fa-solid fa-truck"></i> Livraison</a>
         </li>
 
         <div class="cart-navbar" data-controller="cart-display">
-          <li class="nav-item">
+          <li class="nav-item <%= 'active' if controller_name == 'cart' && action_name == 'show' %>">
             <a class="nav-link" data-action="mouseenter->cart-display#showCart mouseleave->cart-display#hideCart" href="<%= panier_path %>"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
           </li>
           <!-- Pop Up Cart Content-->
