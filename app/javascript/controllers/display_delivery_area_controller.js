@@ -51,11 +51,18 @@ export default class extends Controller {
     });
 
     // Add Address Marker to Map
-    const addressCoordinates = JSON.parse(this.addressCoordinatesValue);
-    console.log(addressCoordinates);
+    if (this.addressCoordinatesValue !== null) {
+      const addressCoordinates = JSON.parse(this.addressCoordinatesValue);
+      console.log(addressCoordinates);
 
-    const marker = new mapboxgl.Marker()
-      .setLngLat(addressCoordinates)
-      .addTo(this.map);
+      const marker = new mapboxgl.Marker()
+        .setLngLat(addressCoordinates)
+        .addTo(this.map);
+    } else {
+      // Handle the case when this.addressCoordinatesValue is null
+      console.log(
+        "this.addressCoordinatesValue is null, so not executing the rest of the code."
+      );
+    }
   }
 }
