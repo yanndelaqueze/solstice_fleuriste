@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   end
 
   resources :orders
+
+  resources :order_items, only: %i[update destroy]
+
   resources :polygons, only: %i[index new create show]
 
 
