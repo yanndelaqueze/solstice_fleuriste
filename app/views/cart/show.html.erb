@@ -32,8 +32,32 @@
             <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
           </div>
           <%= f.input :phone, label: "Numéro à contacter :" %>
-          <%= f.input :date, as: :date, html5: true, label: "Date de livraison souhaitée :" ,input_html: { id: "order_date" } %>
+          <div class="date-input" data-controller="date-validation">
+            <%= f.input :date, as: :date, html5: true, label: "Date de livraison souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput" } %>
+
+            <!-- Modal invalid date -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-date-validation-target="myModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Alert</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p id="modalMessage" data-date-validation-target="modalMessage"></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <%= f.submit "Valider", class: "btn-action"  %>
+
         <% end %>
         <% if !@order.in_delivery_area?  %>
           <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à cette adresse</p>

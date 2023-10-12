@@ -20,7 +20,6 @@ export default class extends Controller {
   }
 
   toggleFields(event) {
-    console.log(event.target);
     const selectedTransport = event.target.value;
 
     if (selectedTransport === "Livraison") {
