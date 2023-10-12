@@ -21,6 +21,9 @@ application.register("display-delivery-area", DisplayDeliveryAreaController);
 import CartDisplayController from "./cart_display_controller";
 application.register("cart-display", CartDisplayController);
 
+import ToggleDeliveryFieldsController from "./toggle_delivery_fields_controller";
+application.register("toggle-delivery-fields", ToggleDeliveryFieldsController);
+
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)

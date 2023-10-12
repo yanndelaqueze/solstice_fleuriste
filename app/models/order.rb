@@ -56,6 +56,8 @@ class Order < ApplicationRecord
   end
 
   def set_transport
-    self.transport = self.in_delivery_area? ? 'Livraison' : 'Click & Collect'
+    if !self.in_delivery_area?
+      self.transport = "Click & Collect"
+    end
   end
 end
