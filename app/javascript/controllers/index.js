@@ -27,6 +27,9 @@ application.register("toggle-delivery-fields", ToggleDeliveryFieldsController);
 import DateValidationController from "./date_validation_controller";
 application.register("date-validation", DateValidationController);
 
+import MiniMapController from "./mini_map_controller";
+application.register("mini-map", MiniMapController);
+
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
