@@ -35,4 +35,10 @@
       <p>Prix min. :<%= product.min_price %>€</p>
     </div>
   </div>
+  <ul class="product-images">
+    <p><%= pluralize(product.photos.size, 'Photo') %></p>
+    <% product.photos.each do |photo| %>
+      <img src="<%= image_tag photo.key %>" alt="">
+    <% end %>
+  </ul>
 </div>

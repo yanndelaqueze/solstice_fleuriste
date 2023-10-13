@@ -30,23 +30,27 @@ class Order < ApplicationRecord
   end
 
   def in_delivery_area?
-    @polygon = Polygon.last
-    polygon_coordinates = JSON.parse(@polygon.coordinates)
-    n = polygon_coordinates.length
-    inside = false
+    if self.delivery_address
+      @polygon = Polygon.last
+      polygon_coordinates = JSON.parse(@polygon.coordinates)
+      n = polygon_coordinates.length
+      inside = false
 
-    j = n - 1
-    for i in 0...n
-      xi, yi = polygon_coordinates[i]
-      xj, yj = polygon_coordinates[j]
-      intersect = ((yi > latitude) != (yj > latitude)) &&
-                  (longitude < ((xj - xi) * (latitude - yi) / (yj - yi)) + xi)
-      if intersect
-        inside = !inside
+      j = n - 1
+      for i in 0...n
+        xi, yi = polygon_coordinates[i]
+        xj, yj = polygon_coordinates[j]
+        intersect = ((yi > latitude) != (yj > latitude)) &&
+                    (longitude < ((xj - xi) * (latitude - yi) / (yj - yi)) + xi)
+        if intersect
+          inside = !inside
+        end
+        j = i
       end
-      j = i
+      return inside
+    else
+      return false
     end
-    return inside
   end
 
   private

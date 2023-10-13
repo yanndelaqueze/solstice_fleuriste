@@ -1,15 +1,7 @@
-OrderItem.destroy_all
 Order.destroy_all
 Product.destroy_all
 Category.destroy_all
-User.destroy_all
 
-User.create!(
-  email: 'admin@solstice.com',
-  password: 'password',
-  password_confirmation: 'password',
-  admin: true
-)
 
 bouquet = Category.new(
   name: "Bouquets",
