@@ -1,3 +1,21 @@
 .mapboxgl-canvas {
   border-radius: 1em;
 }
+
+.marker-solstice {
+  background-image: url("solstice_logo.jpg");
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker-address {
+  background-image: url("home.png");
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -50,12 +50,19 @@ export default class extends Controller {
       });
     });
 
+    // Add Solstice Marker to Map
+    const el = document.createElement("div");
+    el.className = "marker-solstice";
+    const markerSolstice = new mapboxgl.Marker(el)
+      .setLngLat([55.56294, -21.35408])
+      .addTo(this.map);
+
     // Add Address Marker to Map
     if (this.addressCoordinatesValue !== null) {
+      const element = document.createElement("div");
+      element.className = "marker-address";
       const addressCoordinates = JSON.parse(this.addressCoordinatesValue);
-      console.log(addressCoordinates);
-
-      const marker = new mapboxgl.Marker()
+      const markerAddress = new mapboxgl.Marker(element)
         .setLngLat(addressCoordinates)
         .addTo(this.map);
     } else {
