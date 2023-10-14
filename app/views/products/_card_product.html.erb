@@ -38,7 +38,7 @@
   <ul class="product-images">
     <p><%= pluralize(product.photos.size, 'Photo') %></p>
     <% product.photos.each do |photo| %>
-      <img src="<%= image_tag photo.key %>" alt="">
+      <img src="<%= url_for(photo) %>" alt="image">
     <% end %>
   </ul>
 </div>

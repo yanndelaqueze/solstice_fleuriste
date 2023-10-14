@@ -26,4 +26,13 @@
     margin-top: 1em;
     border-radius: 0.5em;
   }
+
+  .form-check-label {
+    color: black !important;
+  }
+
+  .category-selector {
+    background-color: $pink !important;
+    border-color: $pink !important;
+  }
 }
