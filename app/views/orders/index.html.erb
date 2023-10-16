@@ -12,7 +12,7 @@
       <%= f.label :transport, 'Filtrer par transport : ', class: "filter-label" %>
       <%= f.select :transport, @transport_options, include_blank: 'Tous les transports', selected: @selected_transport, class: 'form-control' %>
   </div>
-    <%= f.submit 'Filtrer', class: 'btn-action' %>
+    <%= f.submit 'Filtrer', class: 'btn-action btn-filter' %>
     <% end %>
 
   <div class="orders">

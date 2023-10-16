@@ -1,10 +1,19 @@
 .btn-action {
   background-color: $pink;
-  border-radius: 5px;
   padding: 12px;
   text-decoration: none !important;
   font-family: $body-font;
-  font-size: 14px;
   color: white !important;
   border: none;
+
+  font-size: 1em;
+  line-height: 1.2;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-radius: 0.375em;
+}
+
+.btn-filter {
+  height: 2em;
+  font-size: 0.8em;
 }
