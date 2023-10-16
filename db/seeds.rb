@@ -1,7 +1,7 @@
 Order.destroy_all
+OrderItem.destroy_all
 Product.destroy_all
 Category.destroy_all
-
 
 bouquet = Category.new(
   name: "Bouquets",
@@ -18,6 +18,10 @@ bouquet_printemps = Product.new(
   available: true,
   category: bouquet
 )
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609863/Solstice/Bouquet_Printemps_apdtox.jpg")
+file2 = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694699688/Solstice/Bouquet_Printemps2_br3b9g.jpg")
+bouquet_printemps.photos.attach(io: file, filename: "image.png", content_type: "image/png")
+bouquet_printemps.photos.attach(io: file2, filename: "image.png", content_type: "image/png")
 
 bouquet_printemps.save!
 print "1 product / "
@@ -30,7 +34,8 @@ bouquet_rose_pale = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609860/Solstice/Bouquet_Rose_Pa%CC%82le_bcj2lv.jpg")
+bouquet_rose_pale.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_rose_pale.save!
 print "1 product / "
 
@@ -42,7 +47,8 @@ bouquet_violet = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609864/Solstice/Bouquet_Violet_ctggh2.jpg")
+bouquet_violet.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_violet.save!
 print "1 product / "
 
@@ -54,7 +60,8 @@ bouquet_jaune = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609859/Solstice/Bouquet_Jaune_h0pwcl.jpg")
+bouquet_jaune.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_jaune.save!
 print "1 product / "
 
@@ -66,7 +73,8 @@ bouquet_orange = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609865/Solstice/Bouquet_Orange_vpjga8.jpg")
+bouquet_orange.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_orange.save!
 print "1 product / "
 
@@ -78,7 +86,8 @@ bouquet_rose_fuchsia = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609864/Solstice/Bouquet_Rose_Fuchsia_kyygki.jpg")
+bouquet_rose_fuchsia.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_rose_fuchsia.save!
 print "1 product / "
 
@@ -90,7 +99,8 @@ bouquet_colore = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609860/Solstice/Bouquet_Colore%CC%81_lkuxom.jpg")
+bouquet_colore.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_colore.save!
 print "1 product / "
 
@@ -102,7 +112,8 @@ bouquet_amour = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609862/Solstice/Bouquet_Amour_d4hryj.jpg")
+bouquet_amour.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_amour.save!
 print "1 product / "
 
@@ -114,7 +125,8 @@ bouquet_rose_pastel = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609859/Solstice/Bouquet_Rose_Pastel_spbhlx.jpg")
+bouquet_rose_pastel.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_rose_pastel.save!
 print "1 product / "
 
@@ -126,7 +138,8 @@ bouquet_rouge_grenat = Product.new(
   available: true,
   category: bouquet
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609867/Solstice/Bouquet_Rouge_Grenat_gn2ixi.jpg")
+bouquet_rouge_grenat.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_rouge_grenat.save!
 print "1 product / "
 
@@ -145,7 +158,8 @@ flower_box = Product.new(
   available: true,
   category: box_paniers
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609865/Solstice/Flower_Box_rwxiuh.jpg")
+flower_box.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 flower_box.save!
 print "1 product / "
 
@@ -157,7 +171,8 @@ paniers_fleuris = Product.new(
   available: true,
   category: box_paniers
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609858/Solstice/Paniers_Fleuris_rwtzli.jpg")
+paniers_fleuris.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 paniers_fleuris.save!
 print "1 product / "
 
@@ -169,7 +184,8 @@ mega_flower_box = Product.new(
   available: true,
   category: box_paniers
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609867/Solstice/Mega_Flower_Box_plu0br.jpg")
+mega_flower_box.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 mega_flower_box.save!
 print "1 product / "
 
@@ -181,7 +197,8 @@ mega_flower_box_passion = Product.new(
   available: true,
   category: box_paniers
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609864/Solstice/Mega_Flower_Box_Passion_oap7uw.jpg")
+mega_flower_box_passion.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 mega_flower_box_passion.save!
 print "1 product / "
 
@@ -193,7 +210,8 @@ mega_flower_box_amour = Product.new(
   available: true,
   category: box_paniers
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609862/Solstice/Mega_Flower_Box_Amour_r3n5df.jpg")
+mega_flower_box_amour.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 mega_flower_box_amour.save!
 print "1 product / "
 
@@ -212,7 +230,8 @@ bouquet_fleurs_sechees = Product.new(
   available: true,
   category: fleurs_sechees
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609859/Solstice/Bouquet_de_Fleurs_Se%CC%81che%CC%81es_a4724s.jpg")
+bouquet_fleurs_sechees.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 bouquet_fleurs_sechees.save!
 print "1 product / "
 
@@ -231,7 +250,8 @@ coupe_orchidees = Product.new(
   available: true,
   category: orchidees
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609859/Solstice/Coupe_d_Orchide%CC%81es_hmcmv9.jpg")
+coupe_orchidees.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 coupe_orchidees.save!
 print "1 product / "
 
@@ -243,7 +263,8 @@ orchidee_blanche = Product.new(
   available: true,
   category: orchidees
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609858/Solstice/Orchide%CC%81e_Blanche_rxmqr7.jpg")
+orchidee_blanche.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 orchidee_blanche.save!
 print "1 product / "
 
@@ -262,7 +283,8 @@ coussin_deuil = Product.new(
   available: true,
   category: deuil
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609866/Solstice/Coussin_Deuil_xkq9un.jpg")
+coussin_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 coussin_deuil.save!
 print "1 product / "
 
@@ -274,7 +296,8 @@ coussin_conique_deuil = Product.new(
   available: true,
   category: deuil
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609861/Solstice/Coeur_Deuil_dwf5hu.jpg")
+coussin_conique_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 coussin_conique_deuil.save!
 print "1 product / "
 
@@ -286,7 +309,8 @@ raquette_deuil = Product.new(
   available: true,
   category: deuil
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609858/Solstice/Raquette_Deuil_jhblzw.jpg")
+raquette_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 raquette_deuil.save!
 print "1 product / "
 
@@ -298,7 +322,8 @@ coeur_deuil = Product.new(
   available: true,
   category: deuil
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609861/Solstice/Coeur_Deuil_dwf5hu.jpg")
+coeur_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 coeur_deuil.save!
 print "1 product / "
 
@@ -310,7 +335,8 @@ devant_tombe_deuil = Product.new(
   available: true,
   category: deuil
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609863/Solstice/Devant_de_Tombe_Deuil_mmijou.jpg")
+devant_tombe_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 devant_tombe_deuil.save!
 print "1 product / "
 
@@ -322,6 +348,7 @@ croix_deuil = Product.new(
   available: true,
   category: deuil
 )
-
+file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609859/Solstice/Croix_Deuil_qingux.jpg")
+croix_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 croix_deuil.save!
 print "1 product / "

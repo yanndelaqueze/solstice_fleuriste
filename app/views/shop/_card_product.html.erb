@@ -1,6 +1,6 @@
 <div class="card-product-shop">
   <div class="product-image-shop">
-    <%= image_tag "default.jpg" %>
+    <img class="d-block w-100" src="<%= cl_image_path product.photos.first.key %>" alt="photo" >
   </div>
   <div class="product-info-shop">
     <h5><%= product.name %></h5>
