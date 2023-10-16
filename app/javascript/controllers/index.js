@@ -30,6 +30,9 @@ application.register("date-validation", DateValidationController);
 import MiniMapController from "./mini_map_controller";
 application.register("mini-map", MiniMapController);
 
+import ImageHoverController from "./image_hover_controller";
+application.register("image-hover", ImageHoverController);
+
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)

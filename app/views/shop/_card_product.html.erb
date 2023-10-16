@@ -1,7 +1,18 @@
 <div class="card-product-shop">
-  <div class="product-image-shop">
-    <img class="d-block w-100" src="<%= cl_image_path product.photos.first.key %>" alt="photo" >
-  </div>
+  <% if product.photos.size > 1 %>
+    <div class="product-image-shop">
+      <img class="d-block w-100" src="<%= cl_image_path product.photos.first.key %>" alt="photo"
+      data-controller="image-hover"
+      data-action="mouseenter->image-hover#showMouseEnter mouseleave->image-hover#showMouseLeave"
+      data-image-hover-target="image"
+      data-second-image="<%= cl_image_path product.photos[1].key %>"
+      >
+    </div>
+  <% else %>
+    <div class="product-image-shop">
+      <img class="d-block w-100" src="<%= cl_image_path product.photos.first.key %>" alt="photo">
+    </div>
+  <% end %>
   <div class="product-info-shop">
     <h5><%= product.name %></h5>
     <p>à partir de <%= product.min_price %>0€</p>
