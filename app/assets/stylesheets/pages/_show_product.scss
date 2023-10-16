@@ -4,13 +4,15 @@
   .product-info {
     padding: 1em;
     width: 50%;
+    height: 100%;
 
     .product-image {
       height: 50%;
     }
 
     .product-desc {
-      color: $white
+      color: $white;
+      margin-top: 1em;
     }
   }
 
@@ -24,7 +26,6 @@
     }
 
     .custom-form {
-
       .price-form {
         color: black;
       }
@@ -38,5 +39,4 @@
       }
     }
   }
-
 }
