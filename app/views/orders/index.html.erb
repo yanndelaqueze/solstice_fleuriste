@@ -7,6 +7,11 @@
       <%= f.label :status, 'Filtrer par statut : ', class: "filter-label"%>
       <%= f.select :status, @status_options, include_blank: 'Toutes les commandes', selected: @selected_status, class: 'form-control'%>
     </div>
+
+    <div class="filter-fields">
+      <%= f.label :transport, 'Filtrer par transport : ', class: "filter-label" %>
+      <%= f.select :transport, @transport_options, include_blank: 'Tous les transports', selected: @selected_transport, class: 'form-control' %>
+  </div>
     <%= f.submit 'Filtrer', class: 'btn-action' %>
     <% end %>
 

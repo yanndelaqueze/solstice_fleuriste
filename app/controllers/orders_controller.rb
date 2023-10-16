@@ -2,13 +2,29 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update destroy]
 
   def index
-    @status_options = Order.distinct.pluck(:status)
-    @selected_status = params[:filter] && params[:filter][:status]
+    if current_user.admin
+      @status_options = ["En cours", "Validée", "Payée", "En préparation", "Prête", "Livrée"]
+      @transport_options = ["Click & Collect", "Livraison"]
+      @selected_status = params.dig(:filter, :status)
+      @selected_transport = params.dig(:filter, :transport)
 
-    if @selected_status.present?
-      @orders = Order.where(status: @selected_status)
+      # Starting with a base that includes all orders
+      base = Order.all
+
+      # Add filter conditions for "status" and "transport" if they are selected
+      if @selected_status.present?
+        base = base.where(status: @selected_status)
+      end
+
+      if @selected_transport.present?
+        base = base.where(transport: @selected_transport)
+      end
+
+      # Finally, assign the filtered results to @orders
+      @orders = base
+
     else
-      @orders = Order.all
+      @orders = current_user.orders
     end
   end
 
