@@ -21,27 +21,32 @@
     <%= f.label :position, "Position" %>
     <%= f.number_field :position, class: 'form-control'%>
   </div>
-
-  <!-- Existing Images -->
-  <div class="form-group">
-    <%= f.label :remove_image, "Supprimer des images" %>
-    <div class="images">
-      <% product.photos.each do |photo| %>
-        <div>
-          <img src="<%= image_tag photo %>" alt="" class="form-image">
-          <br>
-          <%= f.check_box :remove_image, { multiple: true }, photo.id, nil %>
+  <p>Images :</p>
+    <!-- Existing Images -->
+    <% if  %>
+    <% product.photos.size === 0  %>
+    <p class="font-italic">Ce produit n'a pas d'image 🙁</p>
+    <% else %>
+      <div class="form-group">
+        <%= f.label :remove_image, "Cocher les images à supprimer" %>
+        <div class="images">
+          <% product.photos.each do |photo| %>
+            <div class="image-to-delete">
+              <img src="<%= cl_image_path photo.key %>" alt="" class="form-image">
+              <br>
+              <%= f.check_box :remove_image, { multiple: true }, photo.id, nil %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
+    <% end %>
 
-  <!-- New Images -->
-  <div class="form-group">
-    <%= f.label :new_images, "Ajouter des images" %>
-    <br>
-    <%= f.file_field :new_images, { multiple: true } %>
-  </div>
+    <!-- New Images -->
+    <div class="form-group">
+      <%= f.label :new_images, "Ajouter des images" %>
+      <br>
+      <%= f.file_field :new_images, { multiple: true } %>
+    </div>
 
   <div class="form-group">
     <%= f.submit "Mettre à jour", class:"btn-action" %>

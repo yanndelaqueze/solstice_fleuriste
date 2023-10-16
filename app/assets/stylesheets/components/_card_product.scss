@@ -48,6 +48,12 @@
     height: 5em;
   }
 
+  .image-to-delete {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
   .form-image {
     height: 3em;
   }
