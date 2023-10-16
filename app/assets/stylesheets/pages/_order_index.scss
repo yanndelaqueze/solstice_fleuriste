@@ -1,0 +1,14 @@
+.filter {
+  display: flex;
+  justify-content: space-between;
+
+  .filter-label {
+    margin-bottom: 0em;
+    margin-right: 1em;
+  }
+}
+
+.filter-fields {
+  display: flex;
+  align-items: center;
+}
