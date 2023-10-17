@@ -507,3 +507,5 @@ orderitem5 = OrderItem.new(
   price: 99
 )
 orderitem5.save!
+
+puts "Finished !!"
