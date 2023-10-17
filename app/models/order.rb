@@ -8,21 +8,25 @@ class Order < ApplicationRecord
   TRANSPORT = ["Click & Collect", "Livraison"]
   validates :transport, inclusion: { in: TRANSPORT }
   validates :delivery_address, presence: true, if: :delivery_transport?
+  monetize :subtotal_cents
+  monetize :delivery_cost_cents
+  monetize :total_cents
   before_create :set_default_date
-  before_create :subtotal
-  before_create :delivery_cost
+  before_create :subtotal_cents
+  before_create :delivery_cost_cents
+  before_create :total_cents
   before_save :set_transport
 
-  def subtotal
-    order_items ? order_items.sum { |item| item.price } : 0
+  def subtotal_cents
+    order_items ? self.order_items.sum { |item| item.price_cents } : 0
   end
 
-  def delivery_cost
-    return 0
+  def delivery_cost_cents
+    0
   end
 
-  def total
-    subtotal + delivery_cost
+  def total_cents
+    self.subtotal_cents + self.delivery_cost_cents
   end
 
   def delivery_transport?
