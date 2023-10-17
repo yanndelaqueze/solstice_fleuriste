@@ -45,12 +45,12 @@
                   <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
                   <div class="cart-content-item-info">
                     <p class="fw-bolder"><%= order_item.product.name  %></p>
-                    <p><%= order_item.price %>€</p>
+                    <p><%= humanized_money_with_symbol(order_item.price) %></p>
                   </div>
                 </div>
               <% end %>
               <div class="order-total">
-                <p>Total : <%= current_order.total  %> €</p>
+                <p>Total : <%= humanized_money_with_symbol(current_order.total) %></p>
               </div>
             <% end %>
           </div>
