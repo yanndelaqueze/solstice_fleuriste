@@ -1,7 +1,58 @@
+User.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
 Product.destroy_all
 Category.destroy_all
+
+# // CREATING USERS //
+
+print "creating users"
+
+User.create!(
+  email: 'admin@solstice.com',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: true
+)
+print "1 user"
+
+User.create!(
+  email: 'fdhaene@gmail.com',
+  first_name: 'François',
+  last_name: "D'Haene",
+  phone: "+262 262 51 71 79",
+  address: '4 Rue Sainte-Rose, 97410, Saint-Pierre, La Réunion',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: false
+)
+print "1 user"
+
+User.create!(
+  email: 'kjornet@gmail.com',
+  first_name: 'Kilian',
+  last_name: "Jornet",
+  phone: "+262 262 51 71 80",
+  address: '15 Lotissement Le Cap, 97429, Petite-Île, La Réunion',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: false
+)
+print "1 user"
+
+User.create!(
+  email: 'antoine.guillon@gmail.com',
+  first_name: 'Antoine',
+  last_name: "Guillon",
+  phone: "+262 262 51 71 81",
+  address: '17 Rue Des Cerises, 97429, Petite-Île, La Réunion',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: false
+)
+print "1 user"
+
+# // CREATING CATEGORIES AND PRODUCTS //
 
 bouquet = Category.new(
   name: "Bouquets",

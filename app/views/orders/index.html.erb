@@ -1,7 +1,5 @@
 <h1 class= "title">Commandes</h1>
 <div class="container">
-  <h4><%= pluralize(@orders.where(status: "En cours").size, 'commande') %> en cours</h4>
-
     <%= simple_form_for :filter, url: orders_path,class:"filter", method: :get do |f| %>
     <div class="filter-fields">
       <%= f.label :status, 'Statut de la commande : ', class: "filter-label"%>
