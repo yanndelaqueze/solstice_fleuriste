@@ -1,21 +1,23 @@
 <h1 class= "title">Commandes</h1>
 <div class="container">
-    <%= simple_form_for :filter, url: orders_path,class:"filter", method: :get do |f| %>
-    <div class="filter-fields">
+
+  <%= simple_form_for :filter, url: orders_path,class:"filter", method: :get do |f| %>
+    <div class="filter-field">
       <%= f.label :status, 'Statut de la commande : ', class: "filter-label"%>
       <%= f.select :status, @status_options, include_blank: 'Toutes les commandes', selected: @selected_status, class: 'form-control'%>
     </div>
 
-    <div class="filter-fields">
+    <div class="filter-field">
       <%= f.label :transport, 'Livraison / Click & Collect : ', class: "filter-label" %>
       <%= f.select :transport, @transport_options, include_blank: 'Tous les transports', selected: @selected_transport, class: 'form-control' %>
-  </div>
-    <%= f.submit 'Filtrer', class: 'btn-action btn-filter' %>
-    <% end %>
+    </div>
+    <%= f.submit 'Filtrer', class: 'btn-action' %>
+  <% end %>
 
   <div class="orders">
     <% @orders.each do |order| %>
       <%= render 'card_order', order: order %>
     <% end %>
   </div>
+
 </div>

@@ -1,24 +1,25 @@
 <div class="card-order">
+
   <div class="card-order-header">
-      <h3>Commande #<%= order.id%></h3>
-      <div class="card-order-actions">
+    <h3>Commande #<%= order.id%></h3>
+    <div class="card-order-actions">
       <!-- Edit the Order (Bootstrap Modal) -->
       <%= link_to ('<i class="fa-solid fa-pen-to-square"></i>').html_safe,  '#', 'data-target' => "#myModal_#{order.id}", 'data-toggle' => 'modal', class: "fs-4"  %>
-        <div class="modal fade" id='<%= "myModal_#{order.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Modifier la commande : </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render 'card_order_form', order: order %>
-              </div>
+      <div class="modal fade" id='<%= "myModal_#{order.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="myModalLabel">Modifier la commande : </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render 'card_order_form', order: order %>
             </div>
           </div>
         </div>
+      </div>
       <!-- Delete the Order Item -->
       <%= link_to ('<i class="fa-regular fa-trash-can"></i>').html_safe, order_path(order), class: 'text-danger fs-4', data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr/sure?" } %>
     </div>
@@ -29,6 +30,7 @@
       <div class="order-address">
         <p><i class="fa-solid fa-house"></i> Adresse de livraison :</p>
         <p class="input-address"> <%= order.delivery_address %></p>
+
         <!-- Mini Map (Bootstrap Modal) -->
         <%= link_to ('<i class="fa-solid fa-location-dot pl-2 pb-4"></i>').html_safe,  '#', 'data-target' => "#myModalAddress_#{order.id}", 'data-toggle' => 'modal', class: "fs-4"  %>
         <div class="modal fade" id='<%= "myModalAddress_#{order.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalAddressLabel" aria-hidden="true">
@@ -49,8 +51,5 @@
       </div>
     <% end %>
   </div>
-  <p>Produits :</p>
-  <% if order.order_items.size > 0 %>
-    <p><%= order.order_items.last.product.name  %></p>
-  <% end %>
+
 </div>
