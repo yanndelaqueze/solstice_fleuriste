@@ -57,15 +57,16 @@
       <div class="transport-info">
         <div class="transport-type">
           <p><i class="fa-solid fa-circle-info"></i> <%= order.transport %></p>
-          <p><i class="fa-solid fa-phone"></i> <%= order.phone  %></p>
+          <p class="pl-3"><i class="fa-solid fa-phone"></i> <%= order.phone  %></p>
         </div>
         <% if order.delivery_address  && order.transport === "Livraison"%>
           <div class="delivery-address">
             <p><i class="fa-solid fa-house"></i> Adresse de livraison :</p>
-            <p class="input-address"> <%= order.delivery_address %></p>
 
+            <%= link_to '#', 'data-target' => "#myModalAddress_#{order.id}", 'data-toggle' => 'modal', class: "input-address" do %>
+              <p> <%= order.delivery_address %></p>
+            <% end %>
             <!-- Mini Map (Bootstrap Modal) -->
-            <%= link_to ('<i class="fa-solid fa-location-dot pl-2 pb-4"></i>').html_safe,  '#', 'data-target' => "#myModalAddress_#{order.id}", 'data-toggle' => 'modal', class: "fs-4"  %>
             <div class="modal fade" id='<%= "myModalAddress_#{order.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalAddressLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
