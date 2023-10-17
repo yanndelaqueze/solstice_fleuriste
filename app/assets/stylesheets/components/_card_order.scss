@@ -14,8 +14,22 @@
   .card-order-actions {
     display: flex;
     align-items: center;
-    width: 10%;
+    width: 7%;
     justify-content: space-between;
+  }
+
+  .card-order-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .order-transport {
+    background-color: $dark-green;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 0.5em;
+    color: white;
+    padding: 0.3em;
+    margin-right: 1em;
   }
 
   .order-address {

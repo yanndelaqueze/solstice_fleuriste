@@ -26,6 +26,12 @@
   </div>
 
   <div class="card-order-info">
+    <p class="order-transport"><%= order.transport %></p>
+    <p><%= order.date.strftime("%e/%m/%Y") %></p>
+  </div>
+
+
+  <div class="card-order-details">
     <% if order.delivery_address %>
       <div class="order-address">
         <p><i class="fa-solid fa-house"></i> Adresse de livraison :</p>
