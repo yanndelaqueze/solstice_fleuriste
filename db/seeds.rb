@@ -8,15 +8,16 @@ Category.destroy_all
 
 print "creating users"
 
-User.create!(
+admin = User.new(
   email: 'admin@solstice.com',
   password: 'password',
   password_confirmation: 'password',
   admin: true
 )
+admin.save!
 print "1 user"
 
-User.create!(
+francois = User.new(
   email: 'fdhaene@gmail.com',
   first_name: 'François',
   last_name: "D'Haene",
@@ -26,9 +27,10 @@ User.create!(
   password_confirmation: 'password',
   admin: false
 )
+francois.save!
 print "1 user"
 
-User.create!(
+kilian = User.new(
   email: 'kjornet@gmail.com',
   first_name: 'Kilian',
   last_name: "Jornet",
@@ -38,9 +40,10 @@ User.create!(
   password_confirmation: 'password',
   admin: false
 )
+kilian.save!
 print "1 user"
 
-User.create!(
+antoine = User.new(
   email: 'antoine.guillon@gmail.com',
   first_name: 'Antoine',
   last_name: "Guillon",
@@ -50,6 +53,7 @@ User.create!(
   password_confirmation: 'password',
   admin: false
 )
+antoine.save!
 print "1 user"
 
 # // CREATING CATEGORIES AND PRODUCTS //
@@ -403,3 +407,103 @@ file = URI.open("https://res.cloudinary.com/dqfgqm3cn/image/upload/v1694609859/S
 croix_deuil.photos.attach(io: file, filename: "image.png", content_type: "image/png")
 croix_deuil.save!
 print "1 product / "
+
+# // CREATING ORDERS & ORDER_ITEMS //
+
+order1 = Order.new(
+  user: francois,
+  status: "Validée",
+  transport: "Livraison",
+  delivery_first_name: "Courtney",
+  delivery_last_name: "Dauwalter",
+  delivery_address: francois.address,
+  delivery_instructions: "Au fond de l'allée",
+  phone: francois.phone,
+  date: DateTime.now + 3
+)
+order1.save!
+
+orderitem1 = OrderItem.new(
+  product: bouquet_jaune,
+  order: order1,
+  message: "Joyeux Anniversaire !!",
+  occasion: "Anniversaire",
+  color: "Rose",
+  price: 50
+)
+orderitem1.save!
+
+order2 = Order.new(
+  user: kilian,
+  status: "Payée",
+  transport: "Livraison",
+  delivery_first_name: "Katie",
+  delivery_last_name: "Schide",
+  delivery_address: "2 Rue des Oliviers, Petite Île 97429, La Réunion",
+  delivery_instructions: "",
+  phone: "+262692084408",
+  date: DateTime.now + 3
+)
+order2.save!
+
+orderitem2 = OrderItem.new(
+  product: bouquet_violet,
+  order: order2,
+  message: "Je t'aime",
+  occasion: "Saint Valentin",
+  color: "Multicolore",
+  price: 90
+)
+orderitem2.save!
+
+order3 = Order.new(
+  user: kilian,
+  status: "Payée",
+  transport: "Click & Collect",
+  phone: kilian.phone,
+  date: DateTime.now + 2
+)
+order3.save!
+
+orderitem3 = OrderItem.new(
+  product: paniers_fleuris,
+  order: order3,
+  message: "",
+  occasion: "Spontané",
+  color: "Pas de préférence",
+  price: 60
+)
+orderitem3.save!
+
+orderitem4 = OrderItem.new(
+  product: mega_flower_box,
+  order: order3,
+  message: "",
+  occasion: "Spontané",
+  color: "Pas de préférence",
+  price: 100
+)
+orderitem4.save!
+
+order4 = Order.new(
+  user: antoine,
+  status: "Payée",
+  transport: "Livraison",
+  delivery_first_name: "Sylvaine",
+  delivery_last_name: "Cussot",
+  delivery_address: antoine.address,
+  delivery_instructions: "Attention au chien !",
+  phone: "+262692084410",
+  date: DateTime.now + 4
+)
+order4.save!
+
+orderitem5 = OrderItem.new(
+  product: bouquet_rose_fuchsia,
+  order: order4,
+  message: "Bonne Fête Maman ❤️",
+  occasion: "Fête des mères",
+  color: "Multicolore",
+  price: 99
+)
+orderitem5.save!
