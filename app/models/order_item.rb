@@ -7,4 +7,5 @@ class OrderItem < ApplicationRecord
   validates :occasion, inclusion: { in: OCCASIONS }
   validates :color, inclusion: { in: COLORS }
   validates :price, presence: true, numericality: { greater_than: 0, message: 'Ne peut pas être vide' }
+  monetize :price_cents
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_17_082728) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_17_181306) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,20 +52,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_17_082728) do
 
   create_table "order_items", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.float "price"
     t.bigint "order_id", null: false
     t.text "message"
     t.string "color"
     t.string "occasion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.float "total"
-    t.float "subtotal"
     t.integer "user_id"
     t.string "status", default: "En cours"
     t.string "delivery_address"
@@ -73,7 +71,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_17_082728) do
     t.datetime "date"
     t.string "delivery_instructions"
     t.string "phone"
-    t.float "delivery_cost", default: 0.0
     t.boolean "delivery_possible", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,6 +78,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_17_082728) do
     t.float "longitude"
     t.string "delivery_first_name"
     t.string "delivery_last_name"
+    t.integer "delivery_cost_cents", default: 0, null: false
+    t.integer "subtotal_cents", default: 0, null: false
+    t.integer "total_cents", default: 0, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -94,12 +94,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_17_082728) do
   create_table "products", force: :cascade do |t|
     t.string "name", default: ""
     t.text "description", default: ""
-    t.float "min_price", default: 0.0
     t.boolean "available", default: true
     t.bigint "category_id", null: false
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "min_price_cents", default: 0, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

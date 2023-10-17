@@ -3,7 +3,7 @@
   <div class="cart">
 
     <div class="cart-items">
-    <h4><%= pluralize(current_order.order_items.size, 'article') %> (total : <%= current_order.subtotal  %>€)</h4>
+    <h4><%= pluralize(current_order.order_items.size, 'article') %> (total : <%= humanized_money_with_symbol(current_order.total) %>)</h4>
       <% @order_items.each do |order_item| %>
         <%= render 'cart_item', order_item: order_item %>
       <% end %>
