@@ -35,36 +35,58 @@
 
   <div class="card-order-details">
 
-    <div class="order-user">
-      <%= image_tag("order-user.png", class: "order-picto") %>
-    </div>
+      <div class="order-user">
+        <%= image_tag("order-user.png", class: "order-picto") %>
+        <% if order.user %>
+          <div class="user-info">
+            <div class="user-identity">
+            <p><i class="fa-solid fa-user"></i> <%= order.user.first_name  %> <%= order.user.last_name %></p>
+            <p><i class="fa-solid fa-at"></i> <%= order.user.email %></p>
+            <p></p>
+            </div>
+            <div class="user-home">
+            <p><i class="fa-solid fa-home"></i> <%= order.user.address %></p>
+            <p><i class="fa-solid fa-phone"></i> <%= order.user.phone  %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
     <div class="order-transport">
       <%= image_tag("order-transport.png", class: "order-picto") %>
-      <% if order.delivery_address %>
-        <div class="order-address">
-          <p><i class="fa-solid fa-house"></i> Adresse de livraison :</p>
-          <p class="input-address"> <%= order.delivery_address %></p>
+      <div class="transport-info">
+        <div class="transport-type">
+          <p><i class="fa-solid fa-circle-info"></i> <%= order.transport %></p>
+          <p><i class="fa-solid fa-phone"></i> <%= order.phone  %></p>
+        </div>
+        <% if order.delivery_address  && order.transport === "Livraison"%>
+          <div class="delivery-address">
+            <p><i class="fa-solid fa-house"></i> Adresse de livraison :</p>
+            <p class="input-address"> <%= order.delivery_address %></p>
 
-          <!-- Mini Map (Bootstrap Modal) -->
-          <%= link_to ('<i class="fa-solid fa-location-dot pl-2 pb-4"></i>').html_safe,  '#', 'data-target' => "#myModalAddress_#{order.id}", 'data-toggle' => 'modal', class: "fs-4"  %>
-          <div class="modal fade" id='<%= "myModalAddress_#{order.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalAddressLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="myModalAddressLabel">Adresse de Livraison</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= render 'mini_map_modal', order: order %>
+            <!-- Mini Map (Bootstrap Modal) -->
+            <%= link_to ('<i class="fa-solid fa-location-dot pl-2 pb-4"></i>').html_safe,  '#', 'data-target' => "#myModalAddress_#{order.id}", 'data-toggle' => 'modal', class: "fs-4"  %>
+            <div class="modal fade" id='<%= "myModalAddress_#{order.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalAddressLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myModalAddressLabel">Adresse de Livraison</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= render 'mini_map_modal', order: order %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+          <div class="delivery-instructions">
+            <p><i class="fa-solid fa-circle-exclamation"></i> Instructions : <%= order.delivery_instructions %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="order-products">

@@ -57,11 +57,67 @@
   .order-picto {
     border-radius: 50%;
     width: 3em;
+    height: 3em;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     border: solid;
   }
 
-  .order-address {
+  .order-user {
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    border-bottom: solid;
+    border-width: thin;
+    padding-bottom: 1em;
+
+    p {
+      margin-bottom: 0 !important;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      padding-left: 1em;
+
+      .user-identity {
+        display: block;
+      }
+
+      .user-home {
+        padding-left: 1em;
+      }
+    }
+  }
+
+  .order-transport {
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    border-bottom: solid;
+    border-width: thin;
+    padding-bottom: 1em;
+
+    p {
+      margin-bottom: 0 !important;
+    }
+
+    .transport-info {
+      padding-left: 1em;
+    }
+
+    .transport-type {
+      display: flex;
+      align-items: center;
+    }
+
+    .delivery-address {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .order-products {
+    margin-top: 1em;
     display: flex;
     align-items: center;
   }
