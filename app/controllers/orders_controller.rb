@@ -38,7 +38,6 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       flash[:success] = "Commande mise à jour !!"
     else
-      raise
       flash[:error] = "Oups, il y a eu un problème !"
     end
     redirect_to request.referer

@@ -33,4 +33,9 @@
       <p>Budget : <%= order_item.price %>€</p>
     </div>
   </div>
+  <ul class="cart-item-images">
+    <% order_item.product.photos.each do |photo| %>
+      <img src="<%= cl_image_path photo.key %>" alt="">
+    <% end %>
+  </ul>
 </div>

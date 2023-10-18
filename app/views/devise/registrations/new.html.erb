@@ -18,6 +18,24 @@
                   required: true,
                   input_html: { autocomplete: "new-password" },
                   label: "Entrer à nouveau le mot de passe" %>
+      <%= f.input :first_name,
+                  required: true,
+                  input_html: { autocomplete: "first_name" },
+                  label: "Prénom"%>
+      <%= f.input :last_name,
+                  required: true,
+                  input_html: { autocomplete: "last_name" },
+                  label: "Nom"%>
+      <%= f.input :address,
+                  required: false,
+                  autofocus: true,
+                  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+                  label: "Adresse"%>
+      <%= f.input :phone,
+                  required: false,
+                  input_html: { autocomplete: "phone" },
+                  label: "Téléphone"%>
     </div>
 
     <div class="form-actions">
@@ -25,5 +43,8 @@
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="d-flex mt-3">
+    <p class="me-2">Vous avez déjà un compte ?</p>
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
