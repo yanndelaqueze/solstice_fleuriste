@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if user_signed_in? && current_user.admin?
+    if Order.find(params[:id]).present?
       @order = Order.find(params[:id])
     else
       @order = current_order

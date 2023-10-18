@@ -19,12 +19,12 @@
           <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
 
           <div data-toggle-delivery-fields-target="deliveryFields" id="delivery-fields" >
-            <% if @order.delivery_address %>
+            <% if @order.delivery_address.present? %>
               <div class="address">
                   <p>Adresse de livraison choisie :</p>
                   <p class="input-address"><%= @order.delivery_address %></p>
               </div>
-              <% if !@order.in_delivery_area?  %>
+              <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
                 <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à cette adresse</p>
               <% end %>
               <div class="form-group">
@@ -77,3 +77,6 @@
 
   </div>
 </div>
+
+
+<% console %>
