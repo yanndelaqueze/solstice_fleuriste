@@ -1,5 +1,8 @@
 <h1 class= "title">Mon panier</h1>
 <div class="container">
+    <%= link_to validate_order_path(@order), class: "", data: { turbo_method: :patch } do %>
+          <i class="fa-solid fa-thumbs-up"></i>
+        <% end %>
   <div class="cart">
 
     <div class="cart-items">
