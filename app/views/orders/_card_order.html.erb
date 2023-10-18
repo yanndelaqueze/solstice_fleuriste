@@ -96,7 +96,10 @@
       <div class="order-products-list">
         <% order.order_items.each do |order_item| %>
           <div class="order-item">
-            <p>Produit : <%= order_item.product.name  %></p>
+            <div class="product-info">
+              <p>Produit : <%= order_item.product.name  %></p>
+              <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+            </div>
             <p>Occasion : <%= order_item.occasion  %></p>
             <p>Couleur : <%= order_item.color  %></p>
             <p>Message : "<%= order_item.message %>"</p>
