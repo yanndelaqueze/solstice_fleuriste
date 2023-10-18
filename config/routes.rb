@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'creations', to: 'shop#index'
   get '/panier', to: 'cart#show'
   get '/admin', to: 'pages#admin'
+  get '/compte', to: 'pages#account'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :categories

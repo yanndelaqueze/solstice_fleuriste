@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update destroy]
 
   def index
-    if current_user.admin
       @status_options = Order::STATUS
       @transport_options = Order::TRANSPORT
       @selected_status = params.dig(:filter, :status)
@@ -22,10 +21,6 @@ class OrdersController < ApplicationController
 
       # Finally, assign the filtered results to @orders
       @orders = base
-
-    else
-      @orders = current_user.orders
-    end
   end
 
   def show

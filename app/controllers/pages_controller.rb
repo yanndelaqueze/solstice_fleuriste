@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def admin
   end
+
+  def account
+    @orders = current_user.orders
+  end
 end
