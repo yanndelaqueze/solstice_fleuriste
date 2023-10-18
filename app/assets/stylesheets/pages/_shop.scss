@@ -9,11 +9,15 @@ body {
   }
 
   .product-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0.75rem; /* To define the gap between rows/columns */
-  gap: 0.75rem;
-  padding: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0.75rem; /* To define the gap between rows/columns */
+    gap: 0.75rem;
+    padding: 0.75rem;
   }
 
+  .active-filter {
+    background-color: black;
+    color: white;
+  }
 }

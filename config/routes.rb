@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/admin', to: 'pages#admin'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-
   resources :categories
+
   resources :products, only: %i[new create]
 
   resources :products do

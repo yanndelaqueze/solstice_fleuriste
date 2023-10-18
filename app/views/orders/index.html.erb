@@ -1,7 +1,7 @@
 <h1 class= "title">Commandes</h1>
 <div class="container">
 
-  <%= simple_form_for :filter, url: orders_path,class:"filter", method: :get do |f| %>
+  <%= simple_form_for :filter, url: orders_path, class:"filter", method: :get do |f| %>
     <div class="filter-field">
       <%= f.label :status, 'Statut de la commande : ', class: "filter-label"%>
       <%= f.select :status, @status_options, include_blank: 'Toutes les commandes', selected: @selected_status, class: 'form-control'%>
@@ -13,6 +13,7 @@
     </div>
     <%= f.submit 'Filtrer', class: 'btn-action' %>
   <% end %>
+
 
   <div class="orders">
     <% @orders.each do |order| %>

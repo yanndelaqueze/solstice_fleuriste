@@ -3,8 +3,8 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.admin
-      @status_options = ["En cours", "Validée", "Payée", "En préparation", "Prête", "Livrée"]
-      @transport_options = ["Click & Collect", "Livraison"]
+      @status_options = Order::STATUS
+      @transport_options = Order::TRANSPORT
       @selected_status = params.dig(:filter, :status)
       @selected_transport = params.dig(:filter, :transport)
 
