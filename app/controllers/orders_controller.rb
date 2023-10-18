@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_user.orders.find(params[:id])
   end
 
   def edit
@@ -40,7 +40,12 @@ class OrdersController < ApplicationController
     else
       flash[:error] = "Oups, il y a eu un problème !"
     end
-    redirect_to request.referer
+
+    if params[:controller] == "cart"
+      redirect_to panier_path
+    else
+      redirect_to request.referer
+    end
   end
 
   def destroy
