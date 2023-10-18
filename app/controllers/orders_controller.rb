@@ -36,9 +36,10 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      flash[:success] = "Order updated successfully."
+      flash[:success] = "Commande mise à jour !!"
     else
-      flash[:error] = "Failed to update order."
+      raise
+      flash[:error] = "Oups, il y a eu un problème !"
     end
     redirect_to request.referer
   end
