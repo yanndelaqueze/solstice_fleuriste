@@ -53,6 +53,7 @@ gem "geocoder"
 gem "json"
 gem "cloudinary"
 gem 'money-rails'
+gem 'stripe'
 
 
 group :development, :test do
