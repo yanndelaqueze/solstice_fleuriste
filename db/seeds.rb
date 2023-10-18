@@ -10,6 +10,8 @@ print "creating users"
 
 admin = User.new(
   email: 'admin@solstice.com',
+  first_name: "Admin",
+  last_name: "Solstice",
   password: 'password',
   password_confirmation: 'password',
   admin: true
