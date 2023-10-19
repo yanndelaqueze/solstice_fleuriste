@@ -63,9 +63,9 @@ class OrdersController < ApplicationController
         {
           price_data: {
             currency: "eur",
-            unit_amount: @order.id,
+            unit_amount: @order.total_cents,
             product_data: {
-              name: "Votre commande Solstice"
+              name: "Votre commande Solstice ##{@order.id}"
             },
           },
           quantity: 1,
