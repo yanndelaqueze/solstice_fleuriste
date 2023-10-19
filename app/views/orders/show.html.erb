@@ -1,16 +1,72 @@
-<p>Commande <%= @order.id  %></p>
-
+<h1 class="title">Commande #<%= @order.id  %></h1>
 <div class="container">
-  <div class="row py-4">
-    <div class="col-md-3"><%= cl_image_path @order_items.first.product.photos.first.key %></div>
-    <div class="col">
-      <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.status %></span></small></h1>
-      <ul class="list-unstyled">
-        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
-        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.total %></li>
-        </li>
-      </ul>
-      <p>Estimated delivery in <strong>2 business days</strong></p>
+  <div class="recap-order-header">
+    <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %></h2>
+    <div class="recap-order-status">
+    <p class="btn-personnaliser"><%= @order.status  %> </p>
+    </div>
+  </div>
+
+  <div class="recap-order-details d-flex">
+    <div class="recap-order-info">
+      <% if @order.transport == "Click & Collect" %>
+        <h3 class="text-center">Click & Collect</h3>
+        <p class="text-center">Commande à récupérer en Boutique : </p>
+        <div class="shop-info">
+          <div class="address-home">
+            <p><i class="fa-solid fa-home"></i> 32 Rue Joseph Suacot, Petite Île</p>
+            <p>97429, La Réunion</p>
+            <p><i class="fa-solid fa-phone"></i> +262 262 51 71 78</p>
+          </div>
+          <p class="text-center"><i class="fa-solid fa-clock fw-bold"></i>  Horaires d'ouverture :</p>
+          <div class="time">
+            <p>Lundi : Fermé</p>
+            <p>Mardi : 9h00 - 12h00 |  14h00 - 18h00</p>
+            <p>Mercredi : 9h00 - 12h00 |  14h00 - 18h00</p>
+            <p>Jeudi : 9h00 - 12h30 |  14h30 - 18h30</p>
+            <p>Vendredi : 9h00 - 12h30 |  14h30 - 18h30</p>
+            <p>Samedi : 9h00 - 12h30 |  14h30 - 18h30</p>
+            <p>Dimanche : 9h00 - 12h00</p>
+          </div>
+        </div>
+      <% else %>
+        <h3 class="text-center">Livraison</h3>
+        <div class="address">
+          <p>Adresse de livraison choisie :</p>
+          <p class="input-address"><%= @order.delivery_address %></p>
+        </div>
+        <div class="recap-delivery-name">
+          <p>Prénom : <%= @order.delivery_first_name  %></p>
+          <p>Nom : <%= @order.delivery_last_name  %></p>
+        </div>
+        <p>Téléphone : <%= @order.phone %></p>
+        <p>Instructions : <%= @order.delivery_instructions  %></p>
+      <% end %>
+    </div>
+    <div class="recap-order-items">
+      <h3 class="text-center"><%= pluralize(@order.order_items.size, 'Article') %></h3>
+      <div class="cart-items">
+        <% @order.order_items.each do |order_item| %>
+          <div class="cart-item">
+            <div class="cart-item-header">
+              <h3><%= order_item.product.name%></h3>
+            </div>
+            <div class="cart-item-info">
+              <div class="cart-item-spec1">
+                <ul class="cart-item-images">
+                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                </ul>
+                <p class="mt-3">Message : "<%= order_item.message %>"</p>
+              </div>
+              <div class="cart-item-spec2">
+                <p>Occasion : <%= order_item.occasion %></p>
+                <p>Couleur dominante : <%= order_item.color %></p>
+                <p>Budget : <%= humanized_money_with_symbol(order_item.price) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
