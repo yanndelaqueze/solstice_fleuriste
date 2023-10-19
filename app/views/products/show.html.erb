@@ -45,7 +45,10 @@
       <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
 
         <p>1- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
-        <%= f.input :price, placeholder: @product.min_price.to_s, label: false %>
+        <div class="price-input-container", data-controller="price-input-range">
+          <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(@product.min_price_cents/100, precision: 2) %></span>
+          <%= f.input :price, as: :range, label: false, input_html: { min: @product.min_price_cents/100, max: 150, step: 1, value: @product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+        </div>
 
         <p>2- Précisez l'occasion célébrée :</p>
         <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>

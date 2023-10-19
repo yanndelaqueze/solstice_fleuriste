@@ -37,6 +37,65 @@
       .message-form {
         color: black;
       }
+
+      .price-input-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .range {
+          width: 100%;
+        }
+
+        .range-wrapper {
+          margin: 0;
+        }
+
+        .range-input {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          cursor: pointer;
+          outline: none;
+          border-radius: 15px;
+          height: 6px;
+          background: #ccc;
+        }
+
+        .range-input::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 15px;
+          width: 15px;
+          background-color: $pink;
+          border-radius: 50%;
+          border: none;
+          transition: 0.2s ease-in-out;
+        }
+
+        .range-input::-moz-range-thumb {
+          height: 15px;
+          width: 15px;
+          background-color: $pink;
+          border-radius: 50%;
+          border: none;
+          transition: 0.2s ease-in-out;
+        }
+
+        .range-input::-moz-range-thumb:hover {
+          box-shadow: 0 0 0 10px rgba(50, 0, 48, 0.2);
+        }
+        .range-input:active::-moz-range-thumb {
+          box-shadow: 0 0 0 13px rgba(50, 0, 48, 0.2);
+        }
+        .range-input:focus::-moz-range-thumb {
+          box-shadow: 0 0 0 13px rgba(50, 0, 48, 0.2);
+        }
+
+        .value {
+          margin-bottom: 1em;
+        }
+      }
     }
   }
 }

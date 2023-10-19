@@ -33,6 +33,9 @@ application.register("mini-map", MiniMapController);
 import ImageHoverController from "./image_hover_controller";
 application.register("image-hover", ImageHoverController);
 
+import PriceInputRangeController from "./price_input_range_controller";
+application.register("price-input-range", PriceInputRangeController);
+
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
