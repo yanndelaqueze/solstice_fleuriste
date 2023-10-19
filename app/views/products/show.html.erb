@@ -42,7 +42,7 @@
     <p>------------------------</p>
     <p>Afin que Solstice réalise le bouquet de vos rêves :</p>
     <div class="custom-form">
-      <%= simple_form_for [@product, @order_item] do |f| %>
+      <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
 
         <p>1- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
         <%= f.input :price, placeholder: @product.min_price.to_s, label: false %>

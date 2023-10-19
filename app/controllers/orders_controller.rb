@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def edit
@@ -53,9 +54,30 @@ class OrdersController < ApplicationController
 
   def validate
     @order = current_order
-    @order.update(status: "Validée")
+    @order.update(order_params)
+    @order.update(status: "En Attente de Paiement")
     @order.update(user_id: current_user.id)
-    redirect_to order_path(current_user.orders.where(status: "Validée").last)
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            unit_amount: @order.id,
+            product_data: {
+              name: "Votre commande Solstice"
+            },
+          },
+        }
+      ],
+      mode: 'payment',
+      success_url: order_url(@order),
+      cancel_url: order_url(@order)
+    )
+
+    @order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(@order)
   end
 
   private
