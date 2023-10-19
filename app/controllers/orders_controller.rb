@@ -35,17 +35,14 @@ class OrdersController < ApplicationController
       @order = current_order
     end
 
+    @order_items = @order.order_items
+
     if @order.update(order_params)
       flash[:success] = "Commande mise à jour !!"
     else
       flash[:error] = "Oups, il y a eu un problème !"
     end
-
-    if params[:controller] == "cart"
-      redirect_to panier_path
-    else
-      redirect_to request.referer
-    end
+    redirect_to request.referrer
   end
 
   def destroy
