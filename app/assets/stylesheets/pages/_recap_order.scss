@@ -2,6 +2,17 @@
   display: flex;
 }
 
+.recap-order-header {
+  display: flex;
+  justify-content: space-between;
+
+  .recap-order-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+  }
+}
+
 .recap-order-info {
   margin-top: 1em;
   margin-left: 1em;
