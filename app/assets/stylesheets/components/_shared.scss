@@ -1,5 +1,20 @@
 .btn-action {
   background-color: $pink;
+  padding: 1em;
+  text-decoration: none !important;
+  font-family: $body-font;
+  color: white !important;
+  border: none;
+
+  font-size: 1em;
+  line-height: 1.2;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-radius: 0.375em;
+}
+
+.btn-personnaliser {
+  background-color: $pale-green;
   padding: 12px;
   text-decoration: none !important;
   font-family: $body-font;

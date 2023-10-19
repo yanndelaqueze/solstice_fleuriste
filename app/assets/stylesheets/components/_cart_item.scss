@@ -33,11 +33,13 @@
     }
   }
   .cart-item-images {
+    margin-bottom: 1em;
     display: inline;
     padding-left: 0;
   }
 
   .cart-item-images img {
     height: 6em;
+    border-radius: 50%;
   }
 }

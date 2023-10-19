@@ -25,7 +25,12 @@
   </div>
   <div class="cart-item-info">
     <div class="cart-item-spec1">
-      <p>Message : <%= order_item.message %></p>
+      <ul class="cart-item-images">
+        <% order_item.product.photos.each do |photo| %>
+          <img src="<%= cl_image_path photo.key %>" alt="">
+        <% end %>
+      </ul>
+      <p class="mt-3">Message : "<%= order_item.message %>"</p>
     </div>
     <div class="cart-item-spec2">
       <p>Occasion : <%= order_item.occasion %></p>
@@ -33,9 +38,4 @@
       <p>Budget : <%= order_item.price %>€</p>
     </div>
   </div>
-  <ul class="cart-item-images">
-    <% order_item.product.photos.each do |photo| %>
-      <img src="<%= cl_image_path photo.key %>" alt="">
-    <% end %>
-  </ul>
 </div>
