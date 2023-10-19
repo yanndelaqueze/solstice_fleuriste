@@ -1,19 +1,21 @@
 <h1 class= "title">Mon panier</h1>
 <div class="container">
-    <%= link_to validate_order_path(@order), class: "", data: { turbo_method: :patch } do %>
-          <i class="fa-solid fa-thumbs-up"></i>
-        <% end %>
+
+  <div class="cart-header">
+    <h4><%= pluralize(current_order.order_items.size, 'article') %> (total : <%= humanized_money_with_symbol(current_order.total) %>)</h4>
+    <%= link_to "Valider & Payer", validate_order_path(@order), class: "btn-action", data: { turbo_method: :patch } %>
+  </div>
+
   <div class="cart">
 
     <div class="cart-items">
-    <h4><%= pluralize(current_order.order_items.size, 'article') %> (total : <%= humanized_money_with_symbol(current_order.total) %>)</h4>
       <% @order_items.each do |order_item| %>
         <%= render 'cart_item', order_item: order_item %>
       <% end %>
     </div>
 
     <div class="order-options">
-      <h3>Livraison / Collecte</h3>
+      <h3 class="text-center">Livraison / Collecte</h3>
       <div class="delivery-form" data-controller="toggle-delivery-fields">
         <%= simple_form_for [@order], data: { turbo: "false" } do |f| %>
           <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
@@ -21,7 +23,7 @@
           <div data-toggle-delivery-fields-target="deliveryFields" id="delivery-fields" >
             <% if @order.delivery_address.present? %>
               <div class="address">
-                  <p>Adresse de livraison choisie :</p>
+                  <p>Adresse de livraison :</p>
                   <p class="input-address"><%= @order.delivery_address %></p>
               </div>
               <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>

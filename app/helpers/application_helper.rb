@@ -22,6 +22,7 @@ module ApplicationHelper
       @current_order.user = current_user
       @current_order.save
     end
+
     @current_order
   end
 end
