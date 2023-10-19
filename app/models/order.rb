@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :user, optional: true
   geocoded_by :delivery_address
   after_validation :geocode, if: :will_save_change_to_delivery_address?
-  STATUS = ["En cours", "Validée", "Payée", "En préparation", "Prête", "Livrée"]
+  STATUS = ["En cours", "En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée"]
   validates :status, inclusion: { in: STATUS }
   TRANSPORT = ["Click & Collect", "Livraison"]
   validates :transport, inclusion: { in: TRANSPORT }
@@ -34,7 +34,7 @@ class Order < ApplicationRecord
   end
 
   def in_delivery_area?
-    if self.delivery_address
+    if self.delivery_address.present? && self.transport == "Livraison"
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length

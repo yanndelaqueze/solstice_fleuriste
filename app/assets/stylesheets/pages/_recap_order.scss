@@ -1,0 +1,45 @@
+.recap-order-details {
+  display: flex;
+}
+
+.recap-order-header {
+  display: flex;
+  justify-content: space-between;
+
+  .recap-order-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+  }
+}
+
+.recap-order-info {
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 47%;
+  padding: 1em;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 1em;
+
+  .shop-info {
+    border: solid;
+    border-width: thin;
+    border-radius: 1em;
+    padding: 1em;
+  }
+
+  .time {
+    font-size: 0.75em;
+  }
+}
+
+.recap-order-items {
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 47%;
+  padding: 1em;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 1em;
+}

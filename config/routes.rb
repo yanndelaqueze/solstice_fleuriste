@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       patch 'validate', to: "orders#validate"
     end
+    resources :payments, only: :new
   end
 
   resources :order_items, only: %i[update destroy]

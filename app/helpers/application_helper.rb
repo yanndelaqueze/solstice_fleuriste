@@ -11,7 +11,9 @@ module ApplicationHelper
     end
 
     # If the user is signed in, retrieve their pending order
-    if user_signed_in? && current_user.orders.find_by(status: "En cours").present?
+    if user_signed_in? && current_user.orders.find_by(status: "En Attente de Paiement").present?
+      @current_order = current_user.orders.find_by(status: "En Attente de Paiement")
+    elsif user_signed_in? && current_user.orders.find_by(status: "En cours").present?
       @current_order = current_user.orders.find_by(status: "En cours")
     end
 
