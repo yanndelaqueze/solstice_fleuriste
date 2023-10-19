@@ -34,6 +34,10 @@
                 label: "Changer l'adresse de livraison :",
                 as: :hidden%>
               </div>
+              <div class="delivery-name">
+                <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
+                <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
+              </div>
               <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
             <% else %>
               <div class="form-group">
@@ -42,6 +46,10 @@
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
                 label: "Entrer l'adresse de livraison :",
                 as: :hidden%>
+              </div>
+              <div class="delivery-name">
+                <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
+                <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
               </div>
               <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
             <% end %>
