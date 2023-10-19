@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :update]
   def index
     @status_options = Order::STATUS
     @transport_options = Order::TRANSPORT
@@ -82,6 +83,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:delivery_address, :transport, :date, :delivery_instructions, :phone, :status)
+    params.require(:order).permit(:delivery_address, :transport, :date, :delivery_instructions, :phone, :status, :delivery_first_name, :delivery_last_name )
   end
 end
