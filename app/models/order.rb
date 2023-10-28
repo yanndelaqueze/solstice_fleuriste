@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :user, optional: true
   geocoded_by :delivery_address
   after_validation :geocode, if: :will_save_change_to_delivery_address?
-  STATUS = ["En cours", "En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée"]
+  STATUS = ["En cours", "En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
   validates :status, inclusion: { in: STATUS }
   TRANSPORT = ["Click & Collect", "Livraison"]
   validates :transport, inclusion: { in: TRANSPORT }

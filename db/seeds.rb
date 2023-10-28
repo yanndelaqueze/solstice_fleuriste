@@ -426,7 +426,7 @@ print "1 product / "
 
 order1 = Order.new(
   user: francois,
-  status: "Validée",
+  status: "En Attente de Paiement",
   transport: "Livraison",
   delivery_first_name: "Courtney",
   delivery_last_name: "Dauwalter",

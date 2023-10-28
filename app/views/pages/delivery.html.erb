@@ -1,0 +1,53 @@
+
+<h1 class= "title">Livraison à Domicile</h1>
+
+<div class="container">
+  <h2 class= "title mb-4">Vérifier si mon adresse est disponible à la livraison</h2>
+  <p> Solstice livre à domicile à Petite Île et ses alentours. Vérifiez ci-dessous si votre adresse est comprise dans la zone de livraison.
+
+  <div class="delivery-form">
+    <%= simple_form_for [@order] do |f| %>
+        <% if @order.delivery_address %>
+          <div class="address">
+              <p><i class="fa-solid fa-house"></i> Adresse de livraison choisie :</p>
+              <p class="input-address"> <%= @order.delivery_address %></p>
+          </div>
+          <% if !@order.in_delivery_area?  %>
+            <p class="warning-delivery alert-danger mt-2">Désolé, la livraison est impossible à cette adresse 🙁</p>
+          <% else %>
+            <p class="warning-delivery alert-success mt-2">Youpi ! La livraison est possible à cette adresse 🎉</p>
+          <% end %>
+          <div class="form-group">
+            <%= f.input :delivery_address,
+            input_html: {data: {address_autocomplete_target: "address"}},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+            label: "Entrer une autre adresse de livraison :",
+            as: :hidden%>
+          </div>
+          <%= f.submit "Valider", class: "btn-action"  %>
+        <% else %>
+            <div class="form-group">
+            <%= f.input :delivery_address,
+            input_html: {data: {address_autocomplete_target: "address"}},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+            label: "Vérifier l'adresse de livraison :",
+            as: :hidden%>
+          </div>
+          <%= f.submit "Valider", class: "btn-action"  %>
+        <% end %>
+    <% end %>
+  </div>
+
+  <h2 class= "title">Zone de Livraison</h2>
+
+  <div class="map">
+    <div id="map" style="width: 100%; height: 400px;" data-controller="display-delivery-area"
+      data-display-delivery-area-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-display-delivery-area-current-coordinates-value="<%= Polygon.last.coordinates %>"
+      data-display-delivery-area-address-coordinates-value="[<%= @order.longitude%>, <%= @order.latitude%>]">
+    </div>
+    <% if current_user.present? && current_user.admin %>
+      <%= link_to "Modifier", new_polygon_path, class:"btn-action action-button"%>
+    <% end %>
+  </div>
+
+</div>

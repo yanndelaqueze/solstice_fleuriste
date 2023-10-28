@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :delivery ]
 
   def home
   end
@@ -9,5 +9,10 @@ class PagesController < ApplicationController
 
   def account
     @orders = current_user.orders
+  end
+
+  def delivery
+    @polygon = Polygon.last
+    @order = current_order
   end
 end
