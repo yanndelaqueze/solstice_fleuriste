@@ -6,18 +6,17 @@ export default class extends Controller {
 
   connect() {
     console.log("Scroll Top - HELLO");
-  }
+    window.addEventListener("scroll", (e) => {
+      const scroll = window.scrollY;
+      const pageHeight = document.body.offsetHeight - window.innerHeight;
+      const percentScroll = (scroll / pageHeight) * 100;
 
-  display() {
-    console.log("scrolling");
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      this.scrollBtnTarget.style.display = "block";
-    } else {
-      this.scrollBtnTarget.style.display = "none";
-    }
+      if (percentScroll > 20) {
+        this.scrollBtnTarget.style.display = "block";
+      } else {
+        this.scrollBtnTarget.style.display = "none";
+      }
+    });
   }
 
   scrollTop() {

@@ -1,18 +1,16 @@
-<div data-controller="scroll-top" data-action="scroll->scroll-top#display">
-  <h1 class= "title">Boutique en ligne</h1>
-  <button data-action="click->scroll-top#scrollTop" data-scroll-top-target="scrollBtn" id="scrollBtn"><i class="fa-solid fa-arrow-up"></i></button>
-  <div class="container">
-    <div class="row">
-        <% @categories.each do |category| %>
-          <div class="category-header">
-            <h1 class="category-name"><%= category.name %></h1>
-          </div>
-          <div class="product-container">
-          <% category.products.each do |product| %>
-              <%= render 'card_product', product: product%>
-          <% end %>
-          </div>
+<h1 class= "title">Boutique en ligne</h1>
+<button data-controller="scroll-top" data-action="click->scroll-top#scrollTop" data-scroll-top-target="scrollBtn" id="scrollBtn"><i class="fa-solid fa-arrow-up"></i></button>
+<div class="container">
+  <div class="row">
+      <% @categories.each do |category| %>
+        <div class="category-header">
+          <h1 class="category-name"><%= category.name %></h1>
+        </div>
+        <div class="product-container">
+        <% category.products.each do |product| %>
+            <%= render 'card_product', product: product%>
         <% end %>
-    </div>
+        </div>
+      <% end %>
   </div>
 </div>
