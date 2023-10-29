@@ -1,6 +1,6 @@
 <h1 class= "title">Commandes</h1>
+<button data-controller="scroll-top" data-action="click->scroll-top#scrollTop" data-scroll-top-target="scrollBtn" id="scrollBtn"><i class="fa-solid fa-arrow-up"></i></button>
 <div class="container">
-
   <%= simple_form_for :filter, url: orders_path, class:"filter", method: :get do |f| %>
     <div class="filter-field">
       <%= f.label :status, 'Statut de la commande : ', class: "filter-label"%>
