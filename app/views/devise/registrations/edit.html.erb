@@ -1,4 +1,4 @@
-<h1 class= "title">Modifier mes infos</h1>
+<h1 class= "title">Modifier mes informations personnelles</h1>
 <div class="container">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -11,7 +11,7 @@
       <% end %>
 
       <%= f.input :password,
-                  hint: "ne pas remplir si vous ne souhaitez pas le modifier",
+                  hint: "Ne pas remplir si vous ne souhaitez pas le modifier",
                   required: false,
                   input_html: { autocomplete: "new-password" },
                   label: "Nouveau mot de passe" %>
@@ -20,7 +20,7 @@
                   input_html: { autocomplete: "new-password" },
                   label: "Confirmer le nouveau mot de passe" %>
       <%= f.input :current_password,
-                  hint: "votre mot de passe est obligatoire pour valider les changements",
+                  hint: "Votre mot de passe est obligatoire pour valider les changements",
                   required: true,
                   input_html: { autocomplete: "current-password" },
                   label: "Mot de passe" %>
@@ -37,7 +37,7 @@
         <%= f.input :address,
         input_html: {data: {address_autocomplete_target: "address"}},
         wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-        label: "Changer l'adresse :",
+        label: "Changer votre adresse :",
         as: :hidden%>
       </div>
     <% else %>
@@ -45,13 +45,11 @@
         <%= f.input :address,
         input_html: {data: {address_autocomplete_target: "address"}},
         wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-        label: "Entrer l'adresse :",
+        label: "Entrer votre adresse :",
         as: :hidden%>
       </div>
     <% end %>
     <%= f.input :phone, label: "Téléphone :" %>
     <%= f.submit "Mettre à jour", class: "btn-action" %>
   <% end %>
-
-  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 </div>
