@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
   def account
     @orders = current_user.orders
+    @user = current_user
   end
 
   def delivery
