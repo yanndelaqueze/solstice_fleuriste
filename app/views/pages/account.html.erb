@@ -2,6 +2,12 @@
 <div class="container d-flex justify-content-between">
   <div class="account-orders">
     <h2 class="text-center">Mes commandes</h2>
+      <% if current_order.order_items.size > 0 %>
+        <%= render 'orders/card_order', order: current_order %>
+      <% end %>
+      <% @orders.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]).each do |order| %>
+        <%= render 'orders/card_order', order: order %>
+      <% end %>
   </div>
   <div class="account-info">
     <h2 class="text-center">Mes infos</h2>
