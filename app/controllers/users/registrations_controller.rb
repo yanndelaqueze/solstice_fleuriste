@@ -1,25 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  def edit
-    @user = current_user
-  end
-
-  def update
-    @user = current_user
-    if @user.update(user_params)
-      flash[:success] = "Profil mis à jour !!"
-    else
-      flash[:error] = "Oups, il y a eu un problème !"
-    end
-    redirect_to request.referrer
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :phone)
-  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
