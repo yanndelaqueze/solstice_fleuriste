@@ -33,3 +33,24 @@
   border-radius: 0.375em;
   text-align: center;
 }
+
+#scrollBtn {
+  // display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 76%;
+  right: 93%;
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: $pink; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border-radius: 20%; /* Rounded corners */
+  font-size: 1em; /* Increase font size */
+  height: 3em;
+  width: 3em;
+}
+
+#scrollBtn:hover {
+  background-color: $pale-green; /* Add a dark-grey background on hover */
+}
