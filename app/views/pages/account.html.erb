@@ -1,43 +1,8 @@
 <h1 class="title">Mon Compte</h1>
-<div class="container d-flex justify-content-between">
-  <div class="account-orders">
-    <h2 class="text-center">Mes commandes</h2>
-      <% if current_order.order_items.size > 0 %>
-        <%= render 'orders/card_order', order: current_order %>
-      <% end %>
-      <% @orders.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]).each do |order| %>
-        <%= render 'orders/card_order', order: order %>
-      <% end %>
-  </div>
-  <div class="account-info">
-    <h2 class="text-center">Mes infos</h2>
-    <%= simple_form_for [@user], url: user_registration_path, data: { turbo: "false" } do |f| %>
-      <%= f.input :first_name, label: "Prénom :" %>
-      <%= f.input :last_name, label: "Nom :" %>
-      <%= f.input :email, label: "Email :" %>
-      <% if @user.address.present? %>
-        <div class="address">
-            <p>Adresse :</p>
-            <p class="input-address"><%= @user.address %></p>
-        </div>
-        <div class="form-group">
-          <%= f.input :address,
-          input_html: {data: {address_autocomplete_target: "address"}},
-          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-          label: "Changer l'adresse :",
-          as: :hidden%>
-        </div>
-      <% else %>
-        <div class="form-group">
-          <%= f.input :address,
-          input_html: {data: {address_autocomplete_target: "address"}},
-          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-          label: "Entrer l'adresse :",
-          as: :hidden%>
-        </div>
-      <% end %>
-      <%= f.input :phone, label: "Téléphone :" %>
-      <%= f.submit "Mettre à jour mes infos", class: "btn-action"  %>
-    <% end %>
+<div class="container">
+  <div class="admin-links">
+      <a class="admin-link" href="<%=panier_path%>"><h5><i class="fa-solid fa-cart-shopping"></i> Mon Panier</h5></a>
+      <a class="admin-link" href="<%=commandes_path%>"><h5><i class="fa-solid fa-book"></i> Mes Commandes passées</h5></a>
+      <a class="admin-link" href="<%=edit_user_registration_path%>"><h5><i class="fa-solid fa-user"></i> Mes infos personnelles</h5></a>
   </div>
 </div>

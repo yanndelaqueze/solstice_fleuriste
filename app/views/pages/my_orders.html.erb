@@ -1,0 +1,11 @@
+<h1 class="title">Mes Commandes</h1>
+<div class="container">
+  <div class="account-orders">
+    <% if current_order.order_items.size > 0 %>
+      <%= render 'orders/card_order', order: current_order %>
+    <% end %>
+    <% @orders.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]).each do |order| %>
+      <%= render 'orders/card_order', order: order %>
+    <% end %>
+  </div>
+</div>
