@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
 
   def index
-    @all_categories = Category.all.order(position: :asc)
+    @categories = Category.all.order(position: :asc)
     @category = Category.new
   end
 
