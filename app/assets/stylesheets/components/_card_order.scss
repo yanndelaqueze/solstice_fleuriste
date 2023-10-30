@@ -40,16 +40,16 @@
     background-color: white;
     padding: 0.3em;
     text-decoration: none !important;
-    font-family: $body-font;
+    font-family: "Raleway", "sans-serif";
     color: black !important;
-    border: none;
+    border: solid;
     width: 10em;
-
     font-size: 0.8em;
     line-height: 1.2;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    border-radius: 0.375em;
+    border-radius: 0.5em;
+    border-width: thin;
   }
 
   .card-order-details {
