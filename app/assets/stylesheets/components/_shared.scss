@@ -49,8 +49,9 @@
   font-size: 1em;
   height: 3em;
   width: 3em;
+  opacity: 60%;
 }
 
 #scrollBtn:hover {
-  background-color: $pale-green;
+  opacity: 100%;
 }
