@@ -28,10 +28,12 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="page-content">
-      <%= yield %>
-      <%= render "shared/flashes" %>
-      <%= render "shared/footer" %>
-    </div>
+      <div class="page-content">
+        <div id="footer-container">
+          <%= yield %>
+          <%= render "shared/flashes" %>
+          <%= render "shared/footer" %>
+        </div>
+      </div>
   </body>
 </html>
