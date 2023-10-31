@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 
 body {
-  background-color: $dark-green;
+  background-color: $background;
   margin: 0;
   padding: 0;
 
@@ -12,7 +12,7 @@ body {
   }
 
   .btn-cta-home {
-    background-color: $pink;
+    background-color: $button;
     border-radius: 5px;
     padding: 12px;
     text-decoration: none;
@@ -26,24 +26,24 @@ body {
     margin-top: 2em;
 
     .address-home {
-      color: $dark-green;
+      color: $background;
       width: 30%;
-      background-color: $pale-green;
+      background-color: $color2;
       padding-left: 1em;
       padding-top: 1em;
     }
 
     .time {
-      color: $dark-green;
+      color: $background;
       width: 70%;
-      background-color: $eggshell;
+      background-color: $color3;
       padding-left: 1em;
       padding-top: 1em;
     }
 
     .link {
       text-decoration: none;
-      color: $dark-green;
+      color: $background;
     }
   }
 }

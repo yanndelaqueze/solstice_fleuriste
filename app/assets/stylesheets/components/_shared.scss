@@ -3,7 +3,7 @@
 }
 
 .btn-action {
-  background-color: $pink;
+  background-color: $button;
   padding: 1em;
   text-decoration: none !important;
   font-family: $body-font;
@@ -19,7 +19,7 @@
 }
 
 .btn-personnaliser {
-  background-color: $pale-green;
+  background-color: $color2;
   padding: 12px;
   text-decoration: none !important;
   font-family: $body-font;
@@ -42,7 +42,7 @@
   z-index: 99;
   border: none;
   outline: none;
-  background-color: $pink;
+  background-color: $button;
   color: white;
   cursor: pointer;
   border-radius: 20%;
