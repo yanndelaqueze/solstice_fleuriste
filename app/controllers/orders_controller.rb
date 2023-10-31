@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :update]
   def index
-    @status_options = Order::STATUS
+    @status_options = ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
     @transport_options = Order::TRANSPORT
     @selected_status = params.dig(:filter, :status)
     @selected_transport = params.dig(:filter, :transport)
 
     # Starting with a base that includes all orders
-    base = Order.all
+    base = Order.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"])
 
     # Add filter conditions for "status" and "transport" if they are selected
     if @selected_status.present?
