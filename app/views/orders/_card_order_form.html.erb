@@ -1,3 +1,61 @@
-<div class="card-order-form">
-  <p>Coucou</p>
+<div class="edit-order-form" data-controller="toggle-delivery-fields">
+  <%= simple_form_for [order], data: { turbo: "false" } do |f| %>
+
+    <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
+
+    <div data-toggle-delivery-fields-target="deliveryFields" id="delivery-fields" >
+      <% if order.delivery_address.present? %>
+        <div class="address">
+            <p>Adresse de livraison :</p>
+            <p class="input-address"><%= order.delivery_address %></p>
+        </div>
+        <% if order.delivery_address.present? && !order.in_delivery_area?  %>
+          <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à cette adresse</p>
+        <% end %>
+        <div class="form-group">
+          <%= f.input :delivery_address,
+          input_html: {data: {address_autocomplete_target: "address"}},
+          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+          label: "Changer l'adresse de livraison :",
+          as: :hidden%>
+        </div>
+        <div class="delivery-name">
+        </div>
+        <div class="delivery-name">
+          <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
+          <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
+        </div>
+        <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
+      <% else %>
+        <div class="form-group">
+          <%= f.input :delivery_address,
+          input_html: {data: {address_autocomplete_target: "address"}},
+          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+          label: "Entrer l'adresse de livraison :",
+          as: :hidden%>
+        </div>
+        <div class="delivery-name">
+          <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
+          <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
+        </div>
+        <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+    <%= f.input :phone, label: "Numéro à contacter :" %>
+
+    <div class="date-input" data-controller="date-validation">
+      <%= f.input :date, as: :date, html5: true, label: "Date de livraison/collecte souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput" } %>
+    </div>
+
+    <%= f.submit "Mettre à jour les infos", class: "btn-action"  %>
+  <% end %>
 </div>

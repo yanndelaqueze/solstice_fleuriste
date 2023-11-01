@@ -58,7 +58,6 @@
               <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
             <% end %>
           </div>
-          </div>
           <%= f.input :phone, label: "Numéro à contacter :" %>
           <div class="date-input" data-controller="date-validation">
             <%= f.input :date, as: :date, html5: true, label: "Date de livraison/collecte souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput" } %>
