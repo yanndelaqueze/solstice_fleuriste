@@ -20,7 +20,7 @@ class OrderItemsController < ApplicationController
     else
       flash[:error] = "Echec"
     end
-    redirect_to panier_path
+    redirect_to request.referrer
   end
 
   def destroy

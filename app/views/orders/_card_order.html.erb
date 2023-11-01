@@ -113,10 +113,25 @@
               <p>Produit : <%= order_item.product.name  %></p>
               <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
             </div>
-            <p>Occasion : <%= order_item.occasion  %></p>
-            <p>Couleur : <%= order_item.color  %></p>
-            <p>Message : "<%= order_item.message %>"</p>
-            <p>Budget : <%= order_item.price %> €</p>
+            <% if current_user.admin? %>
+              <%= simple_form_for [order_item] do |f| %>
+                <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+                <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false %>
+
+                <%= f.input :message, as: :text, placeholder: "", label: false %>
+
+                <div class="price-input-container", data-controller="price-input-range">
+                  <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(order_item.price_cents/100, precision: 2) %></span>
+                  <%= f.input :price, as: :range, label: false, input_html: { min: order_item.product.min_price_cents/100, max: 150, step: 1, value: order_item.price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+                </div>
+                <%= f.submit "Mettre à jour", class: "btn-action"  %>
+              <% end %>
+            <% else %>
+              <p>Occasion : <%= order_item.occasion  %></p>
+              <p>Couleur : <%= order_item.color  %></p>
+              <p>Message : "<%= order_item.message %>"</p>
+              <p>Budget : <%= order_item.price %> €</p>
+            <% end %>
           </div>
         <% end %>
       </div>
