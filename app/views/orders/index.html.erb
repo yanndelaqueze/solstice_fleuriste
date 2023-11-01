@@ -1,18 +1,34 @@
 <h1 class= "title">Commandes</h1>
 <button data-controller="scroll-top" data-action="click->scroll-top#scrollTop" data-scroll-top-target="scrollBtn" id="scrollBtn"><i class="fa-solid fa-arrow-up"></i></button>
 <div class="container">
-  <%= simple_form_for :filter, url: orders_path, class:"filter", method: :get do |f| %>
-    <div class="filter-field">
-      <%= f.label :status, 'Statut de la commande : ', class: "filter-label"%>
-      <%= f.select :status, @status_options, include_blank: 'Toutes les commandes', selected: @selected_status, class: 'form-control'%>
+
+
+<div class="order-filter">
+  <%= simple_form_for :filter, url: orders_path, class: "filter", method: :get do |f| %>
+    <%= f.label :status, 'Statut de la commande : ', class: "filter-label" %>
+    <div class="status-filter">
+      <% @status_options.each do |status_option| %>
+        <label>
+          <%= check_box_tag 'filter[status][]', status_option, Array.wrap(@selected_status).include?(status_option) %>
+          <%= status_option %>
+        </label>
+      <% end %>
     </div>
 
-    <div class="filter-field">
-      <%= f.label :transport, 'Livraison / Click & Collect : ', class: "filter-label" %>
-      <%= f.select :transport, @transport_options, include_blank: 'Tous les transports', selected: @selected_transport, class: 'form-control' %>
+    <%= f.label :transport, 'Livraison / Click & Collect : ', class: "filter-label" %>
+    <div class="transport-filter">
+      <% @transport_options.each do |transport_option| %>
+        <label>
+          <%= radio_button_tag 'filter[transport]', transport_option, @selected_transport == transport_option %>
+          <%= transport_option %>
+        </label>
+      <% end %>
     </div>
+
     <%= f.submit 'Filtrer', class: 'btn-action' %>
+    <%= link_to 'Toutes les commandes', orders_path, class: 'btn-personnaliser' %>
   <% end %>
+</div>
 
 
   <div class="orders">

@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :update]
+
   def index
     @status_options = ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
     @transport_options = Order::TRANSPORT
-    @selected_status = params.dig(:filter, :status)
+    @selected_status = params.dig(:filter, :status) || []  # Initialize as an empty array
     @selected_transport = params.dig(:filter, :transport)
 
     # Starting with a base that includes all orders (except "En Cours")
