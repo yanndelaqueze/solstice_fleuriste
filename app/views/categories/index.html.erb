@@ -50,6 +50,11 @@
       </div>
 
       <p>Position : <%= category.position  %></p>
+      <p>Affichée :<% if category.display %>
+        <i class="fa-solid fa-check text-success"></i>
+      <% else %>
+        <i class="fa-solid fa-x text-danger"></i>
+      <% end %></p>
       <a href="<%=category_path(category)%>">Voir les <%= category.products.count  %> produits</a>
 
 

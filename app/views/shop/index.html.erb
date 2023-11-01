@@ -2,7 +2,7 @@
 <button data-controller="scroll-top" data-action="click->scroll-top#scrollTop" data-scroll-top-target="scrollBtn" id="scrollBtn"><i class="fa-solid fa-arrow-up"></i></button>
 <div class="container">
   <div class="row">
-      <% @categories.each do |category| %>
+      <% @categories.where(display: true).each do |category| %>
         <div class="category-header">
           <h1 class="category-name"><%= category.name %></h1>
         </div>
