@@ -38,7 +38,7 @@
     <div class="card-order-main-info">
       <p class="order-transport-info"><%= order.transport %></p>
       <p class="order-status"><%= order.status  %></p>
-      <p><%= order.date.strftime("%e/%m/%Y") %></p>
+      <p class="order-date"><%= order.date.strftime("%e/%m/%Y") %></p>
     </div>
     <button class="card-order-info-btn" data-action="click->toggle-order-details#toggleDetails" data-toggle-order-details-target="button">Afficher les détails</button>
   </div>
