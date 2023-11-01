@@ -6,8 +6,12 @@ class OrdersController < ApplicationController
     @selected_status = params.dig(:filter, :status)
     @selected_transport = params.dig(:filter, :transport)
 
-    # Starting with a base that includes all orders
-    base = Order.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"])
+    # Starting with a base that includes all orders (except "En Cours")
+    if current_user.admin?
+      base = Order.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"])
+    else
+      base = current_user.orders.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"])
+    end
 
     # Add filter conditions for "status" and "transport" if they are selected
     if @selected_status.present?
