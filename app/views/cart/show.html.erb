@@ -58,10 +58,11 @@
               <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
             <% end %>
           </div>
-          <%= f.input :phone, label: "Numéro à contacter :" %>
-          <div class="date-input" data-controller="date-validation">
-            <%= f.input :date, as: :date, html5: true, label: "Date de livraison/collecte souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput" } %>
 
+          <%= f.input :phone, label: "Numéro à contacter :" %>
+
+          <div class="date-input" data-controller="date-validation">
+            <%= f.input :date, as: :date, html5: true, label: "Date de livraison/collecte souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput", value: (Date.today + 2.days) } %>
             <!-- Modal invalid date -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-date-validation-target="myModal">
               <div class="modal-dialog" role="document">
@@ -82,7 +83,9 @@
               </div>
             </div>
           </div>
+
           <%= f.submit "Mettre à jour les infos", class: "btn-action"  %>
+
         <% end %>
       </div>
     </div>
