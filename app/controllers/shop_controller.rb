@@ -3,6 +3,6 @@ class ShopController < ApplicationController
 
   def index
     @products = Product.all.order(position: :asc)
-    @categories = Category.all.order(position: :asc)
+    @categories = Category.where(display: true).order(position: :asc)
   end
 end

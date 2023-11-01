@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :products, only: %i[new create]
-
   resources :products do
     resources :order_items, only: %i[create]
   end
