@@ -5,23 +5,21 @@
 
 <div class="order-filter">
   <%= simple_form_for :filter, url: orders_path, class: "filter", method: :get do |f| %>
-    <%= f.label :status, 'Statut de la commande : ', class: "filter-label" %>
+    <p class="font-weight-bold filter-label"><i class="fa-solid fa-bars-progress"></i> Statut de la commande :</p>
     <div class="status-filter">
       <% @status_options.each do |status_option| %>
-        <label>
-          <%= check_box_tag 'filter[status][]', status_option, Array.wrap(@selected_status).include?(status_option) %>
-          <%= status_option %>
-        </label>
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'filter[status][]', status_option, @selected_status.include?(status_option), id: "status_#{status_option}", class:"hidden-checkbox" %>
+          <label for="status_<%= status_option %>" class="checkbox-label"><%= status_option %></label>
+        </div>
       <% end %>
     </div>
 
-    <%= f.label :transport, 'Livraison / Click & Collect : ', class: "filter-label" %>
+    <p class="font-weight-bold filter-label"><i class="fa-solid fa-truck"></i> Livraison / Click & Collect :</p>
     <div class="transport-filter">
       <% @transport_options.each do |transport_option| %>
-        <label>
-          <%= radio_button_tag 'filter[transport]', transport_option, @selected_transport == transport_option %>
-          <%= transport_option %>
-        </label>
+        <%= f.radio_button :transport, transport_option, { selected: @selected_transport == transport_option} %>
+        <%= transport_option %>
       <% end %>
     </div>
 

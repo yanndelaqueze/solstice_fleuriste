@@ -9,22 +9,22 @@ class OrdersController < ApplicationController
 
     # Starting with a base that includes all orders (except "En Cours")
     if current_user.admin?
-      base = Order.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"])
+      base = Order.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]).order(date: :asc)
     else
-      base = current_user.orders.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"])
+      base = current_user.orders.where(status: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]).order(date: :asc)
     end
 
     # Add filter conditions for "status" and "transport" if they are selected
     if @selected_status.present?
-      base = base.where(status: @selected_status)
+      base = base.where(status: @selected_status).order(date: :asc)
     end
 
     if @selected_transport.present?
-      base = base.where(transport: @selected_transport)
+      base = base.where(transport: @selected_transport).order(date: :asc)
     end
 
     # Finally, assign the filtered results to @orders
-    @orders = base
+    @orders = base.order(date: :asc)
   end
 
   def show

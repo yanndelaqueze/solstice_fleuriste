@@ -12,9 +12,39 @@
     margin-right: 1em;
     margin-bottom: 0.5em;
   }
+
+  .status-filter {
+    margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .transport-filter {
+    margin-bottom: 1em;
+  }
 }
 
-.status-filter {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.hidden-checkbox {
+  position: absolute;
+  transform: scale(0);
+}
+
+.hidden-checkbox + label {
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 0.375em;
+  padding: 0.1rem 0.5rem;
+  background-color: $white;
+  color: black;
+  border: solid black;
+  border-width: thin;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  width: 60%;
+}
+
+/* Style for the label when the checkbox is checked */
+.hidden-checkbox:checked + label {
+  background-color: $color1; /* Change to your desired color */
+  color: #fff;
 }
