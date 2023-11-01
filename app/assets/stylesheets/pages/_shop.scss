@@ -21,11 +21,17 @@ body {
     color: white;
   }
 
+  .cat-filter {
+    border: solid;
+    border-width: thin;
+    border-radius: 0.375em;
+    padding-top: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
   .checkboxes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .checkbox-item {
   }
 }
