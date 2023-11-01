@@ -38,11 +38,16 @@
     <div class="card-order-main-info">
       <p class="order-date"><%= order.date.strftime("%e/%m/%Y") %></p>
       <p class="order-transport-info"><%= order.transport %></p>
-      <!--<p class="order-status"><%= order.status  %></p>-->
-      <%= simple_form_for order, html: { class: "order-edit-status-form"} do |f| %>
-        <%= f.input :status, collection: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"], label: false, html: { class: "btn-action"}, include_blank: false %>
-        <%= f.submit "OK", class:"btn-action ml-2" %>
+
+      <% if current_user.admin? %>
+        <%= simple_form_for order, html: { class: "order-edit-status-form"} do |f| %>
+          <%= f.input :status, collection: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"], label: false, html: { class: "btn-action"}, include_blank: false %>
+          <%= f.submit "OK", class:"btn-action ml-2" %>
+        <% end %>
+      <% else %>
+        <p class="order-status"><%= order.status  %></p>
       <% end %>
+
     </div>
     <button class="card-order-info-btn" data-action="click->toggle-order-details#toggleDetails" data-toggle-order-details-target="button">Afficher les détails</button>
   </div>
