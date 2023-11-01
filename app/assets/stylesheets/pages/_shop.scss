@@ -28,11 +28,43 @@ body {
     padding-top: 1em;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    padding-bottom: 1em;
   }
 
   .checkboxes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    span {
+      margin: 0;
+    }
+  }
+
+  .checkbox-hidden {
+    position: absolute;
+    transform: scale(0);
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .checkbox-label {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 0.375em;
+    padding: 0.1rem 0.5rem;
+    background-color: $white;
+    color: black;
+    border: solid black;
+    border-width: thin;
+    margin-right: 0.6rem;
+    margin-bottom: 0.4rem;
+    width: 60%;
+  }
+
+  .checkbox-hidden:checked + .checkbox-label {
+    background-color: $color1;
+    color: #fff;
   }
 }
