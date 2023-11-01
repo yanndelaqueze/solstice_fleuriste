@@ -20,4 +20,12 @@ body {
     background-color: black;
     color: white;
   }
+
+  .checkboxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .checkbox-item {
+  }
 }

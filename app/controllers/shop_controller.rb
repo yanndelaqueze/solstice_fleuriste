@@ -2,7 +2,14 @@ class ShopController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index]
 
   def index
-    @products = Product.all.order(position: :asc)
-    @categories = Category.where(display: true).order(position: :asc)
+    @all_categories = Category.where(display: true).order(position: :asc)
+
+    if params[:filter] && params[:filter][:category_ids].present?
+      @selected_category_ids = params[:filter][:category_ids].map(&:to_i)
+      @categories = Category.where(id: @selected_category_ids)
+    else
+      @categories = @all_categories
+      @selected_category_ids = []
+    end
   end
 end
