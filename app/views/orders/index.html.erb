@@ -10,7 +10,7 @@
       <% @status_options.each do |status_option| %>
         <div class="checkbox-wrapper">
           <%= check_box_tag 'filter[status][]', status_option, @selected_status.include?(status_option), id: "status_#{status_option}", class:"hidden-checkbox" %>
-          <label for="status_<%= status_option %>" class="checkbox-label"><%= status_option %></label>
+          <label for="status_<%= status_option %>" class="checkbox-label"><%= status_option %> <%= "(#{@orders.where(status: status_option).count})" if @orders.where(status: status_option).count > 0 %></label>
         </div>
       <% end %>
     </div>
