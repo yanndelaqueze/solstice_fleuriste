@@ -34,7 +34,7 @@ class Order < ApplicationRecord
   end
 
   def in_delivery_area?
-    if self.delivery_address.present? && self.transport == "Livraison"
+    if self.delivery_address.present?
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length
