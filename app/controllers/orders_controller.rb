@@ -46,11 +46,10 @@ class OrdersController < ApplicationController
 
     if @order.update(order_params)
       flash[:success] = "Commande mise à jour !!"
-      # if @order.status == "Prête" && @order.transport == "Click & Collect"
-      #   OrderMailer.with(order: @order).order_ready_email.deliver_later
-      # end
+      if @order.status == "Prête" && @order.transport == "Click & Collect"
+        OrderMailer.with(order: @order).order_ready_email.deliver_later
+      end
     else
-      raise
       flash[:error] = "Oups, il y a eu un problème !"
     end
     redirect_to request.referrer
