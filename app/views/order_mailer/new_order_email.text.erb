@@ -1,10 +1,31 @@
-You got a new order : <%= @order.id %>!
+Nouvelle Commande # <%= @order.id %>!
 ===============================================
 
-Order Details:
+Détails :
 --------------------------
 
-ID: <%= @order.id %>
+ID de la commande : <%= @order.id %>
+Nom : <%= @order.user.last_name %> / Prénom : <%= @order.user.first_name %>
 Email: <%= @order.user.email %>
-Transport: <%= @order.transport %>
-Date: <%= @order.date %>
+Téléphone : <%= @order.user.phone %>
+Transport : <%= @order.transport %>
+Date : <%= @order.date.strftime("%e/%m/%Y") %>
+
+
+<% if @order.transport == "Livraison" %>
+Informations de Livraison :
+--------------------------
+Adresse : <%= @order.delivery_address  %>
+Date : <%= @order.date.strftime("%e/%m/%Y") %>
+Instructions de Livraison : <%= @order.delivery_instructions %>
+<% end %>
+
+Articles : <%= @order.order_items.count  %>
+--------------------------
+<% @order.order_items.each do |order_item| %>
+  Produit : <%= order_item.product.name %>
+  Budget : <%= humanized_money_with_symbol(order_item.price) %>
+  Occasion : <%= order_item.occasion %>
+  Couleur : <%= order_item.color %>
+  Message : "<%= order_item.message %>"
+<% end  %>

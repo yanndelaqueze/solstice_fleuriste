@@ -46,6 +46,9 @@ class OrdersController < ApplicationController
 
     if @order.update(order_params)
       flash[:success] = "Commande mise à jour !!"
+      if @order.status == "Prête" && @order.transport == "Click & Collect"
+        OrderMailer.with(order: @order).order_ready_email.deliver_later
+      end
     else
       flash[:error] = "Oups, il y a eu un problème !"
     end
@@ -62,8 +65,6 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.update(status: "En Attente de Paiement")
     @order.update(user_id: current_user.id)
-    OrderMailer.with(order: @order).new_order_email.deliver_later
-
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [

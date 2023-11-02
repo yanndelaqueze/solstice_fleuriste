@@ -1,2 +1,0 @@
-class OrderReadyMailer < ApplicationMailer
-end
