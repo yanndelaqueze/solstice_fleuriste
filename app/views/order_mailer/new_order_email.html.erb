@@ -7,6 +7,7 @@
 
   <div class="recap-order-header">
     <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %></h2>
+    <h3>Date : <%= @order.date.strftime("%e/%m/%Y") %></h3>
   </div>
 
   <div class="recap-order-details d-flex">
@@ -16,7 +17,7 @@
       <% else %>
         <h3 class="text-center">Livraison</h3>
         <div class="address">
-          <p>Adresse de livraison :</p>
+          <p style="font-weight: bold;">Adresse de livraison :</p>
           <p class="input-address"><%= @order.delivery_address %></p>
         </div>
         <div class="recap-delivery-name">
@@ -38,7 +39,7 @@
             <div class="cart-item-info">
               <div class="cart-item-spec1">
                 <ul class="cart-item-images">
-                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="" style="height: 7em; border-radius: 50%;">
                 </ul>
                 <p class="mt-3">Message : "<%= order_item.message %>"</p>
               </div>
