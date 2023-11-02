@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Nouvelle Commande : <%= @order.id %>!</p>
+    <p>
+    Détails de la commande<br>
+    --------------------------
+    </p>
+    <p>ID: <%= @order.id %></p>
+    <p>Email: <%= @order.user.email %></p>
+    <p>Transport: <%= @order.transport %></p>
+    <p>Date: <%= @order.date %></p>
+  </body>
+</html>

@@ -62,6 +62,7 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.update(status: "En Attente de Paiement")
     @order.update(user_id: current_user.id)
+    OrderMailer.with(order: @order).new_order_email.deliver_later
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],

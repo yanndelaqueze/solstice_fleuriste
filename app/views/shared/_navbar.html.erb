@@ -62,7 +62,7 @@
         </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <% if user_signed_in? %>
-              <p class="font-weight-bold">Bonjour <%= current_user.first_name %> !</p>
+              <p class="font-weight-bold pb-1">Bonjour <%= current_user.first_name %> !</p>
               <a class="dropdown-item" href="<%= compte_path %>">Mon compte</a>
             <% end %>
             <a class="dropdown-item" href="<%= user_session_path %>">Me connecter</a>
