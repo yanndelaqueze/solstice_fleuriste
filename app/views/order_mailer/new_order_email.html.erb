@@ -9,6 +9,10 @@
         background-color: #052a2b;
       }
 
+      p {
+        font-family: 'Raleway', "sans-serif";
+      }
+
       .banner {
         background-color: #ffffff;
         width: 100%;
@@ -16,6 +20,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        border-radius: 0.375em;
 
         h1 {
           text-align: center;
@@ -31,13 +36,59 @@
         margin-bottom: 3em;
         color: #052a2b;
         border-radius: 0.375em;
+
+        .title {
+          text-align: center;
+          color: #052a2b;
+        }
       }
 
       .title {
         color: #ffffff;
         text-align: center;
-        padding-top: 0.5em;
         font-family: 'Playfair Display', 'serif';
+      }
+
+      .order-info {
+        background-color: white;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border-radius: 1em;
+      }
+
+      .order-items {
+        background-color: white;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border-radius: 1em;
+      }
+
+      .infos {
+        border: solid;
+        border-width: thin;
+        border-radius: 0.375em;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+      }
+
+      .delivery {
+        border: solid;
+        border-width: thin;
+        border-radius: 0.375em;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+      }
+
+      .item {
+        border: solid;
+        border-width: thin;
+        border-radius: 0.375em;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
       }
     </style>
   </head>
@@ -47,7 +98,39 @@
     </div>
     <h1 class="title">Nouvelle Commande</h1>
     <div class="container">
-      <p>Nouvelle Commande : #<%= @order.id %></p>
+      <div class="order-header">
+        <h2 class="title">Commande #<%= @order.id%></h2>
+      </div>
+      <div class="order-info">
+        <h3 class="title">Détails</h3>
+        <div class="infos">
+          <p>Transport : <%= @order.transport  %></p>
+          <p>Date : <%= @order.date.strftime("%e/%m/%Y")  %></p>
+          <p>Prénom : <%= @order.first_name  %> -  Nom : <%= @order.last_name  %> </p>
+          <p>email : <%= @order.email  %></p>
+        </div>
+        <% if @order.transport == "Livraison" %>
+          <div class="delivery">
+            <p>Informations de Livraison : </p>
+            <p>Prénom : <%= @order.delivery_first_name  %> -  Nom : <%= @order.delivery_last_name  %> </p>
+            <p>Adresse : <%= @order.delivery_address  %></p>
+            <p>Instructions : <%= @order.delivery_instructions  %></p>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="order-items">
+        <h3 class="title">Articles (<%= @order.order_items.size %>)</h3>
+        <% @order.order_items.each do |item| %>
+          <div class="item">
+          <p>Produit : <%= item.product.name  %></p>
+          <p>Budget : <%= humanized_money_with_symbol(item.price) %></p>
+          <p>Occasion : <%= item.occasion  %></p>
+          <p>Couleur : <%= item.color  %></p>
+          <p>Message : "<%= item.message  %>"</p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </body>
 </html>
