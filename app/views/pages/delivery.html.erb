@@ -44,7 +44,7 @@
       data-display-delivery-area-address-coordinates-value="[<%= @order.longitude%>, <%= @order.latitude%>]">
     </div>
     <% if current_user.present? && current_user.admin %>
-      <%= link_to "Modifier", new_polygon_path, class:"btn-action action-button"%>
+      <%= link_to "Modifier", zone_de_livraison_path, class:"btn-action action-button"%>
     <% end %>
   </div>
 

@@ -5,9 +5,9 @@ Détails :
 --------------------------
 
 ID de la commande : <%= @order.id %>
-Nom : <%= @order.user.last_name %> / Prénom : <%= @order.user.first_name %>
-Email: <%= @order.user.email %>
-Téléphone : <%= @order.user.phone %>
+Nom : <%= @order.last_name %> / Prénom : <%= @order.first_name %>
+Email: <%= @order.email %>
+Téléphone : <%= @order.phone %>
 Transport : <%= @order.transport %>
 Date : <%= @order.date.strftime("%e/%m/%Y") %>
 

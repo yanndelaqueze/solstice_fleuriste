@@ -1,0 +1,59 @@
+Votre commande # <%= @order.id %> chez Solstice est confirmée.
+Merci pour votre achat !
+===============================================
+
+Détails :
+--------------------------
+
+Numéro de commande : <%= @order.id %>
+Nom : <%= @order.last_name %> / Prénom : <%= @order.first_name %>
+Email: <%= @order.email %>
+Téléphone : <%= @order.phone %>
+Mode de Livraison : <%= @order.transport %>
+Date : <%= @order.date.strftime("%e/%m/%Y") %>
+
+
+
+<% if @order.transport == "Click & Collect" %>
+Informations de Collecte :
+--------------------------
+Adresse : 32 Rue Joseph Suacot, Petite Île, 97429, La Réunion
+
+Téléphone : +262 262 51 71 78
+
+Horaires d'ouverture :
+Lundi : Fermé
+Mardi : 9h00 - 12h00 |  14h00 - 18h00
+Mercredi : 9h00 - 12h00 |  14h00 - 18h00
+Jeudi : 9h00 - 12h30 |  14h30 - 18h30
+Vendredi : 9h00 - 12h30 |  14h30 - 18h30
+Samedi : 9h00 - 12h30 |  14h30 - 18h30
+Dimanche : 9h00 - 12h00
+
+Date de retrait prévue : <%= @order.date.strftime("%e/%m/%Y") %>
+<% else %>
+Informations de Livraison :
+--------------------------
+Nom : <%= @order.delivery_last_name %> / Prénom : <%= @order.delivery_first_name %>
+Adresse : <%= @order.delivery_address %>
+Instructions de livraison : <%= @order.delivery_instructions %>
+
+Date de livraison prévue : <%= @order.date.strftime("%e/%m/%Y") %>
+<% end %>
+
+Articles : <%= @order.order_items.count  %>
+--------------------------
+<% @order.order_items.each do |order_item| %>
+Produit : <%= order_item.product.name %>
+Budget : <%= humanized_money_with_symbol(order_item.price) %>
+Occasion : <%= order_item.occasion %>
+Couleur : <%= order_item.color %>
+Message : "<%= order_item.message %>"
+
+<% end  %>
+
+Merci encore pour votre commande !
+
+Solstice Fleuriste
+32 Rue Joseph Suacot, Petite Île, 97429, La Réunion
+Téléphone : +262 262 51 71 78

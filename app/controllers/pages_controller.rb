@@ -12,12 +12,12 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
-  def my_orders
-    @orders = current_user.orders
-  end
-
   def delivery
     @polygon = Polygon.last
     @order = current_order
+  end
+
+  def my_orders
+    @orders = current_user.orders
   end
 end

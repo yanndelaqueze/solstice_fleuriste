@@ -19,7 +19,7 @@ class PolygonsController < ApplicationController
     @polygon = Polygon.new(polygon_params)
 
     if @polygon.save
-      redirect_to polygon_path(Polygon.last), notice: 'Zone de Livraison définie !'
+      redirect_to livraison_path, notice: 'Zone de Livraison définie !'
     else
       render :new
     end

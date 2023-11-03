@@ -28,7 +28,7 @@
         </li>
 
         <li class="nav-item <%= 'active' if controller_name == 'polygons' && action_name == 'show' %>">
-          <a class="nav-link" href="<%= polygon_path(Polygon.last) %>"><i class="fa-solid fa-truck"></i> Livraison</a>
+          <a class="nav-link" href="<%= livraison_path %>"><i class="fa-solid fa-truck"></i> Livraison</a>
         </li>
 
         <div class="cart-navbar" data-controller="cart-display">

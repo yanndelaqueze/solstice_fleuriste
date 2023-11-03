@@ -2,57 +2,43 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap');
+    </style>
   </head>
   <body>
-
-  <div class="recap-order-header">
+    <div style="background-color: #052a2b;
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;">
+      <h1 style ="text-align: center;
+    color: white; font-family: 'Playfair Display', 'serif';">Solstice Fleuriste</h1>
+    </div>
     <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %></h2>
     <h3>Date : <%= @order.date.strftime("%e/%m/%Y") %></h3>
-  </div>
-
-  <div class="recap-order-details d-flex">
-    <div class="recap-order-info">
-      <% if @order.transport == "Click & Collect" %>
-        <h3 class="text-center">Click & Collect</h3>
-      <% else %>
-        <h3 class="text-center">Livraison</h3>
-        <div class="address">
-          <p style="font-weight: bold;">Adresse de livraison :</p>
-          <p class="input-address"><%= @order.delivery_address %></p>
-        </div>
-        <div class="recap-delivery-name">
-          <p>Prénom : <%= @order.delivery_first_name  %></p>
-          <p>Nom : <%= @order.delivery_last_name  %></p>
-        </div>
-        <p>Téléphone : <%= @order.phone %></p>
-        <p>Instructions : <%= @order.delivery_instructions  %></p>
-      <% end %>
-    </div>
-    <div class="recap-order-items">
-      <h3 class="text-center"><%= pluralize(@order.order_items.size, 'Article') %></h3>
-      <div class="cart-items">
-        <% @order.order_items.each do |order_item| %>
-          <div class="cart-item">
-            <div class="cart-item-header">
-              <h3><%= order_item.product.name%></h3>
-            </div>
-            <div class="cart-item-info">
-              <div class="cart-item-spec1">
-                <ul class="cart-item-images">
-                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="" style="height: 7em; border-radius: 50%;">
-                </ul>
-                <p class="mt-3">Message : "<%= order_item.message %>"</p>
-              </div>
-              <div class="cart-item-spec2">
-                <p>Occasion : <%= order_item.occasion %></p>
-                <p>Couleur dominante : <%= order_item.color %></p>
-                <p>Budget : <%= humanized_money_with_symbol(order_item.price) %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+    <% if @order.transport == "Click & Collect" %>
+      <h3>Click & Collect</h3>
+    <% else %>
+      <h3>Livraison</h3>
+      <p style="font-weight: bold;">Adresse de livraison :</p>
+      <p><%= @order.delivery_address %></p>
+      <p>Prénom : <%= @order.delivery_first_name  %></p>
+      <p>Nom : <%= @order.delivery_last_name  %></p>
+      <p>Téléphone : <%= @order.phone %></p>
+      <p>Instructions : <%= @order.delivery_instructions  %></p>
+    <% end %>
+    <h3><%= pluralize(@order.order_items.size, 'Article') %></h3>
+    <% @order.order_items.each do |order_item| %>
+      <h3><%= order_item.product.name%></h3>
+      <ul>
+        <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="" style="height: 7em; border-radius: 50%;">
+      </ul>
+      <p>Message : "<%= order_item.message %>"</p>
+      <p>Occasion : <%= order_item.occasion %></p>
+      <p>Couleur dominante : <%= order_item.color %></p>
+      <p>Budget : <%= humanized_money_with_symbol(order_item.price) %></p>
+    <% end %>
   </body>
 </html>
