@@ -27,7 +27,7 @@
                   <p class="input-address"><%= @order.delivery_address %></p>
               </div>
               <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
-                <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée</p>
+                <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁 <br>Veuillez entrer une autre adresse pour bénéficier de la livraison 🚛</p>
               <% end %>
               <div class="form-group">
                 <%= f.input :delivery_address,
@@ -60,7 +60,7 @@
           </div>
 
           <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
-            <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée</p>
+            <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁 <br>Veuillez entrer une autre adresse pour bénéficier de la livraison 🚛</p>
           <% end %>
           <%= f.input :phone, label: "Numéro à contacter :" %>
 
