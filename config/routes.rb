@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get '/admin', to: 'pages#admin'
   get '/compte', to: 'pages#account'
   get '/livraison', to: 'pages#delivery'
-  get '/commandes', to: 'pages#my_orders'
+  get '/mes_commandes', to: 'pages#my_orders'
   get '/zone_de_livraison', to: 'polygons#new'
+  get '/commandes', to: 'orders#index'
+  get '/catalogue', to: 'categories#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :categories
