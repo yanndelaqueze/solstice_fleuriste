@@ -1,7 +1,7 @@
 <h1 class="title">Récapitulatif de votre Commande</h1>
 <div class="container">
   <div class="recap-order-header">
-    <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %></h2>
+    <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %> / <%= pluralize(@order.order_items.size, 'Article') %></h2>
     <div class="recap-order-buttons">
       <%= link_to "Modifier la commande", panier_path, class:"btn-personnaliser", data: { turbo: "false" } %>
       <button id="pay" class="btn-action ml-2">Payer la commande</button>
@@ -11,7 +11,9 @@
   <div class="recap-order-details d-flex">
 
     <div class="recap-order-items">
-      <h3 class="text-center"><%= pluralize(@order.order_items.size, 'Article') %></h3>
+      <% if @order.order_items.size == 0 %>
+        <h3 class="text-center">Votre panier est vide 🙁</h3>
+      <% end %>
       <div class="cart-items">
         <% @order.order_items.each do |order_item| %>
           <div class="cart-item">
