@@ -20,7 +20,7 @@
     -->
     <%= f.input :first_name, label: "Prénom :" %>
     <%= f.input :last_name, label: "Nom :" %>
-    <% if @user.address.present? %>
+    <!--<% if @user.address.present? %>
       <div class="address">
           <p>Adresse :</p>
           <p class="input-address"><%= @user.address %></p>
@@ -40,7 +40,7 @@
         label: "Entrer votre adresse :",
         as: :hidden%>
       </div>
-    <% end %>
+    <% end %>-->
     <%= f.input :phone, label: "Téléphone :" %>
     <%= f.input :current_password,
                 required: true,

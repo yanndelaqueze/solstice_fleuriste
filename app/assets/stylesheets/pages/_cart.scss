@@ -11,10 +11,24 @@
     border-radius: 1em;
   }
 
-  .order-options {
+  .order-infos {
+    width: 40%;
+  }
+
+  .order-user-infos {
     margin-top: 1em;
     margin-left: 1em;
-    width: 40%;
+    width: 100%;
+    padding: 1em;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+  }
+
+  .order-transport-infos {
+    margin-top: 1em;
+    margin-left: 1em;
+    width: 100%;
     padding: 1em;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

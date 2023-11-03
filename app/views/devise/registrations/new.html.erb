@@ -26,12 +26,12 @@
                   required: true,
                   input_html: { autocomplete: "last_name" },
                   label: "Nom"%>
-      <%= f.input :address,
+      <!-- <%= f.input :address,
                   required: false,
                   autofocus: true,
                   input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
                   wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-                  label: "Adresse"%>
+                  label: "Adresse"%> -->
       <%= f.input :phone,
                   required: false,
                   input_html: { autocomplete: "phone" },
