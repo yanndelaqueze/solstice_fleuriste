@@ -14,84 +14,96 @@
       <% end %>
     </div>
 
-    <div class="order-options">
-      <h3 class="text-center">Livraison / Collecte</h3>
-      <div class="delivery-form" data-controller="toggle-delivery-fields">
-        <%= simple_form_for [@order], data: { turbo: "false" } do |f| %>
-          <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
+    <div class="order-infos">
+      <%= simple_form_for [@order], data: { turbo: "false" } do |f| %>
 
-          <div data-toggle-delivery-fields-target="deliveryFields" id="delivery-fields" >
-            <% if @order.delivery_address.present? %>
-              <div class="address">
-                  <p>Adresse de livraison :</p>
-                  <p class="input-address"><%= @order.delivery_address %></p>
+        <div class="order-user-infos">
+          <h3 class="text-center">Informations personnelles</h3>
+          <%= f.input :first_name, as: :string, label: "Prénom :" %>
+          <%= f.input :last_name, as: :string, label: "Nom :" %>
+          <%= f.input :email, as: :string, label: "Email :" %>
+          <%= f.input :phone, label: "Téléphone :" %>
+
+
+        </div>
+
+        <div class="order-transport-infos">
+          <h3 class="text-center">Livraison / Collecte</h3>
+          <div class="delivery-form" data-controller="toggle-delivery-fields">
+              <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
+
+              <div data-toggle-delivery-fields-target="deliveryFields" id="delivery-fields" >
+                <% if @order.delivery_address.present? %>
+                  <div class="address">
+                      <p>Adresse de livraison :</p>
+                      <p class="input-address"><%= @order.delivery_address %></p>
+                  </div>
+                  <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
+                    <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁 <br>Veuillez entrer une autre adresse pour bénéficier de la livraison 🚛</p>
+                  <% end %>
+                  <div class="form-group">
+                    <%= f.input :delivery_address,
+                    input_html: {data: {address_autocomplete_target: "address"}},
+                    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+                    label: "Changer l'adresse de livraison :",
+                    as: :hidden%>
+                  </div>
+                  <div class="delivery-name">
+                  </div>
+                  <div class="delivery-name">
+                    <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
+                    <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
+                  </div>
+                  <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
+                <% else %>
+                  <div class="form-group">
+                    <%= f.input :delivery_address,
+                    input_html: {data: {address_autocomplete_target: "address"}},
+                    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+                    label: "Entrer l'adresse de livraison :",
+                    as: :hidden%>
+                  </div>
+                  <div class="delivery-name">
+                    <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
+                    <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
+                  </div>
+                  <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :", hint: "Code immeuble, Numéro à contacter, etc..." %>
+                <% end %>
               </div>
+
               <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
                 <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁 <br>Veuillez entrer une autre adresse pour bénéficier de la livraison 🚛</p>
               <% end %>
-              <div class="form-group">
-                <%= f.input :delivery_address,
-                input_html: {data: {address_autocomplete_target: "address"}},
-                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-                label: "Changer l'adresse de livraison :",
-                as: :hidden%>
-              </div>
-              <div class="delivery-name">
-              </div>
-              <div class="delivery-name">
-                <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
-                <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
-              </div>
-              <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
-            <% else %>
-              <div class="form-group">
-                <%= f.input :delivery_address,
-                input_html: {data: {address_autocomplete_target: "address"}},
-                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-                label: "Entrer l'adresse de livraison :",
-                as: :hidden%>
-              </div>
-              <div class="delivery-name">
-                <%= f.input :delivery_first_name, as: :string, label: "Prénom :" %>
-                <%= f.input :delivery_last_name, as: :string, label: "Nom :" %>
-              </div>
-              <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :" %>
-            <% end %>
-          </div>
 
-          <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
-            <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁 <br>Veuillez entrer une autre adresse pour bénéficier de la livraison 🚛</p>
-          <% end %>
-          <%= f.input :phone, label: "Numéro à contacter :" %>
-
-          <div class="date-input" data-controller="date-validation">
-            <%= f.input :date, as: :date, html5: true, label: "Date de livraison/collecte souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput", value: (Date.today + 2.days) } %>
-            <!-- Modal invalid date -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-date-validation-target="myModal">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Date invalide</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p id="modalMessage" data-date-validation-target="modalMessage" class="pb-0"></p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn-action" data-dismiss="modal">Close</button>
+              <div class="date-input" data-controller="date-validation">
+                <%= f.input :date, as: :date, html5: true, label: "Date de livraison/collecte souhaitée :" ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput", value: (Date.today + 2.days) } %>
+                <!-- Modal invalid date -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-date-validation-target="myModal">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Date invalide</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p id="modalMessage" data-date-validation-target="modalMessage" class="pb-0"></p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn-action" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+
+              <%= f.submit "Mettre à jour les infos", class: "btn-action"  %>
           </div>
-
-          <%= f.submit "Mettre à jour les infos", class: "btn-action"  %>
-
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
+
 
   </div>
 </div>

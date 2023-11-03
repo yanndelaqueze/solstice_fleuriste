@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :update]
+  skip_before_action :authenticate_user!, only: [ :update, :validate]
 
   def index
     @status_options = ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
@@ -64,14 +64,14 @@ class OrdersController < ApplicationController
   def validate
     @order = current_order
     @order.update(status: "En Attente de Paiement")
-    @order.update(user_id: current_user.id)
+    @order.update(user_id: current_user.id) if user_signed_in?
 
-    if @order.transport == "Click & Collect" && (@order.phone.empty?)
+    if @order.first_name.empty? || @order.last_name.empty? || @order.email.empty? || @order.phone.empty?
       redirect_to panier_path
       return
     end
 
-    if @order.transport == "Livraison" && (@order.phone.empty? || @order.delivery_first_name.empty? || @order.delivery_last_name.empty?)
+    if @order.transport == "Livraison" && (@order.delivery_first_name.empty? || @order.delivery_last_name.empty?)
       redirect_to panier_path
       return
     end
@@ -100,6 +100,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:delivery_address, :transport, :date, :delivery_instructions, :phone, :status, :delivery_first_name, :delivery_last_name )
+    params.require(:order).permit(:first_name, :last_name, :email, :delivery_address, :transport, :date, :delivery_instructions, :phone, :status, :delivery_first_name, :delivery_last_name )
   end
 end

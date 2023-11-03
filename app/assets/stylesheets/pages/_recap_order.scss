@@ -15,12 +15,25 @@
 }
 
 .recap-order-info {
-  margin-top: 1em;
-  width: 47%;
-  padding: 1em;
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 1em;
+  width: 40%;
+
+  .recap-order-user-info {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    margin-top: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+  }
+
+  .recap-order-transport-info {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    margin-top: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+  }
 
   .shop-info {
     border: solid;
@@ -36,9 +49,9 @@
 
 .recap-order-items {
   margin-top: 1em;
-  width: 47%;
+  width: 60%;
   padding: 1em;
   background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 1em;
 }

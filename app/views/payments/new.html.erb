@@ -9,41 +9,7 @@
   </div>
 
   <div class="recap-order-details d-flex">
-    <div class="recap-order-info">
-      <% if @order.transport == "Click & Collect" %>
-        <h3 class="text-center">Click & Collect</h3>
-        <p class="text-center">Commande à récupérer en Boutique : </p>
-        <div class="shop-info">
-          <div class="address-home">
-            <p><i class="fa-solid fa-home"></i> 32 Rue Joseph Suacot, Petite Île</p>
-            <p>97429, La Réunion</p>
-            <p><i class="fa-solid fa-phone"></i> +262 262 51 71 78</p>
-          </div>
-          <p class="text-center"><i class="fa-solid fa-clock fw-bold"></i>  Horaires d'ouverture :</p>
-          <div class="time">
-            <p>Lundi : Fermé</p>
-            <p>Mardi : 9h00 - 12h00 |  14h00 - 18h00</p>
-            <p>Mercredi : 9h00 - 12h00 |  14h00 - 18h00</p>
-            <p>Jeudi : 9h00 - 12h30 |  14h30 - 18h30</p>
-            <p>Vendredi : 9h00 - 12h30 |  14h30 - 18h30</p>
-            <p>Samedi : 9h00 - 12h30 |  14h30 - 18h30</p>
-            <p>Dimanche : 9h00 - 12h00</p>
-          </div>
-        </div>
-      <% else %>
-        <h3 class="text-center">Livraison</h3>
-        <div class="address">
-          <p>Adresse de livraison :</p>
-          <p class="input-address"><%= @order.delivery_address %></p>
-        </div>
-        <div class="recap-delivery-name">
-          <p>Prénom : <%= @order.delivery_first_name  %></p>
-          <p>Nom : <%= @order.delivery_last_name  %></p>
-        </div>
-        <p>Téléphone : <%= @order.phone %></p>
-        <p>Instructions : <%= @order.delivery_instructions  %></p>
-      <% end %>
-    </div>
+
     <div class="recap-order-items">
       <h3 class="text-center"><%= pluralize(@order.order_items.size, 'Article') %></h3>
       <div class="cart-items">
@@ -69,6 +35,52 @@
         <% end %>
       </div>
     </div>
+
+    <div class="recap-order-info">
+      <div class="recap-order-user-info">
+        <h3 class="text-center">Informations personnelles</h3>
+        <p>Prénom : <%= @order.first_name %></p>
+        <p>Nom : <%= @order.last_name %></p>
+        <p>Email : <%= @order.email %></p>
+      </div>
+
+      <div class="recap-order-transport-info">
+        <% if @order.transport == "Click & Collect" %>
+          <h3 class="text-center">Click & Collect</h3>
+          <p class="text-center">Commande à récupérer en Boutique : </p>
+          <div class="shop-info">
+            <div class="address-home">
+              <p><i class="fa-solid fa-home"></i> 32 Rue Joseph Suacot, Petite Île</p>
+              <p>97429, La Réunion</p>
+              <p><i class="fa-solid fa-phone"></i> +262 262 51 71 78</p>
+            </div>
+            <p class="text-center"><i class="fa-solid fa-clock fw-bold"></i>  Horaires d'ouverture :</p>
+            <div class="time">
+              <p>Lundi : Fermé</p>
+              <p>Mardi : 9h00 - 12h00 |  14h00 - 18h00</p>
+              <p>Mercredi : 9h00 - 12h00 |  14h00 - 18h00</p>
+              <p>Jeudi : 9h00 - 12h30 |  14h30 - 18h30</p>
+              <p>Vendredi : 9h00 - 12h30 |  14h30 - 18h30</p>
+              <p>Samedi : 9h00 - 12h30 |  14h30 - 18h30</p>
+              <p>Dimanche : 9h00 - 12h00</p>
+            </div>
+          </div>
+        <% else %>
+          <h3 class="text-center">Livraison</h3>
+          <div class="address">
+            <p>Adresse de livraison :</p>
+            <p class="input-address"><%= @order.delivery_address %></p>
+          </div>
+          <div class="recap-delivery-name">
+            <p>Prénom : <%= @order.delivery_first_name  %></p>
+            <p>Nom : <%= @order.delivery_last_name  %></p>
+          </div>
+          <p>Téléphone : <%= @order.phone %></p>
+          <p>Instructions : <%= @order.delivery_instructions  %></p>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
   <script src="https://js.stripe.com/v3/"></script>
