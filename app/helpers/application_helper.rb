@@ -16,12 +16,14 @@ module ApplicationHelper
       @current_order.first_name = current_user.first_name
       @current_order.last_name = current_user.last_name
       @current_order.email = current_user.email
+      @current_order.phone = current_user.phone
       @current_order.save
     elsif user_signed_in? && current_user.orders.find_by(status: "En cours").present?
       @current_order = current_user.orders.find_by(status: "En cours")
       @current_order.first_name = current_user.first_name
       @current_order.last_name = current_user.last_name
       @current_order.email = current_user.email
+      @current_order.phone = current_user.phone
       @current_order.save
     end
 
