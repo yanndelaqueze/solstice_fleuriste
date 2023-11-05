@@ -1,9 +1,19 @@
+ShopStatus.destroy_all
 User.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
 Product.destroy_all
 Category.destroy_all
 Polygon.destroy_all
+
+# // SHOP STATUS //
+print "setting shop status"
+
+status = ShopStatus.new(
+  active: true
+)
+
+status.save!
 
 # // CREATING POLYGON //
 print "creating polygon (delivery area)"

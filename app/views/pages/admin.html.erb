@@ -1,8 +1,32 @@
 <h1 class= "title">Admin</h1>
 <div class="container">
-  <div class="admin-links">
-    <a class="admin-link" href="<%=commandes_path%>"><h5><i class="fa-solid fa-list"></i> Mes Commandes</h5></a>
-    <a class="admin-link" href="<%=catalogue_path%>"><h5><i class="fa-solid fa-book"></i> Mon Catalogue</h5></a>
-    <a class="admin-link" href="<%=livraison_path%>"><h5><i class="fa-solid fa-truck"></i> Zone de Livraison</h5></a>
-  </div>
+
+  <% if user_signed_in? && current_user.admin? %>
+
+    <div class="admin-links">
+      <a class="admin-link" href="<%=commandes_path%>"><h5><i class="fa-solid fa-list"></i> Mes Commandes</h5></a>
+      <a class="admin-link" href="<%=catalogue_path%>"><h5><i class="fa-solid fa-book"></i> Mon Catalogue</h5></a>
+      <a class="admin-link" href="<%=livraison_path%>"><h5><i class="fa-solid fa-truck"></i> Zone de Livraison</h5></a>
+    </div>
+
+    <h5 class="text-center"><i class="fa-solid fa-store"></i> Ouvrir / Fermer la Boutique</h5>
+    <div class="open-shop">
+      <%= form_for(@shop_status, remote: true) do |f| %>
+        <div class="form-group">
+          <%= f.label :active, "Boutique ouverte ?" %>
+          <%= f.check_box :active %>
+        </div>
+        <div class="form-group">
+          <%= f.label :message, "Message :"  %>
+          <br>
+          <%= f.text_field :message, class: 'form-control'  %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Mettre à jour', class: 'btn-action' %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+
 </div>
