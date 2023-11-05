@@ -4,8 +4,18 @@ class OrderItem < ApplicationRecord
   belongs_to :product
   belongs_to :order
   belongs_to :user, optional: true
-  validates :occasion, inclusion: { in: OCCASIONS }
-  validates :color, inclusion: { in: COLORS }
-  validates :price, presence: true, numericality: { greater_than: 0, message: 'Ne peut pas être vide' }
+  # validates :occasion, inclusion: { in: OCCASIONS }
+  # validates :color, inclusion: { in: COLORS }
+  # validates :price, presence: true, numericality: { greater_than: 0, message: 'Ne peut pas être vide' }
   monetize :price_cents
+  monetize :subtotal_cents
+  before_create :subtotal_cents
+
+  def subtotal_cents
+    if self.product.category.product_type == "Custom"
+      return price_cents
+    elsif self.product.category.product_type == "Normal"
+      return self.quantity * self.product.min_price_cents
+    end
+  end
 end

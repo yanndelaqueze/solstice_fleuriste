@@ -85,7 +85,8 @@ print "1 user"
 bouquet = Category.new(
   name: "Bouquets",
   position: 10,
-  display: true
+  display: true,
+  product_type: "Custom"
 )
 print "1 category / "
 
@@ -317,7 +318,8 @@ print "1 product / "
 orchidees = Category.new(
   name: "Orchidées",
   position: 40,
-  display: true
+  display: true,
+  product_type: "Normal"
 )
 print "1 category / "
 
