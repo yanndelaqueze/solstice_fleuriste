@@ -42,7 +42,7 @@
 
   <div class="map">
     <div id="map" style="width: 100%; height: 400px;" data-controller="display-delivery-area"
-      data-display-delivery-area-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-display-delivery-area-current-coordinates-value="<%= Polygon.last.coordinates %>"
+      data-display-delivery-area-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-display-delivery-area-current-coordinates-value="<%= delivery_area.coordinates %>"
       data-display-delivery-area-address-coordinates-value="[<%= @order.longitude%>, <%= @order.latitude%>]">
     </div>
     <% if current_user.present? && current_user.admin %>

@@ -36,4 +36,8 @@ module ApplicationHelper
 
     @current_order
   end
+
+  def delivery_area
+    return Polygon.last
+  end
 end

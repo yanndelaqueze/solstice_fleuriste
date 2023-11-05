@@ -3,7 +3,7 @@
     <%= form_with(model: @polygon, local: true) do |form| %>
       <div class="map">
         <div id="map" style="width: 100%; height: 400px;" data-controller="polygon-drawing"
-        data-polygon-drawing-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-polygon-drawing-current-coordinates-value="<%= Polygon.last.coordinates %>">
+        data-polygon-drawing-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-polygon-drawing-current-coordinates-value="<%= delivery_area.coordinates %>">
           <div class="field">
             <%= form.hidden_field :coordinates, {data: {polygon_drawing_target: 'polygonCoordinates'}} %>
           </div>

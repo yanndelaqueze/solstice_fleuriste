@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   end
 
   def delivery
-    @polygon = Polygon.last
+    @polygon = delivery_area
     @order = current_order
   end
 
