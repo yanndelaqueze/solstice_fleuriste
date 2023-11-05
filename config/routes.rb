@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   resources :polygons, only: %i[index new create show]
 
+  resources :shop_statuses, only: %i[new create edit update]
+
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

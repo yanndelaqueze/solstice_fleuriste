@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def admin
+    @shop_status = ShopStatus.last
   end
 
   def account
