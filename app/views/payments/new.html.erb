@@ -30,7 +30,7 @@
               <div class="cart-item-spec2">
                 <p>Occasion : <%= order_item.occasion %></p>
                 <p>Couleur dominante : <%= order_item.color %></p>
-                <p>Budget : <%= humanized_money_with_symbol(order_item.price) %></p>
+                <p>Budget : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
               </div>
             </div>
           </div>

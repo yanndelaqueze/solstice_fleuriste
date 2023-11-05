@@ -18,7 +18,7 @@ class Order < ApplicationRecord
   before_save :set_transport
 
   def subtotal_cents
-    order_items ? self.order_items.sum { |item| item.price_cents } : 0
+    order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
   end
 
   def delivery_cost_cents
