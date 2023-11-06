@@ -5,6 +5,7 @@
 
   <%= f.input :product_type, label: "Type", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector'}, collection: Product::TYPE %>
 
+  <p>Prix minimum / unitaire :</p>
   <div class="price-input-container", data-controller="price-input-range">
     <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(product.min_price_cents/100, precision: 2) %></span>
     <%= f.input :min_price, as: :range, label: false, input_html: { min: 0, max: 150, step: 1, value: product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>

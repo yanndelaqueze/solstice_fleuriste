@@ -52,9 +52,17 @@
 .cart-content-item {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  height: 6em;
+  justify-content: flex-start;
+  height: 4em;
   margin-top: 1em;
+  border-bottom: solid;
+  padding-bottom: 1em;
+  border-bottom-width: thin;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
   img {
     height: 100%;

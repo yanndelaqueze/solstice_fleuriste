@@ -41,7 +41,7 @@
     </div>
   </div>
   <ul class="product-images">
-    <p><%= pluralize(product.photos.size, 'Photo') %></p>
+    <p><%= pluralize(product.photos.size, 'image') %> </p>
     <% product.photos.each do |photo| %>
       <img src="<%= cl_image_path photo.key %>" alt="">
     <% end %>

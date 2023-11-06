@@ -41,13 +41,26 @@
               <p>Votre panier est vide 🙁</p>
             <% else %>
               <% current_order.order_items.each do |order_item| %>
-                <div class="cart-content-item">
-                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
-                  <div class="cart-content-item-info">
-                    <p class="fw-bolder"><%= order_item.product.name  %></p>
-                    <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+
+                <% if order_item.product.product_type == "Custom" %>
+                  <div class="cart-content-item">
+                    <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                    <div class="cart-content-item-info">
+                      <p class="fw-bolder"><%= order_item.product.name  %></p>
+                      <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+                    </div>
                   </div>
-                </div>
+                <% elsif order_item.product.product_type == "Normal" %>
+                  <div class="cart-content-item">
+                    <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                    <div class="cart-content-item-info">
+                      <p class="fw-bolder"><%= order_item.product.name  %></p>
+                      <p><%= humanized_money_with_symbol(order_item.subtotal)%> (<%= order_item.quantity %> x <%= humanized_money_with_symbol(order_item.product.min_price)  %>)</p>
+                    </div>
+                  </div>
+                <% end %>
+
+
               <% end %>
               <div class="order-total">
                 <p>Total : <%= humanized_money_with_symbol(current_order.total) %></p>
