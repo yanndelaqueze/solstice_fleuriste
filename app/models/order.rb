@@ -11,10 +11,11 @@ class Order < ApplicationRecord
   monetize :subtotal_cents
   monetize :delivery_cost_cents
   monetize :total_cents
-  before_create :set_default_date
-  before_create :subtotal_cents
-  before_create :delivery_cost_cents
-  before_create :total_cents
+  before_save :set_default_date
+  before_save :postcode
+  before_save :subtotal_cents
+  before_save :delivery_cost_cents
+  before_save :total_cents
   before_save :set_transport
 
   def subtotal_cents
@@ -22,7 +23,13 @@ class Order < ApplicationRecord
   end
 
   def delivery_cost_cents
-    0
+    if self.transport == "Click & Collect"
+      return 0
+    elsif self.delivery_address.present? && self.transport == "Livraison" && self.postcode == "97429"
+      return 20000
+    else
+      return 1000
+    end
   end
 
   def total_cents
@@ -35,6 +42,9 @@ class Order < ApplicationRecord
 
   def in_delivery_area?
     if self.delivery_address.present?
+      if self.postcode == "97429"
+        return true
+      end
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length
@@ -54,6 +64,14 @@ class Order < ApplicationRecord
       return inside
     else
       return false
+    end
+  end
+
+  def postcode
+    if self.delivery_address.present? & self.transport == "Livraison"
+      Geocoder.search([latitude, longitude]).first.data["address"]["postcode"]
+    else
+      return nil
     end
   end
 
