@@ -12,9 +12,9 @@ class OrderItem < ApplicationRecord
   before_create :subtotal_cents
 
   def subtotal_cents
-    if self.product.category.product_type == "Custom"
+    if self.product.product_type == "Custom"
       return price_cents
-    elsif self.product.category.product_type == "Normal"
+    elsif self.product.product_type == "Normal"
       return self.quantity * self.product.min_price_cents
     end
   end
