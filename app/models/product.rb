@@ -4,6 +4,6 @@ class Product < ApplicationRecord
   has_many_attached :photos
   monetize :min_price_cents
   TYPE = ["Custom", "Normal"]
-  validates :product_type, inclusion: { in: TYPE }
+  # validates :product_type, inclusion: { in: TYPE }
   attr_accessor :remove_image
 end

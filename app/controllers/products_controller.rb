@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to category_path(@product.category), notice: 'Produit modifié !!'
     else
+      raise
       redirect_to category_path(@product.category), notice: 'Echec !!'
     end
   end
@@ -62,6 +63,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :min_price, :available, :position, :category_id, :photos, :product_type)
+    params.require(:product).permit(:name, :description, :min_price_cents, :available, :position, :category_id, :photos, :product_type)
   end
 end

@@ -34,9 +34,9 @@
       <% end %></p>
       <p>Type : <%= product.product_type %></p>
       <% if product.product_type == "Custom" %>
-          <p>Prix min. :<%= product.min_price %>€</p>
+          <p>Prix min. :<%= humanized_money_with_symbol(product.min_price) %></p>
         <% elsif product.product_type == "Normal"  %>
-          <p>Prix / unit. :<%= product.min_price %>€</p>
+          <p>Prix / unit. :<%= humanized_money_with_symbol(product.min_price) %></p>
       <% end %>
     </div>
   </div>
