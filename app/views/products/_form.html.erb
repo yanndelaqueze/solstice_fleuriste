@@ -1,9 +1,9 @@
 <%= simple_form_for product, html: {multipart: true} do |f| %>
-  <%= f.input :name, placeholder: product.name, label: 'Nom du produit', class: 'form-control' %>
+  <%= f.input :name, placeholder: product.name, label: 'Nom du produit :', class: 'form-control' %>
 
-  <%= f.input :description, as: :text, placeholder: product.description, label: 'Description', class: 'form-control' %>
+  <%= f.input :description, as: :text, placeholder: product.description, label: 'Description :', class: 'form-control' %>
 
-  <%= f.input :product_type, label: "Type", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector'}, collection: Product::TYPE %>
+  <%= f.input :product_type, label: "Type :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector'}, collection: Product::TYPE %>
 
   <p>Prix minimum / unitaire :</p>
   <div class="price-input-container", data-controller="price-input-range">
@@ -13,16 +13,17 @@
 
   <%= f.input :available, as: :boolean, placeholder: product.available, label: 'Disponible ?', class: 'form-control' %>
 
-  <%= f.input :position, as: :integer, placeholder: product.position, label: 'Position', class: 'form-control' %>
-
-  <p>Images :</p>
+  <div class="position">
+    <p class="mr-3">Position : </p>
+    <%= f.input :position, as: :integer, placeholder: product.position, label: false, class: 'form-control' %>
+  </div>
   <!-- Existing Images -->
   <% if  %>
   <% product.photos.size === 0  %>
   <p class="font-italic">Ce produit n'a pas d'image 🙁</p>
   <% else %>
     <div class="form-group">
-      <%= f.label :remove_image, "Cocher les images à supprimer" %>
+      <%= f.label :remove_image, "Cocher les images à supprimer :" %>
       <div class="images">
         <% product.photos.each do |photo| %>
           <div class="image-to-delete">
@@ -37,7 +38,7 @@
 
   <!-- New Images -->
   <div class="form-group">
-    <%= f.label :new_images, "Ajouter des images" %>
+    <%= f.label :new_images, "Ajouter des images :" %>
     <br>
     <%= f.file_field :new_images, { multiple: true } %>
   </div>
