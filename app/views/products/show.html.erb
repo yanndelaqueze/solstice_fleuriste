@@ -72,6 +72,8 @@
           <p class="mr-3">Quantité :</p>
           <%= f.input :quantity, as: :numeric, placeholder: "", label: false %>
         </div>
+        <p>Rédigez le message que vous souhaitez y joindre :</p>
+        <%= f.input :message, as: :text, placeholder: "", label: false %>
         <%= f.submit 'Valider', class: "btn-action" %>
       <% end %>
     <% end %>
