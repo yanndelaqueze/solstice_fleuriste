@@ -8,27 +8,33 @@ class Order < ApplicationRecord
   TRANSPORT = ["Click & Collect", "Livraison"]
   validates :transport, inclusion: { in: TRANSPORT }
   validates :delivery_address, presence: true, if: :delivery_transport?
-  monetize :subtotal_cents
-  monetize :delivery_cost_cents
-  monetize :total_cents
   before_save :set_default_date
+  before_save :set_transport
   before_save :postcode
   before_save :subtotal_cents
   before_save :delivery_cost_cents
   before_save :total_cents
-  before_save :set_transport
+  monetize :subtotal_cents
+  monetize :delivery_cost_cents
+  monetize :total_cents
+
+  def postcode
+    if self.delivery_address.present?
+      return Geocoder.search(delivery_address).first.data["address"]["postcode"]
+    else
+      return ""
+    end
+  end
 
   def subtotal_cents
     order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
   end
 
   def delivery_cost_cents
-    if self.transport == "Click & Collect"
-      return 0
-    elsif self.delivery_address.present? && self.transport == "Livraison" && self.postcode == "97429"
-      return 20000
+    if postcode == "97429"
+      0
     else
-      return 1000
+      110
     end
   end
 
@@ -42,9 +48,6 @@ class Order < ApplicationRecord
 
   def in_delivery_area?
     if self.delivery_address.present?
-      if self.postcode == "97429"
-        return true
-      end
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length
@@ -64,14 +67,6 @@ class Order < ApplicationRecord
       return inside
     else
       return false
-    end
-  end
-
-  def postcode
-    if self.delivery_address.present? & self.transport == "Livraison"
-      Geocoder.search([latitude, longitude]).first.data["address"]["postcode"]
-    else
-      return nil
     end
   end
 
