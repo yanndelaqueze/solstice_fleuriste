@@ -3,7 +3,7 @@
 <div class="container">
   <!-- Modal to Add a new Category -->
   <a type="button" class="btn-action" data-toggle="modal" data-target="#newCategoryModal">
-    Nouvelle Catégorie
+    Ajouter une Catégorie
   </a>
   <div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="newCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -20,6 +20,8 @@
       </div>
     </div>
   </div>
+  <!-- Button to Create New Product-->
+  <%= link_to "Ajouter un Produit", new_product_path, class:"btn-personnaliser"%>
 
   <!-- Display Categories-->
   <% @categories.each do |category| %>

@@ -1,32 +1,40 @@
 <h1 class= "title">Nouveau Produit</h1>
 <div class="container">
-  <%= form_with(model: @product, url: products_path, local: true) do |form| %>
+  <%= simple_form_for @product, html: {multipart: true} do |f| %>
+
+    <%= f.input :name, label: 'Nom du produit :', class: 'form-control' %>
+
+    <%= f.input :description, as: :text, label: 'Description :', class: 'form-control' %>
+
+    <%= f.input :category_id, collection: @categories, label_method: :name, value_method: :id, label: 'Catégorie :', class: 'form-control' %>
+
+    <%= f.input :product_type, label: "Type :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector'}, collection: Product::TYPE, hint: "Custom : Le client fixe son budget / Normal : Le prix unitaire est fixe" %>
+
+    <p>Prix Minimum / Unitaire :</p>
+    <div class="price-input-container", data-controller="price-input-range">
+      <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(@product.min_price_cents/100, precision: 2) %></span>
+      <%= f.input :min_price, as: :range, label: false, input_html: { min: 0, max: 150, step: 1, value: @product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+    </div>
+
+    <%= f.input :available, as: :boolean, label: 'Disponible ?', class: 'form-control' %>
+    <div class="position">
+      <p class="mr-3">Position :</p>
+      <%= f.input :position, as: :integer, label: false, class: 'form-control' %>
+    </div>
+
+    <p>Images :</p>
+
+    <!-- New Images -->
     <div class="form-group">
-      <%= form.label :name, "Nom du produit" %>
-      <%= form.text_field :name, class: 'form-control' %>
+      <%= f.label :new_images, "Ajouter des images" %>
+      <br>
+      <%= f.file_field :new_images, { multiple: true } %>
     </div>
+
     <div class="form-group">
-      <%= form.label :description, "Description" %>
-      <%= form.text_area :description, class: 'form-control' %>
+      <%= f.submit "Créer", class:"btn-action" %>
     </div>
-    <div class="form-group">
-      <%= form.label :min_price, "Prix Minimum" %>
-      <%= form.number_field :min_price %>
-    </div>
-    <div class="form-group">
-      <%= form.label :available, "Disponible ?" %>
-      <%= form.check_box :available %>
-    </div>
-    <div class="form-group">
-      <%= form.label :position, "Position" %>
-      <%= form.number_field :position %>
-    </div>
-    <div class="form-group">
-      <%= form.label :category_id %>
-      <%= form.collection_select :category_id, @categories, :id, :name, prompt: 'Select a category' %>
-    </div>
-    <div class="actions">
-      <%= form.submit "Créer", class:"btn-action" %>
-    </div>
-  <% end %>
+
+    <% end %>
+
 </div>

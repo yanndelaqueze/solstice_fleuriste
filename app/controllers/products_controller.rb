@@ -19,6 +19,14 @@ class ProductsController < ApplicationController
     @categories = Category.all
     @product = Product.new(product_params)
     @product.category_id = params[:product][:category_id]
+
+    # Attach new images
+    if params[:product][:new_images].present?
+      params[:product][:new_images].each do |image|
+        @product.photos.attach(image)
+      end
+    end
+
     if @product.save
       redirect_to category_path(@product.category), notice: 'Product was successfully created'
     else
