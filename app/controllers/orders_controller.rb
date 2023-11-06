@@ -50,7 +50,6 @@ class OrdersController < ApplicationController
         OrderMailer.with(order: @order).order_ready_email.deliver_later
       end
     else
-      raise
       flash[:error] = "Oups, il y a eu un problème !"
     end
     redirect_to request.referrer
@@ -68,6 +67,7 @@ class OrdersController < ApplicationController
     @order.update(user_id: current_user.id) if user_signed_in?
 
     if @order.first_name.empty? || @order.last_name.empty? || @order.email.empty? || @order.phone.empty?
+      flash[:alert] = 'Avant de valider, remplissez tous les champs et validez les infos'
       redirect_to panier_path
       return
     end
