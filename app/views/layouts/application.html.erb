@@ -30,13 +30,12 @@
 
 
     <div class="page-content">
-    <% if !ShopStatus.last.active && !ShopStatus.last.message.empty? %>
-      <%= render "shared/message" %>
-    <% end %>
+      <% if !ShopStatus.last.active && !ShopStatus.last.message.empty? %>
+        <%= render "shared/message" %>
+      <% end %>
       <%= yield %>
       <%= render "shared/flashes" %>
     </div>
     <%= render "shared/footer" %>
-    <%= console  %>
   </body>
 </html>
