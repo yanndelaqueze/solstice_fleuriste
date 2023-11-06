@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="cart-header">
-    <h4><%= pluralize(current_order.order_items.size, 'article') %> (total : <%= humanized_money_with_symbol(current_order.total) %>)</h4>
+    <h4><%= pluralize(current_order.order_items.size, 'article') %> : <%= humanized_money_with_symbol(current_order.subtotal) %> / Frais de Livraison : <%= humanized_money_with_symbol(current_order.delivery_cost) %> / Total : <%= humanized_money_with_symbol(current_order.total) %></h4>
     <% if ShopStatus.last.active?  %>
       <%= link_to "Valider & Payer", validate_order_path(@order), class: "btn-action", data: { turbo_method: :patch } %>
     <% end %>

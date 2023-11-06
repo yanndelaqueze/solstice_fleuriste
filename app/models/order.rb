@@ -34,7 +34,7 @@ class Order < ApplicationRecord
     if postcode == "97429"
       0
     else
-      110
+      1000
     end
   end
 
