@@ -41,7 +41,7 @@
     <p><i class="fa-solid fa-store"></i> Click & Collect gratuit</p>
     <p>------------------------</p>
 
-    <% if @product.category.product_type == "Custom" %>
+    <% if @product.product_type == "Custom" %>
       <p>Afin que Solstice réalise le bouquet de vos rêves :</p>
       <div class="custom-form">
         <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
