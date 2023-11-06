@@ -34,6 +34,7 @@ admin = User.new(
   email: 'admin@solstice.com',
   first_name: "Admin",
   last_name: "Solstice",
+  phone: "+262 262 51 71 79",
   password: 'password',
   password_confirmation: 'password',
   admin: true

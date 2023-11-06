@@ -11,19 +11,10 @@
 <br>
     <h5 class="text-center"><i class="fa-solid fa-store"></i> Ouvrir / Fermer la Boutique</h5>
     <div class="open-shop">
-      <%= form_for(@shop_status, remote: true) do |f| %>
-        <div class="form-group">
-          <%= f.label :active, "Boutique ouverte ?" %>
-          <%= f.check_box :active %>
-        </div>
-        <div class="form-group">
-          <%= f.label :message, "Message :"  %>
-          <br>
-          <%= f.text_field :message, class: 'form-control'  %>
-        </div>
-        <div class="form-group">
-          <%= f.submit 'Mettre à jour', class: 'btn-action' %>
-        </div>
+      <%= simple_form_for @shop_status do |f| %>
+        <%= f.input :active, as: :boolean, label: 'Boutique ouverte ?', class: 'form-control' %>
+        <%= f.input :message, label: 'Message :', class: 'form-control' %>
+        <%= f.submit 'Mettre à jour', class: 'btn-action' %>
       <% end %>
     </div>
   <% else %>

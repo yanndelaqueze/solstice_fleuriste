@@ -58,11 +58,19 @@
                 </ul>
                 <p class="mt-3">Message : "<%= order_item.message %>"</p>
               </div>
-              <div class="cart-item-spec2">
-                <p>Occasion : <%= order_item.occasion %></p>
-                <p>Couleur dominante : <%= order_item.color %></p>
-                <p>Budget : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
-              </div>
+              <% if order_item.product.product_type == "Custom" %>
+                <div class="cart-item-spec2">
+                  <p>Occasion : <%= order_item.occasion %></p>
+                  <p>Couleur dominante : <%= order_item.color %></p>
+                  <p>Budget : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
+                </div>
+              <% elsif order_item.product.product_type == "Normal"  %>
+                <div class="cart-item-spec2">
+                  <p>Prix : <%= humanized_money_with_symbol(order_item.product.min_price) %></p>
+                  <p>Quantité : <%= order_item.quantity %></p>
+                  <p>Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>

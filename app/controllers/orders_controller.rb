@@ -50,6 +50,7 @@ class OrdersController < ApplicationController
         OrderMailer.with(order: @order).order_ready_email.deliver_later
       end
     else
+      raise
       flash[:error] = "Oups, il y a eu un problème !"
     end
     redirect_to request.referrer
