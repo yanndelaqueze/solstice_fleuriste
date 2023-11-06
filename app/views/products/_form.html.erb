@@ -9,6 +9,11 @@
     <br>
     <%= f.text_area :description, class: 'form-control'  %>
   </div>
+  <!-- <div class="form-group">
+    <%= f.label :product_type, "Type" %>
+    <br>
+    <%= f.select :product_type, ["Custom","Normal"], class: 'form-control'  %>
+  </div>-->
   <div class="form-group">
     <%= f.label :min_price, "Prix minimum" %>
     <%= f.number_field :min_price, class: 'form-control' %>
