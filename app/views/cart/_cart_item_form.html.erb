@@ -1,13 +1,34 @@
-<%= simple_form_for [order_item] do |f| %>
+<% if order_item.product.product_type == "Custom" %>
+  <%= simple_form_for [order_item] do |f| %>
 
-  <%= f.input :price, placeholder: order_item.price, label: 'Budget :', class: 'form-control' %>
+    <p>Budget :</p>
+    <div class="price-input-container", data-controller="price-input-range">
+      <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(order_item.price_cents/100, precision: 2) %></span>
+      <%= f.input :price, as: :range, label: false, input_html: { min: order_item.product.min_price_cents/100, max: 150, step: 1, value: order_item.price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+    </div>
 
-  <%= f.input :message, placeholder: order_item.message, label: 'Message :', class: 'form-control' %>
+    <p>Message :</p>
+    <%= f.input :message, as: :text, placeholder: order_item.message, label: false %>
 
-  <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: 'Occasion :', placeholder: order_item.occasion %>
+    <p>Occasion :</p>
+    <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false, placeholder: order_item.occasion %>
 
-  <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: 'Couleur dominante :', placeholder: order_item.color %>
+    <p>Couleur dominante :</p>
+    <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false, placeholder: order_item.color %>
 
-  <%= f.submit 'Valider', class: "btn btn-action" %>
+    <%= f.submit 'Valider', class: "btn-action" %>
+  <% end %>
+<% elsif order_item.product.product_type == "Normal" %>
+  <%= simple_form_for [order_item] do |f| %>
 
+    <div class="quantity">
+      <p class="mr-3">Quantité :</p>
+      <%= f.input :quantity, as: :numeric, placeholder: order_item.quantity, label: false %>
+    </div>
+
+    <p>Message :</p>
+    <%= f.input :message, as: :text, placeholder: order_item.message, label: false %>
+
+    <%= f.submit 'Valider', class: "btn-action" %>
+  <% end %>
 <% end %>
