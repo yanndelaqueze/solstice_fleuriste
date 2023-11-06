@@ -1,57 +1,45 @@
-<%= form_for(product, remote: true, html: { multipart: true }) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "Nom du produit" %>
-    <br>
-    <%= f.text_field :name, class: 'form-control'  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, "Description" %>
-    <br>
-    <%= f.text_area :description, class: 'form-control'  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :product_type, "Type" %>
-    <br>
-    <%= f.select :product_type, ["Custom","Normal"], class: 'form-control'  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :min_price_cents, "Prix minimum" %>
-    <%= f.number_field :min_price_cents, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :available, "Disponible ?" %>
-    <%= f.check_box :available%>
-  </div>
-  <div class="form-group">
-    <%= f.label :position, "Position" %>
-    <%= f.number_field :position, class: 'form-control'%>
-  </div>
-  <p>Images :</p>
-    <!-- Existing Images -->
-    <% if  %>
-    <% product.photos.size === 0  %>
-    <p class="font-italic">Ce produit n'a pas d'image 🙁</p>
-    <% else %>
-      <div class="form-group">
-        <%= f.label :remove_image, "Cocher les images à supprimer" %>
-        <div class="images">
-          <% product.photos.each do |photo| %>
-            <div class="image-to-delete">
-              <img src="<%= cl_image_path photo.key %>" alt="" class="form-image">
-              <br>
-              <%= f.check_box :remove_image, { multiple: true }, photo.id, nil %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+<%= simple_form_for product, html: {multipart: true} do |f| %>
+  <%= f.input :name, placeholder: product.name, label: 'Nom du produit', class: 'form-control' %>
 
-    <!-- New Images -->
+  <%= f.input :description, as: :text, placeholder: product.description, label: 'Description', class: 'form-control' %>
+
+  <%= f.input :product_type, label: "Type", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector'}, collection: Product::TYPE %>
+
+  <div class="price-input-container", data-controller="price-input-range">
+    <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(product.min_price_cents/100, precision: 2) %></span>
+    <%= f.input :min_price, as: :range, label: false, input_html: { min: 0, max: 150, step: 1, value: product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+  </div>
+
+  <%= f.input :available, as: :boolean, placeholder: product.available, label: 'Disponible ?', class: 'form-control' %>
+
+  <%= f.input :position, as: :integer, placeholder: product.position, label: 'Position', class: 'form-control' %>
+
+  <p>Images :</p>
+  <!-- Existing Images -->
+  <% if  %>
+  <% product.photos.size === 0  %>
+  <p class="font-italic">Ce produit n'a pas d'image 🙁</p>
+  <% else %>
     <div class="form-group">
-      <%= f.label :new_images, "Ajouter des images" %>
-      <br>
-      <%= f.file_field :new_images, { multiple: true } %>
+      <%= f.label :remove_image, "Cocher les images à supprimer" %>
+      <div class="images">
+        <% product.photos.each do |photo| %>
+          <div class="image-to-delete">
+            <img src="<%= cl_image_path photo.key %>" alt="" class="form-image">
+            <br>
+            <%= f.check_box :remove_image, { multiple: true }, photo.id, nil %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  <% end %>
+
+  <!-- New Images -->
+  <div class="form-group">
+    <%= f.label :new_images, "Ajouter des images" %>
+    <br>
+    <%= f.file_field :new_images, { multiple: true } %>
+  </div>
 
   <div class="form-group">
     <%= f.submit "Mettre à jour", class:"btn-action" %>
