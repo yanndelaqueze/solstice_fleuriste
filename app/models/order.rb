@@ -79,11 +79,8 @@ class Order < ApplicationRecord
   end
 
   def set_transport
-    default_date = 2.days.from_now.to_date
-    # If the default_date is a Monday
-    if default_date.wday == 1
-      default_date += 1.day # Add 1 more day to skip Monday
+    if !self.in_delivery_area?
+      self.transport = "Click & Collect"
     end
-    self.date ||= default_date
   end
 end

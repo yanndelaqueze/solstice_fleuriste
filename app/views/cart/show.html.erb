@@ -103,9 +103,9 @@
               <% end %>
 
               <p>Date de livraison/collecte souhaitée :</p>
-              <div class="date-and-time">
-                <div class="date-input" data-controller="date-validation">
-                  <%= f.input :date, as: :date, html5: true, label: false ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput", value: (Date.today + 2.days) } %>
+              <div class="date-and-time" data-controller="date-validation">
+                <div class="date-input">
+                  <%= f.input :date, as: :date, html5: true, label: false ,input_html: { id: "order_date", "data-action": "input->date-validation#checkDate", "data-date-validation-target": "dateInput", value: (@order.date) } %>
                   <!-- Modal invalid date -->
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-date-validation-target="myModal">
                     <div class="modal-dialog" role="document">

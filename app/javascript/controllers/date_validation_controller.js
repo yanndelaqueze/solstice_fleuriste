@@ -15,6 +15,21 @@ export default class extends Controller {
       minDate.setDate(minDate.getDate() + 1); // Add one more day to skip Monday
     }
 
+    // // Check if it's Sunday and remove "Soir" from the time slot collection
+    // if (selectedDate.getDay() === 0) {
+    //   const soir = v
+    //   console.log(soir);
+    //   console.log(soir.parentElement);
+    //   soir.parentElement.remove();
+    // }
+
+    if (selectedDate.getDay() === 0) {
+      this.toggleSoirOption(false);
+    } else {
+      // Show the "Soir" option if it's not Sunday
+      this.toggleSoirOption(true);
+    }
+
     if (selectedDate < minDate || selectedDate.getDay() === 1) {
       const modalMessage = this.modalMessageTarget;
       if (selectedDate.getDay() === 1) {
@@ -56,6 +71,13 @@ export default class extends Controller {
       });
 
       this.dateInputTarget.value = "";
+    }
+  }
+
+  toggleSoirOption(show) {
+    const soirOption = document.querySelector("#order_time_slot_soir");
+    if (soirOption) {
+      soirOption.parentElement.style.display = show ? "block" : "none";
     }
   }
 }
