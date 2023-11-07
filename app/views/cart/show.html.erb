@@ -2,25 +2,50 @@
 <div class="container">
 
   <div class="cart-header">
-    <h4><%= pluralize(current_order.order_items.size, 'article') %> : <%= humanized_money_with_symbol(current_order.subtotal) %> / Frais de Livraison : <%= humanized_money_with_symbol(current_order.delivery_cost) %> / Total : <%= humanized_money_with_symbol(current_order.total) %></h4>
     <% if ShopStatus.last.active?  %>
       <%= link_to "Valider & Payer", validate_order_path(@order), class: "btn-action", data: { turbo_method: :patch } %>
     <% end %>
   </div>
 
   <div class="cart">
+    <div class="cart-items-and-recap">
+      <div class="cart-recap">
+        <h3 class="text-center mb-4">Récapitulatif</h3>
+        <div class="recap-section">
+          <p><%= pluralize(@order.order_items.size, 'article') %> : </p>
+          <p><%= humanized_money_with_symbol(current_order.subtotal) %></p>
+        </div>
+        <div class="recap-section">
+          <% if @order.transport == "Click & Collect" %>
+            <p>Retrait en boutique : </p>
+            <p>Gratuit</p>
+          <% elsif @order.transport == "Livraison" && @order.delivery_cost == 0 %>
+            <p>Livraison : </p>
+            <p>Gratuit</p>
+          <% elsif @order.transport == "Livraison" && @order.delivery_cost != 0 %>
+            <p>Livraison : </p>
+            <p><%= humanized_money_with_symbol(current_order.delivery_cost) %></p>
+          <% end %>
+        </div>
+        <div class="recap-section total">
+          <p class="fs-5">Total : </p>
+          <p class="fs-5"><%= humanized_money_with_symbol(current_order.total) %></p>
+        </div>
+      </div>
 
-    <div class="cart-items">
-      <% @order_items.each do |order_item| %>
-        <%= render 'cart_item', order_item: order_item %>
-      <% end %>
+      <div class="cart-items">
+        <h3 class="text-center mb-4">Articles</h3>
+        <% @order_items.each do |order_item| %>
+          <%= render 'cart_item', order_item: order_item %>
+        <% end %>
+      </div>
     </div>
 
     <div class="order-infos">
       <%= simple_form_for [@order], data: { turbo: "false" } do |f| %>
 
         <div class="order-user-infos">
-          <h3 class="text-center">Informations personnelles</h3>
+          <h3 class="text-center mb-4">Informations personnelles</h3>
           <%= f.input :first_name, as: :string, label: "Prénom :" %>
           <%= f.input :last_name, as: :string, label: "Nom :" %>
           <%= f.input :email, as: :string, label: "Email :" %>
@@ -30,7 +55,7 @@
         </div>
 
         <div class="order-transport-infos">
-          <h3 class="text-center">Livraison / Collecte</h3>
+          <h3 class="text-center mb-4">Livraison / Collecte</h3>
           <div class="delivery-form" data-controller="toggle-delivery-fields">
               <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
 
