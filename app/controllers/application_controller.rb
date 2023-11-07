@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   before_action do
-    I18n.locale = :fr # Or whatever logic you use to choose.
+    I18n.locale = :fr
   end
 
   def after_sign_in_path_for(_resource)

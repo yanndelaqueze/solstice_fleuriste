@@ -71,7 +71,7 @@ export default class extends Controller {
         },
         layout: {},
         paint: {
-          "fill-color": "#F043AC",
+          "fill-color": "#788f48",
           "fill-opacity": 0.5,
         },
       });
