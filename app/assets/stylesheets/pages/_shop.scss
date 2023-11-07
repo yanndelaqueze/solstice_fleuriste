@@ -4,7 +4,7 @@ body {
   padding: 0;
 
   .category-header {
-    color: $background;
+    color: $font;
     margin-top: 2em;
   }
 
@@ -64,7 +64,7 @@ body {
   }
 
   .checkbox-hidden:checked + .checkbox-label {
-    background-color: $background;
+    background-color: $font;
     color: #fff;
   }
 }

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .cart {
   display: flex;
   justify-content: space-around;
@@ -35,9 +36,6 @@
       margin-top: 1em;
       margin-left: 1em;
       padding: 1em;
-      background-color: white;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      border-radius: 1em;
     }
   }
 
@@ -81,7 +79,18 @@
   }
 
   .form-check-input {
-    background-color: $button !important;
-    border-color: $button !important;
+    background-color: $font !important;
+    border-color: $font !important;
+  }
+
+  .inline-radio {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1em;
+
+    .category-item {
+      margin-right: 2em;
+    }
   }
 }

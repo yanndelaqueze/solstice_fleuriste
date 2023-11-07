@@ -101,6 +101,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :email, :delivery_address, :transport, :date, :delivery_instructions, :phone, :status, :delivery_first_name, :delivery_last_name )
+    params.require(:order).permit(:first_name, :last_name, :email, :delivery_address, :transport, :date, :delivery_instructions, :phone, :status, :delivery_first_name, :delivery_last_name, :time_slot )
   end
 end

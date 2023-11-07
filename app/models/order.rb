@@ -7,6 +7,8 @@ class Order < ApplicationRecord
   validates :status, inclusion: { in: STATUS }
   TRANSPORT = ["Click & Collect", "Livraison"]
   validates :transport, inclusion: { in: TRANSPORT }
+  SLOT = ["Matin", "Midi", "Soir"]
+  validates :time_slot, inclusion: { in: SLOT }
   validates :delivery_address, presence: true, if: :delivery_transport?
   before_save :set_default_date
   before_save :set_transport

@@ -75,7 +75,7 @@
           appearance: none;
           height: 15px;
           width: 15px;
-          background-color: $button;
+          background-color: $font;
           border-radius: 50%;
           border: none;
           transition: 0.2s ease-in-out;
@@ -84,7 +84,7 @@
         .range-input::-moz-range-thumb {
           height: 15px;
           width: 15px;
-          background-color: $button;
+          background-color: $font;
           border-radius: 50%;
           border: none;
           transition: 0.2s ease-in-out;

@@ -1,5 +1,5 @@
 .title {
-  color: $white;
+  color: $font;
   text-align: center;
   padding-top: 0.5em;
 }
@@ -9,12 +9,13 @@
   padding: 1em;
   margin-top: 1em;
   margin-bottom: 3em;
-  color: $background;
+  color: $font;
   border-radius: 0.375em;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   .title {
     text-align: center;
     padding-top: 0.5em;
-    color: $background;
+    color: $font;
   }
 }

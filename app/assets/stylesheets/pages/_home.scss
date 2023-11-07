@@ -6,7 +6,7 @@ body {
   padding: 0;
 
   .heading-home {
-    color: $white;
+    color: $font;
     padding-top: 40px;
     font-size: 4em;
   }
@@ -26,7 +26,7 @@ body {
     margin-top: 2em;
 
     .address-home {
-      color: $background;
+      color: $font;
       width: 30%;
       background-color: $color2;
       padding-left: 1em;
@@ -34,7 +34,7 @@ body {
     }
 
     .time {
-      color: $background;
+      color: $font;
       width: 70%;
       background-color: $color3;
       padding-left: 1em;
@@ -43,7 +43,7 @@ body {
 
     .link {
       text-decoration: none;
-      color: $background;
+      color: $font;
     }
   }
 }

@@ -34,7 +34,7 @@
 }
 
 .btn-all {
-  background-color: $background;
+  background-color: $font;
   padding: 1em;
   text-decoration: none !important;
   font-family: $body-font;
@@ -56,7 +56,7 @@
   z-index: 99;
   border: none;
   outline: none;
-  background-color: $button;
+  background-color: $font;
   color: white;
   cursor: pointer;
   border-radius: 20%;

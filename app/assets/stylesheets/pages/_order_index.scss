@@ -43,6 +43,6 @@
 
 /* Style for the label when the checkbox is checked */
 .hidden-checkbox:checked + label {
-  background-color: $background; /* Change to your desired color */
+  background-color: $font; /* Change to your desired color */
   color: #fff;
 }
