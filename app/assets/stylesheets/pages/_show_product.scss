@@ -5,19 +5,20 @@
     padding: 1em;
     width: 30%;
     height: 100%;
+    color: $font;
 
     .product-image {
       height: 50%;
     }
 
     .product-desc {
-      color: $white;
+      color: $font;
       margin-top: 1em;
     }
   }
 
   .product-customization {
-    color: $white;
+    color: $font;
     padding: 1em;
 
     .quantity {
@@ -26,7 +27,7 @@
     }
 
     .product-name {
-      color: $white;
+      color: $font;
     }
 
     .custom-form {
