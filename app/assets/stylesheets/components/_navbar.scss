@@ -6,6 +6,7 @@
   width: 100%;
   z-index: 1000;
   height: 6em;
+  color: $font;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,6 +19,10 @@
 
 .session-info {
   font-size: 10px;
+}
+
+.nav-item {
+  font-size: 1.2em;
 }
 
 .hello {

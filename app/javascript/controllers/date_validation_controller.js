@@ -11,10 +11,19 @@ export default class extends Controller {
     const minDate = new Date(today);
     minDate.setDate(today.getDate() + 2);
 
-    if (selectedDate < minDate) {
+    if (minDate.getDay() === 1) {
+      minDate.setDate(minDate.getDate() + 1); // Add one more day to skip Monday
+    }
+
+    if (selectedDate < minDate || selectedDate.getDay() === 1) {
       const modalMessage = this.modalMessageTarget;
-      modalMessage.textContent =
-        "Merci de choisir une date dans 2 jours ou plus";
+      if (selectedDate.getDay() === 1) {
+        modalMessage.textContent =
+          "Nous ne livrons pas le Lundi 🙁, merci de choisir un autre jour";
+      } else {
+        modalMessage.textContent =
+          "Merci de choisir une date dans 2 jours ou plus (Lundis exclus)";
+      }
 
       const modalElement = this.myModalTarget;
       modalElement.classList.add("show");
