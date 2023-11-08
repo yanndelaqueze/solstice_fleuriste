@@ -78,7 +78,8 @@
       <div class="recap-order-transport-info">
         <% if @order.transport == "Click & Collect" %>
           <h3 class="text-center">Click & Collect</h3>
-          <p class="text-center">Commande à récupérer en Boutique : </p>
+          <p class="text-center">Commande à récupérer en boutique</p>
+          <p class="text-center"> le <%= @order.date.strftime("%e/%m/%Y") %> (<%= @order.time_slot.downcase %>)</p>
           <div class="shop-info">
             <div class="address-home">
               <p><i class="fa-solid fa-home"></i> 32 Rue Joseph Suacot, Petite Île</p>
@@ -98,6 +99,8 @@
           </div>
         <% else %>
           <h3 class="text-center">Livraison</h3>
+          <p class="text-center">Commande livrée à domicile</p>
+          <p class="text-center"> le <%= @order.date.strftime("%e/%m/%Y") %> (<%= @order.time_slot %>)</p>
           <div class="address">
             <p>Adresse de livraison :</p>
             <p class="input-address"><%= @order.delivery_address %></p>

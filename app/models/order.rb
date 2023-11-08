@@ -35,7 +35,7 @@ class Order < ApplicationRecord
   def delivery_cost_cents
     if transport == "Click & Collect"
       0
-    else
+    elsif in_delivery_area?
       if postcode == "97429"
         0
       else
