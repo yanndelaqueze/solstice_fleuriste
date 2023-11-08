@@ -11,6 +11,11 @@
       height: 50%;
     }
 
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      margin: 0;
+    }
+
     .product-desc {
       color: $font;
       margin-top: 1em;
@@ -20,6 +25,8 @@
   .product-customization {
     color: $font;
     padding: 1em;
+    width: 50%;
+    margin-left: 3em;
 
     .quantity {
       display: flex;
