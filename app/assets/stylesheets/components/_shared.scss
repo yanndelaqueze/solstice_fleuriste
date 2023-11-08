@@ -33,6 +33,21 @@
   margin-right: 0.5em;
 }
 
+.btn-personnaliser-thin {
+  background-color: $color2;
+  padding: 0.5em;
+  text-decoration: none !important;
+  font-family: $body-font;
+  color: white !important;
+  border: none;
+
+  font-size: 1em;
+  line-height: 0.4;
+  border-radius: 0.375em;
+  text-align: center;
+  margin-right: 0.5em;
+}
+
 .btn-all {
   background-color: $font;
   padding: 1em;
