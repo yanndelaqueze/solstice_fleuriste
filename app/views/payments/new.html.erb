@@ -1,19 +1,38 @@
 <h1 class="title">Récapitulatif de votre Commande</h1>
 <div class="container">
   <div class="recap-order-header">
-    <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %> / <%= pluralize(@order.order_items.size, 'Article') %></h2>
     <div class="recap-order-buttons">
       <%= link_to "Modifier la commande", panier_path, class:"btn-personnaliser", data: { turbo: "false" } %>
       <button id="pay" class="btn-action ml-2">Payer la commande</button>
     </div>
   </div>
 
-  <div class="recap-order-details d-flex">
+  <div class="recap-order-details">
 
-    <div class="recap-order-items">
-      <% if @order.order_items.size == 0 %>
-        <h3 class="text-center">Votre panier est vide 🙁</h3>
-      <% end %>
+    <div class="recap-and-items">
+      <div class="recap">
+        <h3 class="text-center mb-4">Récapitulatif</h3>
+        <div class="recap-section">
+          <p><%= pluralize(@order.order_items.size, 'article') %> : </p>
+          <p><%= humanized_money_with_symbol(current_order.subtotal) %></p>
+        </div>
+        <div class="recap-section">
+          <% if @order.transport == "Click & Collect" %>
+            <p>Retrait en boutique : </p>
+            <p>Gratuit</p>
+          <% elsif @order.transport == "Livraison" && @order.delivery_cost == 0 %>
+            <p>Livraison : </p>
+            <p>Gratuit</p>
+          <% elsif @order.transport == "Livraison" && @order.delivery_cost != 0 %>
+            <p>Livraison : </p>
+            <p><%= humanized_money_with_symbol(current_order.delivery_cost) %></p>
+          <% end %>
+        </div>
+        <div class="recap-section total">
+          <p class="fs-5">Total : </p>
+          <p class="fs-5"><%= humanized_money_with_symbol(current_order.total) %></p>
+        </div>
+      </div>
       <div class="cart-items">
         <% @order.order_items.each do |order_item| %>
           <div class="cart-item">

@@ -5,12 +5,48 @@
 
 .recap-order-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   .recap-order-buttons {
     display: flex;
-    justify-content: space-between;
-    width: 30%;
+    justify-content: flex-end;
+  }
+}
+
+.recap-order-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recap-and-items {
+  width: 60%;
+  margin-top: 0;
+  border-radius: 1em;
+  margin-right: 1em;
+
+  .recap {
+    margin-top: 1em;
+    margin-left: 1em;
+    padding: 1em;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+
+    .recap-section {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total {
+      border-top: solid;
+      padding-top: 1em;
+      border-top-width: thin;
+    }
+  }
+
+  .cart-items {
+    margin-top: 1em;
+    margin-left: 1em;
   }
 }
 
@@ -45,12 +81,4 @@
   .time {
     font-size: 0.75em;
   }
-}
-
-.recap-order-items {
-  width: 60%;
-  padding-right: 1em;
-  background-color: white;
-  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 1em;
 }
