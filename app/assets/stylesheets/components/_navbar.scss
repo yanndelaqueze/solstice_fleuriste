@@ -1,12 +1,28 @@
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
-  background: white;
-  padding-bottom: 0em;
-  position: fixed;
+  background: $background;
+  padding: 0.5em;
+  // position: fixed;
   width: 100%;
   z-index: 1000;
-  height: 6em;
+  height: 8em;
   color: $font;
+}
+
+.navbar-block {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-block:first-child > div {
+  margin-right: auto;
+}
+
+.navbar-block:last-child > div {
+  margin-left: auto;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -14,7 +30,17 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  width: 6em;
+}
+
+.navbar-user-content {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu-content {
+  display: flex;
+  align-items: center;
 }
 
 .session-info {
@@ -23,12 +49,16 @@
 
 .nav-item {
   font-size: 1.2em;
+  color: $color1 !important;
 }
 
-.hello {
-  background-color: $color2;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 1em;
+.nav-item .active {
+  font-size: 1.4em;
+  color: $font !important;
+}
+
+.nav-link {
+  margin-right: 1em;
 }
 
 .cart {
