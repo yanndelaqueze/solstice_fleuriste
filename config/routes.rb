@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/zone_de_livraison', to: 'polygons#new'
   get '/commandes', to: 'orders#index'
   get '/catalogue', to: 'categories#index'
+  get '/contact', to: 'contacts#new'
+  get '/conditions_generales_de_vente', to: 'pages#cgv'
+  get '/mentions_legales', to: 'pages#mentions_legales'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :categories

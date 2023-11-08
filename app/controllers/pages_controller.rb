@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :delivery ]
+  skip_before_action :authenticate_user!, only: [ :home, :delivery, :cgv, :mentions_legales ]
 
   def home
   end
@@ -20,5 +20,11 @@ class PagesController < ApplicationController
 
   def my_orders
     @orders = current_user.orders
+  end
+
+  def cgv
+  end
+
+  def mentions_legales
   end
 end

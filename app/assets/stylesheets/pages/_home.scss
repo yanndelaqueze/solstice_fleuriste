@@ -27,30 +27,4 @@ body {
     font-size: 24px;
     color: white;
   }
-
-  .infos {
-    display: flex;
-    margin-top: 2em;
-
-    .address-home {
-      color: $white;
-      width: 30%;
-      background-color: $color2;
-      padding-left: 1em;
-      padding-top: 1em;
-    }
-
-    .time {
-      color: $font;
-      width: 70%;
-      background-color: $color3;
-      padding-left: 1em;
-      padding-top: 1em;
-    }
-
-    .link {
-      text-decoration: none;
-      color: $white;
-    }
-  }
 }
