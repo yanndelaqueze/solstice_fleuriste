@@ -1,50 +1,31 @@
 <h1 class="title">Commande #<%= @order.id  %></h1>
 <div class="container">
-  <div class="recap-order-header">
-    <h2>Commande #<%= @order.id  %> / Total : <%= humanized_money_with_symbol @order.total %></h2>
-    <div class="recap-order-status">
-    <p class="btn-personnaliser"><%= @order.status  %> </p>
-    </div>
-  </div>
+  <div class="recap-order-details">
 
-  <div class="recap-order-details d-flex">
-    <div class="recap-order-info">
-      <% if @order.transport == "Click & Collect" %>
-        <h3 class="text-center">Click & Collect</h3>
-        <p class="text-center">Commande à récupérer en Boutique : </p>
-        <div class="shop-info">
-          <div class="address-home">
-            <p><i class="fa-solid fa-home"></i> 32 Rue Joseph Suacot, Petite Île</p>
-            <p>97429, La Réunion</p>
-            <p><i class="fa-solid fa-phone"></i> +262 262 51 71 78</p>
-          </div>
-          <p class="text-center"><i class="fa-solid fa-clock fw-bold"></i>  Horaires d'ouverture :</p>
-          <div class="time">
-            <p>Lundi : Fermé</p>
-            <p>Mardi : 9h00 - 12h00 |  14h00 - 18h00</p>
-            <p>Mercredi : 9h00 - 12h00 |  14h00 - 18h00</p>
-            <p>Jeudi : 9h00 - 12h30 |  14h30 - 18h30</p>
-            <p>Vendredi : 9h00 - 12h30 |  14h30 - 18h30</p>
-            <p>Samedi : 9h00 - 12h30 |  14h30 - 18h30</p>
-            <p>Dimanche : 9h00 - 12h00</p>
-          </div>
+    <div class="recap-and-items">
+      <div class="recap">
+        <h3 class="text-center mb-4">Récapitulatif</h3>
+        <div class="recap-section">
+          <p><%= pluralize(@order.order_items.size, 'article') %> : </p>
+          <p><%= humanized_money_with_symbol(current_order.subtotal) %></p>
         </div>
-      <% else %>
-        <h3 class="text-center">Livraison</h3>
-        <div class="address">
-          <p>Adresse de livraison :</p>
-          <p class="input-address"><%= @order.delivery_address %></p>
+        <div class="recap-section">
+          <% if @order.transport == "Click & Collect" %>
+            <p>Retrait en boutique : </p>
+            <p>Gratuit</p>
+          <% elsif @order.transport == "Livraison" && @order.delivery_cost == 0 %>
+            <p>Livraison : </p>
+            <p>Gratuit</p>
+          <% elsif @order.transport == "Livraison" && @order.delivery_cost != 0 %>
+            <p>Livraison : </p>
+            <p><%= humanized_money_with_symbol(current_order.delivery_cost) %></p>
+          <% end %>
         </div>
-        <div class="recap-delivery-name">
-          <p>Prénom : <%= @order.delivery_first_name  %></p>
-          <p>Nom : <%= @order.delivery_last_name  %></p>
+        <div class="recap-section total">
+          <p class="fs-5">Total : </p>
+          <p class="fs-5"><%= humanized_money_with_symbol(current_order.total) %></p>
         </div>
-        <p>Téléphone : <%= @order.phone %></p>
-        <p>Instructions : <%= @order.delivery_instructions  %></p>
-      <% end %>
-    </div>
-    <div class="recap-order-items">
-      <h3 class="text-center"><%= pluralize(@order.order_items.size, 'Article') %></h3>
+      </div>
       <div class="cart-items">
         <% @order.order_items.each do |order_item| %>
           <div class="cart-item">
@@ -56,7 +37,8 @@
                 <ul class="cart-item-images">
                   <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
                 </ul>
-                <p class="mt-3">Message : "<%= order_item.message %>"</p>
+                <p class="mt-3 mb-1 pl-1">Message :</p>
+                <p class="form-control mt-0 font-italic">"<%= order_item.message %>"</p>
               </div>
               <% if order_item.product.product_type == "Custom" %>
                 <div class="cart-item-spec2">
@@ -76,5 +58,55 @@
         <% end %>
       </div>
     </div>
+
+    <div class="recap-order-info">
+      <div class="recap-order-user-info">
+        <h3 class="text-center mb-4">Informations personnelles</h3>
+        <p>Prénom : <%= @order.first_name %></p>
+        <p>Nom : <%= @order.last_name %></p>
+        <p>Email : <%= @order.email %></p>
+        <p>Téléphone : <%= @order.phone %></p>
+      </div>
+
+      <div class="recap-order-transport-info">
+        <% if @order.transport == "Click & Collect" %>
+          <h3 class="text-center">Click & Collect</h3>
+          <p class="text-center">Commande à récupérer en boutique</p>
+          <p class="text-center"> le <%= @order.date.strftime("%e/%m/%Y") %> (<%= @order.time_slot.downcase %>)</p>
+          <div class="shop-info">
+            <div class="address-home">
+              <p><i class="fa-solid fa-home"></i> 32 Rue Joseph Suacot, Petite Île</p>
+              <p>97429, La Réunion</p>
+              <p><i class="fa-solid fa-phone"></i> +262 262 51 71 78</p>
+            </div>
+            <p class="text-center"><i class="fa-solid fa-clock fw-bold"></i>  Horaires d'ouverture :</p>
+            <div class="time">
+              <p>Lundi : Fermé</p>
+              <p>Mardi : 9h00 - 12h00 |  14h00 - 18h00</p>
+              <p>Mercredi : 9h00 - 12h00 |  14h00 - 18h00</p>
+              <p>Jeudi : 9h00 - 12h30 |  14h30 - 18h30</p>
+              <p>Vendredi : 9h00 - 12h30 |  14h30 - 18h30</p>
+              <p>Samedi : 9h00 - 12h30 |  14h30 - 18h30</p>
+              <p>Dimanche : 9h00 - 12h00</p>
+            </div>
+          </div>
+        <% else %>
+          <h3 class="text-center">Livraison</h3>
+          <p class="text-center">Commande livrée à domicile</p>
+          <p class="text-center"> le <%= @order.date.strftime("%e/%m/%Y") %> (<%= @order.time_slot %>)</p>
+          <div class="address">
+            <p>Adresse de livraison :</p>
+            <p class="input-address"><%= @order.delivery_address %></p>
+          </div>
+          <div class="recap-delivery-name">
+            <p>Prénom : <%= @order.delivery_first_name  %></p>
+            <p>Nom : <%= @order.delivery_last_name  %></p>
+          </div>
+          <p>Téléphone : <%= @order.phone %></p>
+          <p>Instructions : <%= @order.delivery_instructions  %></p>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>

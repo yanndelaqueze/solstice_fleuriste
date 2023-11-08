@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :update, :validate]
+  skip_before_action :authenticate_user!, only: [ :update, :validate, :show]
 
   def index
     @status_options = ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.find(params[:id])
+    @order = Order.find(params[:id])
     @order_items = @order.order_items
   end
 
@@ -91,8 +91,8 @@ class OrdersController < ApplicationController
         }
       ],
       mode: 'payment',
-      success_url: order_url(@order),
-      cancel_url: order_url(@order)
+      success_url: "http://www.solstice-fleuriste.fr/confirmation",
+      cancel_url: "http://www.solstice-fleuriste.fr/panier"
     )
     @order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(@order)

@@ -4,7 +4,7 @@
         <div class="navbar-menu-content me-auto">
 
           <% if current_user.present? && current_user.admin %>
-            <div>
+            <div class="nav-item <%= 'active' if controller_name == 'pages' && action_name == 'admin' %>">
               <a class="nav-link admin-btn" href="<%= admin_path %>"><i class="fa-solid fa-gear"></i> Admin</a>
             </div>
           <% end %>

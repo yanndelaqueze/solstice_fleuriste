@@ -1,0 +1,16 @@
+<h1 class="title">Merci pour votre commande !</h1>
+<div class="container">
+  <div class="confirmation-message">
+    <p>Un email de confirmation a été envoyé à l'adresse que vous avez indiquée lors de votre commande.</p>
+    <p class="mb-5">Si vous avez un compte chez nous, vous pouvez retrouver toutes vos commandes en suivant le lien ci-dessous :</p>
+    <div class="link-mes-commandes text-center mb-5">
+      <%= link_to 'Mes Commandes', mes_commandes_path, class: 'btn-all text-center' %>
+    </div>
+    <p class="mb-5">Et si vous n'avez pas encore de compte, il n'est pas trop tard pour en créer un et y retrouver vos commandes passées</p>
+    <div class="link-creer-compte text-center mb-5">
+      <%= link_to 'Créer un compte', new_user_registration_path, class: 'btn-all' %>
+    </div>
+    <p>A bientôt chez Solstice !</p>
+
+  </div>
+</div>
