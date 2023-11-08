@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'contacts#new'
   get '/conditions_generales_de_vente', to: 'pages#cgv'
   get '/mentions_legales', to: 'pages#mentions_legales'
+  get 'boutique', to: 'pages#boutique'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :categories
