@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :update, :validate, :show]
+  skip_before_action :authenticate_user!, only: [ :update, :validate]
 
   def index
     @status_options = ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
@@ -28,7 +28,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if user_signed_in? && current_user.admin?
+      @order = Order.find(params[:id])
+    else
+      @order = current_user.orders.find(params[:id])
+    end
     @order_items = @order.order_items
   end
 
