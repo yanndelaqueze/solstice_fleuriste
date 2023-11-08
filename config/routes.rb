@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  resources :contacts
+
   resources :products do
     resources :order_items, only: %i[create]
   end

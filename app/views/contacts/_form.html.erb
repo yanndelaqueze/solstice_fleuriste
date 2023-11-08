@@ -1,0 +1,16 @@
+<%= simple_form_for @contact do |f| %>
+  <%= f.input :subject, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Contact::SUBJECTS, label: "Vous nous contactez à propos de :", required: true %>
+  <%= f.input :first_name, label: "Prénom :", class: 'form-control', required: true %>
+  <%= f.input :last_name, label: "Nom :", class: 'form-control', required: true %>
+  <%= f.input :email, label: "Email :", class: 'form-control', required: true %>
+  <%= f.input :phone, label: "Téléphone :", class: 'form-control', required: true %>
+
+  <%= f.input :address,
+    input_html: {data: {address_autocomplete_target: "address"}},
+    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+    label: "Votre adresse :",
+    as: :hidden %>
+
+  <%= f.input :message, as: :text, label: "Votre message :", class: 'form-control', required: true %>
+  <%= f.submit 'Envoyer', class: 'btn-action' %>
+<% end %>
