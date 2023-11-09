@@ -11,14 +11,18 @@ class Order < ApplicationRecord
   validates :time_slot, inclusion: { in: SLOT }
   validates :delivery_address, presence: true, if: :delivery_transport?
   before_save :set_default_date
-  before_save :set_transport
+  after_save :set_transport
   before_save :postcode
-  before_save :subtotal_cents
-  before_save :delivery_cost_cents
-  before_save :total_cents
+  after_save :subtotal_cents
+  after_save :delivery_cost_cents
+  after_save :total_cents
   monetize :subtotal_cents
   monetize :delivery_cost_cents
   monetize :total_cents
+
+  def delivery_transport?
+    transport == "Livraison"
+  end
 
   def postcode
     if self.delivery_address.present?
@@ -27,6 +31,7 @@ class Order < ApplicationRecord
       return ""
     end
   end
+
 
   def subtotal_cents
     order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
@@ -48,12 +53,10 @@ class Order < ApplicationRecord
     self.subtotal_cents + self.delivery_cost_cents
   end
 
-  def delivery_transport?
-    transport == "Livraison"
-  end
-
   def in_delivery_area?
     if self.delivery_address.present?
+      lat = Geocoder.search(self.delivery_address).first.data["lat"].to_f
+      lon = Geocoder.search(self.delivery_address).first.data["lon"].to_f
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length
@@ -63,8 +66,8 @@ class Order < ApplicationRecord
       for i in 0...n
         xi, yi = polygon_coordinates[i]
         xj, yj = polygon_coordinates[j]
-        intersect = ((yi > latitude) != (yj > latitude)) &&
-                    (longitude < ((xj - xi) * (latitude - yi) / (yj - yi)) + xi)
+        intersect = ((yi > lat) != (yj > lat)) &&
+                    (lon < ((xj - xi) * (lat - yi) / (yj - yi)) + xi)
         if intersect
           inside = !inside
         end
