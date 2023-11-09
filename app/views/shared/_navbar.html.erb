@@ -2,7 +2,6 @@
 
     <div class="navbar-menu navbar-block">
         <div class="navbar-menu-content me-auto">
-
           <% if current_user.present? && current_user.admin %>
             <div class="nav-item <%= 'active' if controller_name == 'pages' && action_name == 'admin' %>">
               <a class="nav-link admin-btn" href="<%= admin_path %>"><i class="fa-solid fa-gear"></i> Admin</a>
@@ -16,8 +15,6 @@
           <div class="nav-item <%= 'active' if controller_name == 'pages' && action_name == 'delivery' %>">
             <a class="nav-link" href="<%= livraison_path %>"><i class="fa-solid fa-truck"></i> Livraison</a>
           </div>
-
-
         </div>
     </div>
 
@@ -29,10 +26,12 @@
 
     <div class="navbar-user navbar-block">
       <div class="navbar-user-content">
+
         <div class="cart-navbar" data-controller="cart-display">
           <div class="nav-item <%= 'active' if controller_name == 'cart' && action_name == 'show' %>">
             <a class="nav-link" data-action="mouseenter->cart-display#showCart mouseleave->cart-display#hideCart" href="<%= panier_path %>"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
           </div>
+
           <!-- Pop Up Cart Content-->
           <div class="cart-content" style="display: none" data-cart-display-target="cartContent">
             <% if current_order.order_items.size === 0  %>
@@ -57,8 +56,6 @@
                     </div>
                   </div>
                 <% end %>
-
-
               <% end %>
               <div class="order-total">
                 <p>Total : <%= humanized_money_with_symbol(current_order.total) %></p>

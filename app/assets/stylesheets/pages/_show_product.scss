@@ -34,6 +34,11 @@
     width: 50%;
     margin-left: 3em;
 
+    .link {
+      text-decoration: none;
+      color: $font;
+    }
+
     .quantity {
       display: flex;
       align-items: center;

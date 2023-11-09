@@ -97,13 +97,12 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
 config.action_mailer.delivery_method = :smtp
-host = 'www.solstice-fleuriste.fr'
-config.action_mailer.default_url_options = { host: host }
+config.action_mailer.default_url_options = { host: 'solsticefleurs.com' }
 config.action_mailer.smtp_settings = {
- address:               'smtp.gmail.com',
+ address:               'ssl0.ovh.net',
  port:                  587,
- user_name:             ENV["ADMIN_EMAIL"],
- password:              ENV["GMAIL_PASSWORD"],
+ user_name:             ENV["OVH_EMAIL"],
+ password:              ENV["OVH_PASSWORD"],
  authentication:        'plain',
  enable_starttls_auto:  true
 }

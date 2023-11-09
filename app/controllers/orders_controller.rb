@@ -45,7 +45,6 @@ class OrdersController < ApplicationController
     else
       @order = current_order
     end
-
     @order_items = @order.order_items
 
     if @order.update(order_params)
