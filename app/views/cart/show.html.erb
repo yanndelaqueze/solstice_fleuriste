@@ -66,7 +66,7 @@
                       <p class="input-address"><%= @order.delivery_address %></p>
                   </div>
                   <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
-                    <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁 <br>Veuillez entrer une autre adresse pour bénéficier de la livraison 🚛</p>
+                    <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁</p>
                   <% end %>
                   <div class="form-group">
                     <%= f.input :delivery_address,
@@ -97,10 +97,6 @@
                   <%= f.input :delivery_instructions, as: :text, label: "Instructions de livraison :", hint: "Code immeuble, Numéro à contacter, etc..." %>
                 <% end %>
               </div>
-
-              <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
-                <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁</p>
-              <% end %>
 
               <p>Date de livraison/collecte souhaitée :</p>
               <div class="date-and-time" data-controller="date-validation">

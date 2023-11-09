@@ -46,6 +46,8 @@ class Order < ApplicationRecord
       else
         1000
       end
+    else
+      0
     end
   end
 
