@@ -3,6 +3,11 @@ body {
   margin: 0;
   padding: 0;
 
+  .filter {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
   .category-header {
     color: $font;
     margin-top: 2em;
@@ -56,12 +61,15 @@ body {
     display: inline-block;
     border-radius: 0.375em;
     padding: 0.1rem 0.5rem;
-    background-color: $button;
-    color: white;
+    background-color: transparent;
+    color: $font;
     margin-right: 0.6rem;
     margin-bottom: 0.4rem;
     width: 60%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: solid;
+    border-width: thin;
+    border-color: $font;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   .checkbox-hidden:checked + .checkbox-label {
