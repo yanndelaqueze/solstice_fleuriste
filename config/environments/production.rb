@@ -100,6 +100,7 @@ config.action_mailer.delivery_method = :smtp
 config.action_mailer.default_url_options = { host: 'solsticefleurs.com' }
 config.action_mailer.smtp_settings = {
  address:               'ssl0.ovh.net',
+ domain:                'solsticefleurs.com',
  port:                  587,
  user_name:             ENV["OVH_EMAIL"],
  password:              ENV["OVH_PASSWORD"],
