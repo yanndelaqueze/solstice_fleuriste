@@ -13,9 +13,7 @@ body {
   padding: 0;
 
   .heading-home {
-    color: $font;
-    padding-top: 40px;
-    font-size: 4em;
+    font-size: 5em;
   }
 
   .btn-cta-home {
@@ -26,5 +24,26 @@ body {
     font-family: $body-font;
     font-size: 24px;
     color: white;
+  }
+
+  .home-menu {
+    position: relative;
+    width: 60%;
+
+    .home-menu-element {
+      position: absolute;
+    }
+
+    .boutique {
+    }
+
+    .online-shop {
+    }
+
+    .mariage {
+    }
+
+    .deuil {
+    }
   }
 }

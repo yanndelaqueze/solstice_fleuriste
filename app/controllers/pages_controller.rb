@@ -33,4 +33,12 @@ class PagesController < ApplicationController
 
   def confirmation
   end
+
+  def mariage
+    @products = Product.joins(:category).where(categories: { name: 'Mariage' })
+  end
+
+  def deuil
+    @products = Product.joins(:category).where(categories: { name: 'Deuil' })
+  end
 end
