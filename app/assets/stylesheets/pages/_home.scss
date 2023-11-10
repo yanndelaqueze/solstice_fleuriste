@@ -26,15 +26,22 @@ body {
     color: white;
   }
 
+  .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3em;
+  }
+
   .home-menu {
     width: 60%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     .home-menu-element {
       // position: absolute;
-      height: 10em;
-      width: 10em;
+      height: 15em;
+      width: 15em;
       background-size: cover;
       background-position: center;
     }
@@ -46,17 +53,19 @@ body {
     }
 
     .boutique {
+      transform: translate(1em, 0);
       // left: 0%;
       // top: 0%;
     }
 
     .mariage {
-      transform: translate(2em, 2em);
+      transform: translate(0, 2em);
       // left: 20%;
       // top: 0%;
     }
 
     .deuil {
+      transform: translate(-1em, 0);
       // left: 30%;
       // top: 0%;
     }
