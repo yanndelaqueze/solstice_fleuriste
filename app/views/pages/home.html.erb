@@ -6,13 +6,26 @@
   <%= link_to "Découvrir mes Créations", creations_path, class:"btn-cta-home text-center" %>
 </div>
 
-<div class="home-menu">
-  <div class="home-menu-element">
-  </div>
-  <div class="home-menu-element">
-  </div>
-  <div class="home-menu-element">
-  </div>
-  <div class="home-menu-element">
-  </div>
+<div class="home-menu text-center">
+
+  <%= link_to creations_path do  %>
+    <div class="home-menu-element online-shop" style="background-image: url(<%= asset_path "online-shop-link.jpg" %>)">
+    </div>
+  <% end %>
+
+  <%= link_to boutique_path do %>
+    <div class="home-menu-element boutique" style="background-image: url(<%= asset_path "boutique-link.jpg" %>)">
+    </div>
+  <% end %>
+
+  <%= link_to mariage_path do  %>
+    <div class="home-menu-element mariage" style="background-image: url(<%= asset_path "mariage-link.jpg" %>)">
+    </div>
+  <% end %>
+
+  <%= link_to deuil_path do  %>
+    <div class="home-menu-element deuil" style="background-image: url(<%= asset_path "deuil-link.jpg" %>)">
+    </div>
+  <% end %>
+
 </div>
