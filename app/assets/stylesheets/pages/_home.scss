@@ -27,7 +27,6 @@ body {
   }
 
   .home-menu {
-    position: relative;
     width: 60%;
     display: flex;
     justify-content: space-between;
@@ -40,17 +39,19 @@ body {
       background-position: center;
     }
 
+    .online-shop {
+      transform: translate(2em, 2em);
+      // left: 10%;
+      // top: 0%;
+    }
+
     .boutique {
       // left: 0%;
       // top: 0%;
     }
 
-    .online-shop {
-      // left: 10%;
-      // top: 0%;
-    }
-
     .mariage {
+      transform: translate(2em, 2em);
       // left: 20%;
       // top: 0%;
     }
