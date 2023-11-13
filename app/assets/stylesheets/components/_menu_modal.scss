@@ -3,12 +3,18 @@
 }
 
 .menu-column {
-  margin-left: 1em;
   .menu-modal-link {
     font-size: 1.2em;
     text-decoration: none;
     color: $font;
   }
+}
+
+.column-1 {
+  margin-left: 1em;
+}
+.column-2 {
+  margin-left: 2em;
 }
 
 .menu-modal-footer {
