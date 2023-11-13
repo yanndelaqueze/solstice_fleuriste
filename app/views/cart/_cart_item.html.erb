@@ -8,7 +8,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Modifier l'article : <%= order_item.product.name%></h4@>
+                <h4 class="modal-title" id="myModalLabel">Modifier l'article : <%= order_item.product.name%></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -37,7 +37,6 @@
     <% if order_item.product.product_type == "Custom" %>
     <div class="cart-item-spec2">
       <p>Occasion : <%= order_item.occasion %></p>
-      <p>Couleur dominante : <%= order_item.color %></p>
       <p>Budget : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
     </div>
     <% elsif order_item.product.product_type == "Normal"  %>

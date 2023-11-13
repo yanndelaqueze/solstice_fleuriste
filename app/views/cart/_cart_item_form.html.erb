@@ -13,9 +13,6 @@
     <p>Occasion :</p>
     <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false, placeholder: order_item.occasion %>
 
-    <p>Couleur dominante :</p>
-    <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false, placeholder: order_item.color %>
-
     <%= f.submit 'Valider', class: "btn-action" %>
   <% end %>
 <% elsif order_item.product.product_type == "Normal" %>

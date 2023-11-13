@@ -26,6 +26,5 @@ Articles : <%= @order.order_items.count  %>
   Produit : <%= order_item.product.name %>
   Budget : <%= humanized_money_with_symbol(order_item.subtotal) %>
   Occasion : <%= order_item.occasion %>
-  Couleur : <%= order_item.color %>
   Message : "<%= order_item.message %>"
 <% end  %>

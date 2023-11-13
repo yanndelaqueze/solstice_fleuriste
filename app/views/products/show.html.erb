@@ -59,10 +59,7 @@
             <p>2- Précisez l'occasion célébrée :</p>
             <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
 
-            <p>3- Choisissez une couleur dominante :</p>
-            <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false %>
-
-            <p>4- Rédigez le message que vous souhaitez y joindre :</p>
+            <p>3- Rédigez le message que vous souhaitez y joindre :</p>
             <%= f.input :message, as: :text, placeholder: "", label: false %>
 
             <%= f.submit 'Valider', class: "btn-action" %>
