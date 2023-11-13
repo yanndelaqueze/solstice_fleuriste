@@ -1,82 +1,90 @@
-<div class="product-show">
-  <div class="product-info">
-    <div class="product-image">
-      <% if @product.photos.size == 0%>
-        <%= image_tag "default.jpg" %>
-      <% elsif @product.photos.size == 1 %>
-        <img class="d-block w-100" src="<%= cl_image_path @product.photos.first.key %>" alt="photo" >
-      <% elsif @product.photos.size > 1 %>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <% @product.photos.size.times do |i| %>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= "active" if i.zero? %>"></li>
-                <% end %>
-            </ol>
-            <div class="carousel-inner">
-                <% @product.photos.each_with_index do |photo, index| %>
-                    <div class="carousel-item <%= "active" if index.zero? %> " data-bs-interval="false">
-                        <img class="d-block w-100" src="<%= cl_image_path photo.key %>" alt="<%= index.ordinalize %> image">
-                    </div>
-                <% end %>
+<div class="container">
+  <div class="product-show">
+    <div class="product-info">
+      <div class="product-image">
+        <% if @product.photos.size == 0%>
+          <%= image_tag "default.jpg" %>
+        <% elsif @product.photos.size == 1 %>
+          <img class="d-block w-100" src="<%= cl_image_path @product.photos.first.key %>" alt="photo" >
+        <% elsif @product.photos.size > 1 %>
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <ol class="carousel-indicators">
+                  <% @product.photos.size.times do |i| %>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= "active" if i.zero? %>"></li>
+                  <% end %>
+              </ol>
+              <div class="carousel-inner">
+                  <% @product.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= "active" if index.zero? %> " data-bs-interval="false">
+                          <img class="d-block w-100" src="<%= cl_image_path photo.key %>" alt="<%= index.ordinalize %> image">
+                      </div>
+                  <% end %>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-          </div>
-      <% end %>
+        <% end %>
+        <div class="disclaimer">
+        <p class="font-italic">Photos non contractuelles (1)</p>
+        </div>
+      </div>
+      <div class="product-desc">
+        <p><%= @product.description  %></p>
+      </div>
     </div>
-    <div class="product-desc">
-      <p><%= @product.description  %></p>
-    </div>
-  </div>
-  <div class="product-customization">
-    <h1 class="product-name"><%= @product.name %></h1>
-    <p><i class="fa-solid fa-truck"></i> Livraison Petite Île et environs <a class="link" href="<%= livraison_path %>"> (voir la zone de livraison)</a></p>
-    <p><i class="fa-solid fa-store"></i> Click & Collect gratuit</p>
-    <p>------------------------</p>
+    <div class="product-customization">
+      <h1 class="product-name"><%= @product.name %></h1>
+      <p><i class="fa-solid fa-truck"></i> Livraison Petite Île et environs <a class="link" href="<%= livraison_path %>"> (voir la zone de livraison)</a></p>
+      <p><i class="fa-solid fa-store"></i> Click & Collect gratuit</p>
+      <p>------------------------</p>
 
-    <% if @product.product_type == "Custom" %>
-      <p>Afin que Solstice réalise le bouquet de vos rêves :</p>
-      <div class="custom-form">
+      <% if @product.product_type == "Custom" %>
+        <p>Afin que Solstice réalise le bouquet de vos rêves :</p>
+        <div class="custom-form">
+          <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
+
+            <p>1- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
+            <div class="price-input-container", data-controller="price-input-range">
+              <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(@product.min_price_cents/100, precision: 2) %></span>
+              <%= f.input :price, as: :range, label: false, input_html: { min: @product.min_price_cents/100, max: 150, step: 1, value: @product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+            </div>
+
+            <p>2- Précisez l'occasion célébrée :</p>
+            <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+
+            <p>3- Choisissez une couleur dominante :</p>
+            <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false %>
+
+            <p>4- Rédigez le message que vous souhaitez y joindre :</p>
+            <%= f.input :message, as: :text, placeholder: "", label: false %>
+
+            <%= f.submit 'Valider', class: "btn-action" %>
+          <% end %>
+
+        </div>
+      <% else %>
+        <p>Prix unitaire : <%= humanized_money_with_symbol(@product.min_price) %></p>
         <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
-
-          <p>1- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
-          <div class="price-input-container", data-controller="price-input-range">
-            <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(@product.min_price_cents/100, precision: 2) %></span>
-            <%= f.input :price, as: :range, label: false, input_html: { min: @product.min_price_cents/100, max: 150, step: 1, value: @product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
+          <div class="quantity">
+            <p class="mr-3">Quantité :</p>
+            <%= f.input :quantity, as: :numeric, placeholder: "", label: false %>
           </div>
-
-          <p>2- Précisez l'occasion célébrée :</p>
-          <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
-
-          <p>3- Choisissez une couleur dominante :</p>
-          <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false %>
-
-          <p>4- Rédigez le message que vous souhaitez y joindre :</p>
+          <p>Rédigez le message que vous souhaitez y joindre :</p>
           <%= f.input :message, as: :text, placeholder: "", label: false %>
-
           <%= f.submit 'Valider', class: "btn-action" %>
         <% end %>
-
-      </div>
-    <% else %>
-      <p>Prix unitaire : <%= humanized_money_with_symbol(@product.min_price) %></p>
-      <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
-        <div class="quantity">
-          <p class="mr-3">Quantité :</p>
-          <%= f.input :quantity, as: :numeric, placeholder: "", label: false %>
-        </div>
-        <p>Rédigez le message que vous souhaitez y joindre :</p>
-        <%= f.input :message, as: :text, placeholder: "", label: false %>
-        <%= f.submit 'Valider', class: "btn-action" %>
       <% end %>
-    <% end %>
 
+    </div>
+  </div>
+  <div class="disclaimer mt-5 mb-0">
+      <p class="font-italic">(1) Les compositions sont faites en fonction des saisons, de l'arrivage, avec des fleurs de qualité et de première fraîcheur ressemblant au plus près au visuel proposé</p>
   </div>
 </div>
