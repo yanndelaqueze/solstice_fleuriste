@@ -1,93 +1,95 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-    <div class="navbar-menu navbar-block">
-        <div class="navbar-menu-content me-auto">
-          <% if current_user.present? && current_user.admin %>
-            <div class="nav-item <%= 'active' if controller_name == 'pages' && action_name == 'admin' %>">
-              <a class="nav-link admin-btn" href="<%= admin_path %>"><i class="fa-solid fa-gear"></i> Admin</a>
+  <div class="navbar-menu navbar-block">
+    <div class="navbar-menu-content">
+      <!-- Modal MENU -->
+      <div class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-bars"></i> Menu</a>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Menu</h1>
             </div>
-          <% end %>
-
-          <div class="nav-item <%= 'active' if controller_name == 'shop' && action_name == 'index' %>">
-            <a class="nav-link" href="<%= creations_path %>"><i class="fa-solid fa-store"></i> Boutique</a>
-          </div>
-
-          <div class="nav-item <%= 'active' if controller_name == 'pages' && action_name == 'delivery' %>">
-            <a class="nav-link" href="<%= livraison_path %>"><i class="fa-solid fa-truck"></i> Livraison</a>
-          </div>
-        </div>
-    </div>
-
-    <div class="navbar-logo navbar-block">
-      <a class="navbar-brand" href="<%=root_path%>">
-        <%= image_tag "solstice_logo_new.png" %>
-      </a>
-    </div>
-
-    <div class="navbar-user navbar-block">
-      <div class="navbar-user-content">
-
-        <div class="cart-navbar" data-controller="cart-display">
-          <div class="nav-item <%= 'active' if controller_name == 'cart' && action_name == 'show' %>">
-            <a class="nav-link" data-action="mouseenter->cart-display#showCart mouseleave->cart-display#hideCart" href="<%= panier_path %>"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
-          </div>
-
-          <!-- Pop Up Cart Content-->
-          <div class="cart-content" style="display: none" data-cart-display-target="cartContent">
-            <% if current_order.order_items.size === 0  %>
-              <p>Votre panier est vide 🙁</p>
-            <% else %>
-              <% current_order.order_items.each do |order_item| %>
-
-                <% if order_item.product.product_type == "Custom" %>
-                  <div class="cart-content-item">
-                    <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
-                    <div class="cart-content-item-info">
-                      <p class="fw-bolder"><%= order_item.product.name  %></p>
-                      <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>
-                    </div>
-                  </div>
-                <% elsif order_item.product.product_type == "Normal" %>
-                  <div class="cart-content-item">
-                    <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
-                    <div class="cart-content-item-info">
-                      <p class="fw-bolder"><%= order_item.product.name  %></p>
-                      <p><%= humanized_money_with_symbol(order_item.subtotal)%> (<%= order_item.quantity %> x <%= humanized_money_with_symbol(order_item.product.min_price)  %>)</p>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-              <div class="order-total">
-                <p>Total : <%= humanized_money_with_symbol(current_order.total) %></p>
-              </div>
-            <% end %>
-          </div>
-
-        </div>
-        <div class="nav-item dropdown">
-        <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>
-        </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <% if user_signed_in? %>
-              <p class="font-weight-bold pb-1">Bonjour <%= current_user.first_name %> !</p>
-              <a class="dropdown-item" href="<%= compte_path %>">Mon compte</a>
-            <% end %>
-            <a class="dropdown-item" href="<%= user_session_path %>">Me connecter</a>
-            <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>
-            <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Me déconnecter</a>
+            <div class="modal-body">
+              <%= render 'shared/menu_modal'%>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+
+
+  <div class="navbar-logo navbar-block">
+    <a class="navbar-brand" href="<%=root_path%>">
+      <%= image_tag "solstice_logo_new.png" %>
+    </a>
+  </div>
+
+  <div class="navbar-user navbar-block">
+    <div class="navbar-user-content">
+
+      <div class="cart-navbar" data-controller="cart-display">
+        <div class="nav-item <%= 'active' if controller_name == 'cart' && action_name == 'show' %>">
+          <a class="nav-link" data-action="mouseenter->cart-display#showCart mouseleave->cart-display#hideCart" href="<%= panier_path %>"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
+        </div>
+
+        <!-- Pop Up Cart Content-->
+        <div class="cart-content" style="display: none" data-cart-display-target="cartContent">
+          <% if current_order.order_items.size === 0  %>
+            <p>Votre panier est vide 🙁</p>
+          <% else %>
+            <% current_order.order_items.each do |order_item| %>
+
+              <% if order_item.product.product_type == "Custom" %>
+                <div class="cart-content-item">
+                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                  <div class="cart-content-item-info">
+                    <p class="fw-bolder"><%= order_item.product.name  %></p>
+                    <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+                  </div>
+                </div>
+              <% elsif order_item.product.product_type == "Normal" %>
+                <div class="cart-content-item">
+                  <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                  <div class="cart-content-item-info">
+                    <p class="fw-bolder"><%= order_item.product.name  %></p>
+                    <p><%= humanized_money_with_symbol(order_item.subtotal)%> (<%= order_item.quantity %> x <%= humanized_money_with_symbol(order_item.product.min_price)  %>)</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="order-total">
+              <p>Total : <%= humanized_money_with_symbol(current_order.total) %></p>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="nav-item dropdown">
+      <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>
+      </a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <% if user_signed_in? %>
+            <p class="font-weight-bold pb-1">Bonjour <%= current_user.first_name %> !</p>
+            <a class="dropdown-item" href="<%= compte_path %>">Mon compte</a>
+          <% end %>
+          <a class="dropdown-item" href="<%= user_session_path %>">Me connecter</a>
+          <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>
+          <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Me déconnecter</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- Check Session / Current Order
     <div class="session-info" data-controller="test">
         <p><%= current_order.id %> </p>
         <p>Session ID :<%= session.id %></p>
     </div>-->
-
-
-
-
 </div>

@@ -2,6 +2,7 @@
 <div class="container">
 
   <div class="cart-header">
+    <%= link_to "Continuer mes achats", creations_path, class: "btn-action"%>
     <% if ShopStatus.last.active?  %>
       <%= link_to "Valider & Payer", validate_order_path(@order), class: "btn-action", data: { turbo_method: :patch } %>
     <% end %>
