@@ -47,7 +47,6 @@
       <% end %>
       <p>Occasion : <%= order_item.occasion %></p>
 
-
     </div>
     <% elsif order_item.product.product_type == "Normal"  %>
       <div class="cart-item-spec2">
@@ -61,6 +60,7 @@
           <p>Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(order_item.options) %></p>
           <p class="total">Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
         <% end %>
+        <p>Occasion : <%= order_item.occasion %></p>
       </div>
     <% end %>
 
