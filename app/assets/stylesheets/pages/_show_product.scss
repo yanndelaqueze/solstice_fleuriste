@@ -3,7 +3,7 @@
 
   .product-info {
     padding: 1em;
-    width: 30%;
+    width: 40%;
     height: 100%;
     color: $font;
 
@@ -35,7 +35,7 @@
   .product-customization {
     color: $font;
     padding: 1em;
-    width: 50%;
+    width: 60%;
     margin-left: 3em;
 
     .link {
@@ -54,15 +54,15 @@
 
     .custom-form {
       .price-form {
-        color: black;
+        color: $font;
       }
 
       .ocassion-form {
-        color: black;
+        color: $font;
       }
 
       .message-form {
-        color: black;
+        color: $font;
       }
 
       .price-input-container {
@@ -125,6 +125,46 @@
 
         .value {
           margin-bottom: 1em;
+        }
+      }
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+
+        fieldset {
+          margin-bottom: 0 !important;
+        }
+
+        img {
+          height: 3em;
+          border-radius: 0.375em;
+          margin-right: 1em;
+        }
+
+        .form-check {
+          padding-left: 0;
+        }
+
+        .checkbox-hidden {
+          position: absolute;
+          transform: scale(0);
+        }
+        .checkbox-label {
+          cursor: pointer;
+          display: inline-block;
+          border-radius: 0.375em;
+          padding: 0.1rem 0.5rem;
+          background-color: transparent;
+          color: $font;
+          border: solid;
+          border-width: thin;
+          border-color: $font;
+          // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .checkbox-hidden:checked + .checkbox-label {
+          background-color: $font;
+          color: #fff;
         }
       }
     }

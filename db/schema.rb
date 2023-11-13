@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_13_104509) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_13_130323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_104509) do
     t.integer "price_cents", default: 0, null: false
     t.integer "quantity", default: 1
     t.integer "subtotal_cents", default: 0, null: false
+    t.boolean "water_bubble", default: false
+    t.boolean "ribbon", default: false
+    t.integer "options_cents", default: 0, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end

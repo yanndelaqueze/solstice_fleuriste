@@ -62,7 +62,25 @@
             <p>3- Rédigez le message que vous souhaitez y joindre :</p>
             <%= f.input :message, as: :text, placeholder: "", label: false %>
 
-            <%= f.submit 'Valider', class: "btn-action" %>
+
+            <% if @product.category.name === "Bouquets" %>
+              <p>4- Ajoutez des options :</p>
+              <div class="checkbox-container">
+                <%= image_tag "water-bubble.png"  %>
+                <%= f.input :water_bubble, as: :boolean, label: "Bulle d'eau (4€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
+              </div>
+            <% end %>
+
+            <% if @product.category.name === "Deuil" %>
+              <p>4- Ajoutez des options :</p>
+              <div class="checkbox-container">
+                <%= f.input :water_bubble, as: :boolean, label: "Ruban Satin / Lettrage Or (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
+              </div>
+            <% end %>
+
+
+
+            <%= f.submit 'Valider', class: "btn-action mt-3" %>
           <% end %>
 
         </div>

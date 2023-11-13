@@ -37,7 +37,14 @@
     <% if order_item.product.product_type == "Custom" %>
     <div class="cart-item-spec2">
       <p>Occasion : <%= order_item.occasion %></p>
-      <p>Budget : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
+      <p>Budget : <%= humanized_money_with_symbol(order_item.subtotal - order_item.options) %></p>
+      <% if order_item.water_bubble %>
+        <p>Bulle d'eau : <%= humanized_money_with_symbol(order_item.options) %></p>
+      <% end %>
+      <% if order_item.water_bubble %>
+        <p>Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(order_item.options) %></p>
+      <% end %>
+
     </div>
     <% elsif order_item.product.product_type == "Normal"  %>
       <div class="cart-item-spec2">
