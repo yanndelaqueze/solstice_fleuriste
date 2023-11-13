@@ -63,7 +63,7 @@
             <%= f.input :message, as: :text, placeholder: "", label: false %>
 
 
-            <% if @product.category.name === "Bouquets" %>
+            <% if @product.category.name == "Bouquets" %>
               <p>4- Ajoutez des options :</p>
               <div class="checkbox-container">
                 <%= image_tag "water-bubble.png"  %>
@@ -71,7 +71,7 @@
               </div>
             <% end %>
 
-            <% if @product.category.name === "Deuil" %>
+            <% if @product.category.name == "Deuil" %>
               <p>4- Ajoutez des options :</p>
               <div class="checkbox-container">
                 <%= f.input :water_bubble, as: :boolean, label: "Ruban Satin / Lettrage Or (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
