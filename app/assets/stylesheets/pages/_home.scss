@@ -16,21 +16,11 @@ body {
     font-size: 5em;
   }
 
-  .btn-cta-home {
-    background-color: $button;
-    border-radius: 5px;
-    padding: 12px;
-    text-decoration: none;
-    font-family: $body-font;
-    font-size: 24px;
-    color: white;
-  }
-
   .menu-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5em;
+    margin-top: 2em;
   }
 
   .home-menu {
@@ -92,6 +82,31 @@ body {
 
     .home-menu-element:hover .menu-element-label {
       transform: scale(1);
+    }
+  }
+
+  .contact-section {
+    margin-top: 10em;
+    width: 60%;
+    padding: 1em;
+    border: solid;
+    border-width: thick;
+    border-color: $color5;
+    position: relative;
+
+    .contact-section-content {
+      .contact-section-text {
+        margin-bottom: 3em;
+      }
+
+      .contact-section-image {
+        position: absolute;
+        bottom: -15%;
+        left: 95%;
+        img {
+          height: 20em;
+        }
+      }
     }
   }
 }
