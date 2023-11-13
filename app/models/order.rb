@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :user, optional: true
-  geocoded_by :delivery_address
-  after_validation :geocode, if: :will_save_change_to_delivery_address?
+  # geocoded_by :delivery_address
+  # after_validation :geocode, if: :will_save_change_to_delivery_address?
   STATUS = ["En cours", "En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
   validates :status, inclusion: { in: STATUS }
   TRANSPORT = ["Click & Collect", "Livraison"]
@@ -32,6 +32,14 @@ class Order < ApplicationRecord
     end
   end
 
+  def latitude
+    Geocoder.search(delivery_address).first.data["lat"].to_f
+  end
+
+  def longitude
+    Geocoder.search(delivery_address).first.data["lon"].to_f
+  end
+
 
   def subtotal_cents
     order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
@@ -57,8 +65,8 @@ class Order < ApplicationRecord
 
   def in_delivery_area?
     if self.delivery_address.present?
-      lat = Geocoder.search(self.delivery_address).first.data["lat"].to_f
-      lon = Geocoder.search(self.delivery_address).first.data["lon"].to_f
+      lat = latitude
+      lon = longitude
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length

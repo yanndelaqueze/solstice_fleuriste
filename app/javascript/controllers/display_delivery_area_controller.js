@@ -58,6 +58,7 @@ export default class extends Controller {
       .addTo(this.map);
 
     // Add Address Marker to Map
+    console.log(this.addressCoordinatesValue);
     if (this.addressCoordinatesValue !== null) {
       const element = document.createElement("div");
       element.className = "marker-address";
