@@ -10,7 +10,8 @@ Polygon.destroy_all
 print "setting shop status"
 
 status = ShopStatus.new(
-  active: true
+  active: false,
+  message: "🚧 Le site est actuellement en maintenance 🚧 Pour passer commande, contactez-nous au +262 262 51 71 78 !"
 )
 
 status.save!
@@ -455,7 +456,6 @@ orderitem1 = OrderItem.new(
   order: order1,
   message: "Joyeux Anniversaire !!",
   occasion: "Anniversaire",
-  color: "Rose",
   price_cents: 5000
 )
 orderitem1.save!
@@ -478,10 +478,10 @@ order2.save!
 
 orderitem2 = OrderItem.new(
   product: bouquet_violet,
+  water_bubble: true,
   order: order2,
   message: "Je t'aime",
   occasion: "Saint Valentin",
-  color: "Multicolore",
   price_cents: 9000
 )
 orderitem2.save!
@@ -503,7 +503,6 @@ orderitem3 = OrderItem.new(
   order: order3,
   message: "",
   occasion: "Spontané",
-  color: "Pas de préférence",
   price_cents: 6000
 )
 orderitem3.save!
@@ -513,7 +512,6 @@ orderitem4 = OrderItem.new(
   order: order3,
   message: "",
   occasion: "Spontané",
-  color: "Pas de préférence",
   price_cents: 10000
 )
 orderitem4.save!
@@ -537,9 +535,9 @@ order4.save!
 orderitem5 = OrderItem.new(
   product: bouquet_rose_fuchsia,
   order: order4,
+  water_bubble: true,
   message: "Bonne Fête Maman ❤️",
   occasion: "Fête des mères",
-  color: "Multicolore",
   price_cents: 9900
 )
 orderitem5.save!
