@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   validates :time_slot, inclusion: { in: SLOT }
   validates :delivery_address, presence: true, if: :delivery_transport?
   before_save :set_default_date
-  after_save :set_transport
+  before_save :set_transport
   before_save :postcode
   after_save :subtotal_cents
   after_save :delivery_cost_cents
