@@ -2,11 +2,14 @@
 
   <div class="navbar-menu navbar-block">
     <div class="navbar-menu-content">
-      <!-- Modal MENU -->
+      <!-- MENU Button -->
       <div class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-bars"></i> Menu</a>
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+          <i class="fa-solid fa-bars"></i>
+          <p class="m-0 pl-1">Menu</p>
+        </a>
       </div>
-
+      <!-- MENU Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -35,7 +38,10 @@
 
       <div class="cart-navbar" data-controller="cart-display">
         <div class="nav-item <%= 'active' if controller_name == 'cart' && action_name == 'show' %>">
-          <a class="nav-link" data-action="mouseenter->cart-display#showCart mouseleave->cart-display#hideCart" href="<%= panier_path %>"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
+          <a class="nav-link" data-action="mouseenter->cart-display#showCart mouseleave->cart-display#hideCart" href="<%= panier_path %>">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p class="m-0 pl-1">Panier</p>
+          </a>
         </div>
 
         <!-- Pop Up Cart Content-->

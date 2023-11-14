@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 
-@media (min-width: 1000px) {
+@media (max-width: 2500px) {
   body {
     background-color: $background;
     margin: 0;
@@ -51,9 +51,6 @@
       }
 
       .evenements {
-        // transform: translate(0, 2em);
-        // left: 20%;
-        // top: 0%;
         z-index: 3;
         position: relative;
       }
@@ -81,6 +78,7 @@
 
     .contact-section {
       margin-top: 6em;
+      margin-bottom: 6em;
       margin-left: 5em;
       width: 60%;
       padding: 1em;
@@ -96,7 +94,7 @@
 
         .contact-section-image {
           position: absolute;
-          bottom: -15%;
+          bottom: -45%;
           left: 97%;
           img {
             height: 20em;
