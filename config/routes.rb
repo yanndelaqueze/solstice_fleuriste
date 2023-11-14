@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/mentions_legales', to: 'pages#mentions_legales'
   get '/boutique', to: 'pages#boutique'
   get '/confirmation', to: 'pages#confirmation'
-  get '/mariage', to: 'pages#mariage'
+  get '/evenements', to: 'pages#evenements'
   get '/deuil', to: 'pages#deuil'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

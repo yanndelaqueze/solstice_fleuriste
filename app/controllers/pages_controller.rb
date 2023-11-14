@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :delivery, :cgv, :mentions_legales, :boutique, :confirmation, :mariage, :deuil ]
+  skip_before_action :authenticate_user!, only: [ :home, :delivery, :cgv, :mentions_legales, :boutique, :confirmation, :evenements, :deuil ]
 
   def home
   end
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
   def confirmation
   end
 
-  def mariage
+  def evenements
     @products = Product.joins(:category).where(categories: { name: 'Mariage' })
   end
 
