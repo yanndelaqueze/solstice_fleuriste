@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :user, optional: true
-  # geocoded_by :delivery_address
-  # after_validation :geocode, if: :will_save_change_to_delivery_address?
+  geocoded_by :delivery_address
+  after_validation :geocode, if: :will_save_change_to_delivery_address?
   STATUS = ["En cours", "En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
   validates :status, inclusion: { in: STATUS }
   TRANSPORT = ["Click & Collect", "Livraison"]
@@ -32,13 +32,13 @@ class Order < ApplicationRecord
     end
   end
 
-  def latitude
-    Geocoder.search(delivery_address).first.data["lat"].to_f
-  end
+  # def latitude
+  #   Geocoder.search(delivery_address).first.data["lat"].to_f
+  # end
 
-  def longitude
-    Geocoder.search(delivery_address).first.data["lon"].to_f
-  end
+  # def longitude
+  #   Geocoder.search(delivery_address).first.data["lon"].to_f
+  # end
 
 
   def subtotal_cents
@@ -90,6 +90,9 @@ class Order < ApplicationRecord
   end
 
   private
+
+
+
 
   def set_default_date
     self.date ||= 2.days.from_now.to_date
