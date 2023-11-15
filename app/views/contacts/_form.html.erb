@@ -1,3 +1,4 @@
+<h2 class="text-center mb-3">Formulaire de contact</h2>
 <%= simple_form_for @contact do |f| %>
   <%= f.input :subject, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Contact::SUBJECTS, label: "Vous nous contactez à propos de :", required: true %>
   <%= f.input :first_name, label: "Prénom :", class: 'form-control', required: true %>
