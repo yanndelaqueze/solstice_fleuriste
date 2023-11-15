@@ -1,0 +1,28 @@
+@media (max-width: 2500px) {
+  .boutique-infos {
+    margin-top: 1em;
+    margin-left: 1em;
+    padding: 1em;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+    color: $font;
+  }
+
+  .boutique-infos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 770px) {
+  .boutique-infos {
+    display: block;
+  }
+
+  .boutique-infos-section {
+    border-bottom: solid;
+    border-bottom-width: thin;
+    padding-top: 1em;
+  }
+}
