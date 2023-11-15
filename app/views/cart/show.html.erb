@@ -63,6 +63,9 @@
           <h3 class="text-center mb-4">Livraison / Collecte</h3>
           <div class="delivery-form" data-controller="toggle-delivery-fields">
               <%= f.input :transport, label: "Mode de livraison :", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: { class: 'category-selector', data: { target: 'toggle-delivery-fields.transport' }, data: { action: 'change->toggle-delivery-fields#toggleFields' } }, collection: Order::TRANSPORT %>
+              <% if @order.delivery_address.present? && !@order.in_delivery_area?  %>
+                <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à l'adresse indiquée 🙁</p>
+              <% end %>
 
               <div data-toggle-delivery-fields-target="deliveryFields" id="delivery-fields" >
                 <% if @order.delivery_address.present? %>

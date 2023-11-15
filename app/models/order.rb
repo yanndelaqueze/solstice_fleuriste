@@ -32,14 +32,6 @@ class Order < ApplicationRecord
     end
   end
 
-  # def latitude
-  #   Geocoder.search(delivery_address).first.data["lat"].to_f
-  # end
-
-  # def longitude
-  #   Geocoder.search(delivery_address).first.data["lon"].to_f
-  # end
-
   def subtotal_cents
     order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
   end
@@ -64,8 +56,17 @@ class Order < ApplicationRecord
 
   def in_delivery_area?
     if self.delivery_address.present?
-      lat = latitude
-      lon = longitude
+      if latitude.nil?
+        lat = Geocoder.search(delivery_address).first.data["lat"].to_f
+      else
+        lat = latitude
+      end
+
+      if longitude.nil?
+        lon = Geocoder.search(delivery_address).first.data["lon"].to_f
+      else
+        lon = longitude
+      end
       @polygon = Polygon.last
       polygon_coordinates = JSON.parse(@polygon.coordinates)
       n = polygon_coordinates.length
