@@ -19,6 +19,7 @@
 
     .mapboxgl-map {
       height: 20em !important;
+      margin-bottom: 1em;
     }
   }
 }
@@ -31,6 +32,5 @@
   .boutique-infos-section {
     border-bottom: solid;
     border-bottom-width: thin;
-    padding-top: 1em;
   }
 }
