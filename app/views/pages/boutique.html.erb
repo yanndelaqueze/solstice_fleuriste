@@ -10,6 +10,9 @@
     </div>
     <div class="boutique-map boutique-infos-section">
       <h2>Nous trouver :</h2>
+      <div id="map" style="width: 100%; height: 400px;" data-controller="boutique-map"
+      data-boutique-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
     <div class="boutique-horaires boutique-infos-section">
       <h2>Horaires d'ouverture :</h2>

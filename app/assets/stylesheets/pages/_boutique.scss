@@ -12,6 +12,14 @@
   .boutique-infos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
+    .boutique-infos-section {
+      margin-bottom: 2em;
+    }
+
+    .mapboxgl-map {
+      height: 20em !important;
+    }
   }
 }
 
