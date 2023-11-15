@@ -40,7 +40,6 @@ class Order < ApplicationRecord
   #   Geocoder.search(delivery_address).first.data["lon"].to_f
   # end
 
-
   def subtotal_cents
     order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
   end
@@ -90,9 +89,6 @@ class Order < ApplicationRecord
   end
 
   private
-
-
-
 
   def set_default_date
     self.date ||= 2.days.from_now.to_date
