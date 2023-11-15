@@ -52,6 +52,7 @@
       <div class="cart-item-spec2">
         <p>Prix : <%= humanized_money_with_symbol(order_item.product.min_price) %></p>
         <p>Quantité : <%= order_item.quantity %></p>
+        <p>Sous-Total : <%= humanized_money_with_symbol(order_item.subtotal - order_item.options) %></p>
         <% if order_item.water_bubble %>
           <p>Bulle d'eau : <%= humanized_money_with_symbol(order_item.options) %></p>
           <p class="total">Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>

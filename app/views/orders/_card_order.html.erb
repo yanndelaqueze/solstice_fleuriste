@@ -105,7 +105,6 @@
             <% if current_user.admin? %>
               <%= simple_form_for [order_item] do |f| %>
                 <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
-                <%= f.input :color, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::COLORS, label: false %>
 
                 <%= f.input :message, as: :text, placeholder: "", label: false %>
 

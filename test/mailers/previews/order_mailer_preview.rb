@@ -9,12 +9,12 @@ class OrderMailerPreview < ActionMailer::Preview
   end
 
   def order_ready_email
-    order = Order.first
+    order = Order.find_by(email: "kjornet@gmail.com")
     OrderMailer.with(order: order).order_ready_email
   end
 
   def order_confirmation_email
-    order = Order.first
+    order = Order.find_by(email: "kjornet@gmail.com")
     OrderMailer.with(order: order).order_confirmation_email
   end
 end

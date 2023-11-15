@@ -188,3 +188,86 @@ print "1 product / "
 
 
 puts "Finished !!"
+
+
+order1 = Order.new(
+  user: francois,
+  status: "En Attente de Paiement",
+  transport: "Livraison",
+  delivery_first_name: "Courtney",
+  delivery_last_name: "Dauwalter",
+  first_name: francois.first_name,
+  last_name: francois.last_name,
+  email: francois.email,
+  delivery_address: francois.address,
+  delivery_instructions: "Au fond de l'allée",
+  phone: francois.phone,
+  date: DateTime.now + 3
+)
+order1.save!
+
+orderitem1 = OrderItem.new(
+  product: bouquet_bisou,
+  order: order1,
+  message: "Joyeux Anniversaire !!",
+  occasion: "Anniversaire",
+  price_cents: 5000
+)
+orderitem1.save!
+
+order2 = Order.new(
+  user: kilian,
+  status: "Payée",
+  transport: "Livraison",
+  delivery_first_name: "Katie",
+  delivery_last_name: "Schide",
+  first_name: kilian.first_name,
+  last_name: kilian.last_name,
+  email: kilian.email,
+  delivery_address: "2 Rue des Oliviers, Petite Île 97429, La Réunion",
+  delivery_instructions: "",
+  phone: "+262692084408",
+  date: DateTime.now + 3
+)
+order2.save!
+
+orderitem2 = OrderItem.new(
+  product: bouquet_tendre,
+  water_bubble: true,
+  order: order2,
+  message: "Je t'aime",
+  occasion: "Saint Valentin",
+  price_cents: 9000
+)
+orderitem2.save!
+
+order3 = Order.new(
+  user: kilian,
+  status: "Payée",
+  transport: "Click & Collect",
+  first_name: kilian.first_name,
+  last_name: kilian.last_name,
+  email: kilian.email,
+  phone: kilian.phone,
+  date: DateTime.now + 2
+)
+order3.save!
+
+orderitem3 = OrderItem.new(
+  product: bouquet_bisou,
+  order: order3,
+  message: "",
+  occasion: "Spontané",
+  price_cents: 6000,
+  water_bubble: true
+)
+orderitem3.save!
+
+orderitem4 = OrderItem.new(
+  product: bouquet_soleil,
+  order: order3,
+  message: "",
+  occasion: "Spontané",
+  price_cents: 10000
+)
+orderitem4.save!
