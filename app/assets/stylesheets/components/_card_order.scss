@@ -1,199 +1,222 @@
-.card-order {
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border-radius: 1em;
-
-  .card-order-header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .card-order-actions {
-    display: flex;
-    align-items: center;
-    width: 10%;
-    justify-content: space-between;
-  }
-
-  .card-order-panier {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .card-order-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .card-order-main-info {
-    display: flex;
-    align-items: center;
-    padding-top: 1em;
-  }
-
-  .card-order-info-btn {
+@media (max-width: 2500px) {
+  .card-order {
     background-color: white;
-    padding: 0.3em;
-    text-decoration: none !important;
-    font-family: "Raleway", "sans-serif";
-    color: black !important;
-    border: solid;
-    width: 10em;
-    font-size: 0.8em;
-    line-height: 1.2;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border-radius: 0.5em;
-    border-width: thin;
-  }
-
-  .card-order-details {
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-  }
-
-  .card-order-details.hidden {
-    max-height: 0;
-  }
-
-  .order-transport-info {
-    background-color: $font;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 0.5em;
-    color: white;
-    padding: 0.3em;
-    margin-right: 1em;
-  }
-
-  .order-status {
-    background-color: $color2;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 0.5em;
-    color: white;
-    padding: 0.3em;
-    margin-right: 1em;
-  }
-
-  .order-date {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 0.3em;
-    border-radius: 0.5em;
-    border: solid;
-    border-width: thin;
-    margin-right: 1em;
-  }
-
-  .order-edit-status-form {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .order-picto {
-    border-radius: 50%;
-    width: 3em;
-    height: 3em;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    border: solid;
-  }
-
-  .order-user {
+    padding: 1em;
     margin-top: 1em;
-    display: flex;
-    align-items: center;
-    border-bottom: solid;
-    border-width: thin;
-    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-radius: 1em;
 
-    p {
-      margin-bottom: 0 !important;
+    .card-order-header {
+      display: flex;
+      justify-content: space-between;
     }
 
-    .user-info {
+    .card-order-actions {
       display: flex;
       align-items: center;
-      padding-left: 1em;
+      width: 10%;
+      justify-content: space-between;
+    }
 
-      .user-identity {
-        display: block;
+    .card-order-panier {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-order-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-order-main-info {
+      display: flex;
+      align-items: center;
+      padding-top: 1em;
+    }
+
+    .card-order-info-btn {
+      background-color: white;
+      padding: 0.3em;
+      text-decoration: none !important;
+      font-family: "Raleway", "sans-serif";
+      color: black !important;
+      border: solid;
+      width: 10em;
+      font-size: 0.8em;
+      line-height: 1.2;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      border-radius: 0.5em;
+      border-width: thin;
+    }
+
+    .card-order-details {
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .card-order-details.hidden {
+      max-height: 0;
+    }
+
+    .order-transport-info {
+      background-color: $font;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      border-radius: 0.5em;
+      color: white;
+      padding: 0.3em;
+      margin-right: 1em;
+      text-align: center;
+    }
+
+    .order-status {
+      background-color: $color2;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      border-radius: 0.5em;
+      color: white;
+      padding: 0.3em;
+      margin-right: 1em;
+    }
+
+    .order-date {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      padding: 0.3em;
+      border-radius: 0.5em;
+      border: solid;
+      border-width: thin;
+      margin-right: 1em;
+      text-align: center;
+    }
+
+    .order-edit-status-form {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .order-picto {
+      border-radius: 50%;
+      width: 3em;
+      height: 3em;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      border: solid;
+    }
+
+    .order-user {
+      margin-top: 1em;
+      display: flex;
+      align-items: center;
+      border-bottom: solid;
+      border-width: thin;
+      padding-bottom: 1em;
+
+      p {
+        margin-bottom: 0 !important;
       }
 
-      .user-home {
+      .user-info {
+        display: flex;
+        align-items: center;
+        padding-left: 1em;
+
+        .user-identity {
+          display: block;
+        }
+
+        .user-home {
+          padding-left: 1em;
+        }
+      }
+    }
+
+    .order-transport {
+      margin-top: 1em;
+      display: flex;
+      align-items: center;
+      border-bottom: solid;
+      border-width: thin;
+      padding-bottom: 1em;
+
+      p {
+        margin-bottom: 0 !important;
+      }
+
+      .transport-info {
         padding-left: 1em;
       }
-    }
-  }
 
-  .order-transport {
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
-    border-bottom: solid;
-    border-width: thin;
-    padding-bottom: 1em;
+      .transport-type {
+        display: flex;
+        align-items: center;
+      }
 
-    p {
-      margin-bottom: 0 !important;
+      .delivery-address {
+        display: flex;
+        align-items: center;
+      }
     }
 
-    .transport-info {
-      padding-left: 1em;
-    }
-
-    .transport-type {
+    .order-products {
+      margin-top: 1em;
       display: flex;
       align-items: center;
-    }
 
-    .delivery-address {
-      display: flex;
-      align-items: center;
-    }
-  }
+      .order-products-list {
+        padding-left: 1em;
+        display: flex;
 
-  .order-products {
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
-
-    .order-products-list {
-      padding-left: 1em;
-      display: flex;
-
-      .order-item {
-        background-color: white;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        padding: 1em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        border-radius: 1em;
-        margin-right: 1em;
-
-        .product-info {
-          display: flex;
-          align-items: center;
+        .order-item {
+          background-color: white;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          padding: 1em;
+          margin-top: 1em;
           margin-bottom: 1em;
+          border-radius: 1em;
+          margin-right: 1em;
 
-          img {
-            width: 3em;
-            height: 100%;
-            border-radius: 50%;
-            margin-left: 1em;
-          }
+          .product-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em;
 
-          p {
-            margin-bottom: 0;
+            img {
+              width: 3em;
+              height: 100%;
+              border-radius: 50%;
+              margin-left: 1em;
+            }
+
+            p {
+              margin-bottom: 0;
+            }
           }
         }
       }
     }
   }
+
+  .category-wrapper {
+    padding-left: 1em;
+  }
 }
 
-.category-wrapper {
-  padding-left: 1em;
+@media (max-width: 1000px) {
+  .card-order {
+    .card-order-info {
+      display: block;
+    }
+    .card-order-main-info {
+      display: block;
+    }
+
+    .order-date {
+      width: 8em;
+    }
+
+    .order-transport-info {
+      width: 8em;
+    }
+  }
 }

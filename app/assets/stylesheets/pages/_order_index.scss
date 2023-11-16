@@ -1,7 +1,4 @@
 .order-filter {
-  border: solid;
-  border-width: thin;
-  border-radius: 0.375em;
   padding-top: 1em;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -16,7 +13,7 @@
   .status-filter {
     margin-bottom: 1em;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .transport-filter {
@@ -38,7 +35,7 @@
   color: black;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
-  width: 60%;
+  width: 80%;
 }
 
 /* Style for the label when the checkbox is checked */

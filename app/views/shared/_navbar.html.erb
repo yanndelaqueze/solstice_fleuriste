@@ -84,6 +84,9 @@
           <% if user_signed_in? %>
             <p class="font-weight-bold pb-1">Bonjour <%= current_user.first_name %> !</p>
             <a class="dropdown-item" href="<%= compte_path %>">Mon compte</a>
+            <% if current_user.admin? %>
+              <a class="dropdown-item" href="<%= admin_path %>">Interface Admin</a>
+            <% end %>
           <% end %>
           <a class="dropdown-item" href="<%= user_session_path %>">Me connecter</a>
           <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>

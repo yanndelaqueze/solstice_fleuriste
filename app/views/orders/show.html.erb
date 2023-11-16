@@ -7,7 +7,7 @@
         <h3 class="text-center mb-4">Récapitulatif</h3>
         <div class="recap-section">
           <p><%= pluralize(@order.order_items.size, 'article') %> : </p>
-          <p><%= humanized_money_with_symbol(current_order.subtotal) %></p>
+          <p><%= humanized_money_with_symbol(@order.subtotal) %></p>
         </div>
         <div class="recap-section">
           <% if @order.transport == "Click & Collect" %>
@@ -18,12 +18,12 @@
             <p>Gratuit</p>
           <% elsif @order.transport == "Livraison" && @order.delivery_cost != 0 %>
             <p>Livraison : </p>
-            <p><%= humanized_money_with_symbol(current_order.delivery_cost) %></p>
+            <p><%= humanized_money_with_symbol(@order.delivery_cost) %></p>
           <% end %>
         </div>
         <div class="recap-section total">
           <p class="fs-5">Total : </p>
-          <p class="fs-5"><%= humanized_money_with_symbol(current_order.total) %></p>
+          <p class="fs-5"><%= humanized_money_with_symbol(@order.total) %></p>
         </div>
       </div>
       <div class="cart-items">

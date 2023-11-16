@@ -59,6 +59,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product.photos.each do |photo|
+      Cloudinary::Uploader.destroy(photo.key)
+    end
     @product.destroy
     redirect_to request.referrer || root_url
   end
