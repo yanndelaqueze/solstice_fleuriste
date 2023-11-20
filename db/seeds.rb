@@ -92,7 +92,7 @@ print "1 category / "
 
 bouquet_bisou = Product.new(
   name: "Bouquet Bisou",
-  description: "",
+  description: "Envie de déclarer votre flamme avec des fleurs ? Choisissez ce délicieux mélange de fleurs rouges et roses pour déployer le romantisme qui sommeille en vous.",
   min_price_cents: 3500,
   position: 1,
   available: true,
@@ -107,7 +107,7 @@ print "1 product / "
 
 bouquet_tendre = Product.new(
   name: "Bouquet Tendre",
-  description: "",
+  description: "Pour toutes les occasions, ce bouquet frais, romantique et doux fera fondre le coeur de l'être que vous souhaitez gâter.",
   min_price_cents: 3500,
   position: 2,
   available: true,
@@ -122,7 +122,7 @@ print "1 product / "
 
 bouquet_soleil = Product.new(
   name: "Bouquet Soleil",
-  description: "",
+  description: "Une composition solaire et chaude, aux couleurs chatoyantes qui apportera une belle dose de bonne humeur au destinataire de ce chaleureux bouquet.",
   min_price_cents: 3500,
   position: 3,
   available: true,
@@ -137,7 +137,7 @@ print "1 product / "
 
 bouquet_champetre = Product.new(
   name: "Bouquet Champêtre",
-  description: "",
+  description: "Offrez du peps et de la légèreté avec ce bouquet alliant fleurs fraîches et végétaux secs. Colorée et destructurée, cette composition est une vraie ballade à travers champs en été.",
   min_price_cents: 4000,
   position: 4,
   available: true,
@@ -152,7 +152,7 @@ print "1 product / "
 
 bouquet_pur = Product.new(
   name: "Bouquet Pur",
-  description: "",
+  description: "Ce bouquet élégant se prête à toutes les occasions, il traduira avec simplicité vos émotions les plus sincères.",
   min_price_cents: 3500,
   position: 5,
   available: true,
@@ -165,6 +165,21 @@ bouquet_pur.photos.attach(io: file, filename: "image.png", content_type: "image/
 bouquet_pur.save!
 print "1 product / "
 
+bouquet_tropical = Product.new(
+  name: "Bouquet Tropical",
+  description: "Un bouquet de fleurs 100% local avec des fleurs et feuillages de la Réunion, coloré et frais comme nout péi.",
+  min_price_cents: 3500,
+  position: 6,
+  available: true,
+  category: bouquet,
+  product_type: "Custom"
+)
+file = URI.open("https://res.cloudinary.com/dyag21cke/image/upload/v1700495702/bouquet-tropical_ykfnu4.jpg")
+bouquet_tropical.photos.attach(io: file, filename: "image.png", content_type: "image/png")
+
+bouquet_tropical.save!
+print "1 product / "
+
 paniers_fleuris = Category.new(
   name: "Paniers fleuris",
   position: 2,
@@ -173,7 +188,8 @@ print "1 category / "
 
 panier_fleuri = Product.new(
   name: "Panier fleuri",
-  description: "",
+  description: "Offrez une délicate attention avec ce panier tressé composé d'un joli mélange de fleurs merveilleuses et odorantes.
+  ",
   min_price_cents: 6000,
   position: 1,
   available: true,
