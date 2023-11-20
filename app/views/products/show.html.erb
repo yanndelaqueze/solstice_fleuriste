@@ -59,8 +59,11 @@
             <p>2- Précisez l'occasion célébrée :</p>
             <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
 
-            <p>3- Rédigez le message que vous souhaitez y joindre :</p>
-            <%= f.input :message, as: :text, placeholder: "", label: false %>
+            <div class="message-input-container" data-controller="character-limit">
+              <p>3- Rédigez le message que vous souhaitez y joindre :</p>
+              <%= f.input :message, as: :text, placeholder: "", label: false, input_html:  { maxlength: 1000,  data: { character_limit_target: "input", action: "input->character-limit#checkCharacters" }} %>
+              <p class="max-caracteres" data-character-limit-target="counter">max 1000 caractères</p>
+            </div>
 
 
             <% if @product.category.name == "Bouquets" %>
