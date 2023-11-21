@@ -1,6 +1,28 @@
-<h1 class= "title">Deuil</h1>
+
 <div class="container">
-  <% @products.each do |product| %>
-    <%= render 'shop/card_product', product: product %>
-  <% end %>
+
+<div class="contact-section-container">
+  <div class="contact-section">
+    <h1>Deuil </h1>
+    <div class="contact-section-content">
+      <div class="contact-section-text">
+        <p>Nous vous accompagnons dans ces moments difficiles et nous vous proposons une sélections de pièces florales pour un dernier hommage en beauté, à l'image de l'être cher disparu.</p>
+        <p>Vous souhaitez une composition differente pour un dernier hommage ? Contactez nous afin que nous puissions vous apporter la meilleure prestation possible.  </p>
+      </div>
+        <p><a class="btn-action" href="<%= contact_path %>">Nous contacter</a></p>
+      <div class="contact-section-image">
+        <%= image_tag "deuil-link.jpg" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h1 class= "title mt-5">Nos Créations Deuil :</h1>
+
+<div class="deuil-products">
+    <% @products.each do |product| %>
+      <%= render 'shop/card_product', product: product %>
+    <% end %>
+</div>
 </div>
