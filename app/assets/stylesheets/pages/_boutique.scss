@@ -43,8 +43,13 @@
           .boutique-image {
             height: 15em;
             width: 15em;
+            transition: transform 0.5s ease;
             background-size: cover;
             background-position: center;
+          }
+
+          .boutique-image:hover {
+            transform: scale(1.1);
           }
 
           .image1 {
