@@ -100,4 +100,147 @@
     border-bottom: solid;
     border-bottom-width: thin;
   }
+
+  .boutique-section-container {
+    display: flex;
+    justify-content: center;
+
+    .boutique-section {
+      margin-top: 6em;
+      margin-bottom: 6em;
+      // margin-left: 5em;
+      width: 60%;
+      padding: 1em;
+      border: solid;
+      border-width: thick;
+      border-color: $color5;
+      position: relative;
+
+      .boutique-section-content {
+        .boutique-section-text {
+          margin-bottom: 3em;
+        }
+
+        .boutique-images-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 2em;
+        }
+
+        .boutique-images {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
+          .boutique-image {
+            height: 15em;
+            width: 15em;
+            background-size: cover;
+            background-position: center;
+          }
+
+          .image1 {
+            margin: 0.5em;
+            z-index: 1;
+            position: relative;
+          }
+
+          .image2 {
+            margin: 0.5em;
+            z-index: 2;
+            position: relative;
+          }
+
+          .image3 {
+            margin: 0.5em;
+            z-index: 3;
+            position: relative;
+          }
+
+          .image4 {
+            margin: 0.5em;
+            z-index: 4;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .boutique-infos {
+    display: block;
+  }
+
+  .boutique-infos-section {
+    border-bottom: solid;
+    border-bottom-width: thin;
+  }
+
+  .boutique-section-container {
+    display: flex;
+    justify-content: center;
+
+    .boutique-section {
+      margin-top: 6em;
+      margin-bottom: 6em;
+      // margin-left: 5em;
+      width: 60%;
+      padding: 1em;
+      border: solid;
+      border-width: thick;
+      border-color: $color5;
+      position: relative;
+
+      .boutique-section-content {
+        .boutique-section-text {
+          margin-bottom: 3em;
+        }
+
+        .boutique-images-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 2em;
+        }
+
+        .boutique-images {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
+          .boutique-image {
+            height: 12em;
+            width: 12em;
+            background-size: cover;
+            background-position: center;
+          }
+
+          .image1 {
+            margin: 0.5em;
+            z-index: 1;
+            position: relative;
+          }
+
+          .image2 {
+            margin: 0.5em;
+            z-index: 2;
+            position: relative;
+          }
+
+          .image3 {
+            margin: 0.5em;
+            z-index: 3;
+            position: relative;
+          }
+
+          .image4 {
+            margin: 0.5em;
+            z-index: 4;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
 }
