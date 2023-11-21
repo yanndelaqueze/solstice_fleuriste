@@ -8,9 +8,13 @@
       data-image-hover-second-image-value="<%= cl_image_path product.photos[1].key %>"
       >
     </div>
-  <% else %>
+  <% elsif product.photos.size == 1 %>
     <div class="product-image-shop">
       <img class="d-block w-100" src="<%= cl_image_path product.photos.first.key %>" alt="photo">
+    </div>
+  <% else %>
+    <div class="product-image-shop">
+      <%= image_tag("boutique-link.jpg", class: "d-block w-100") %>
     </div>
   <% end %>
   <div class="product-info-shop">

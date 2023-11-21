@@ -4,8 +4,9 @@ class Product < ApplicationRecord
   has_many_attached :photos, service: :cloudinary, dependent: :destroy
   monetize :min_price_cents
   TYPE = ["Custom", "Normal"]
-  # validates :product_type, inclusion: { in: TYPE }
   attr_accessor :remove_image
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   # private
 

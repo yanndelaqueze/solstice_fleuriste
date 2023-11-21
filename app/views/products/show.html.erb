@@ -3,7 +3,7 @@
     <div class="product-info">
       <div class="product-image">
         <% if @product.photos.size == 0%>
-          <%= image_tag "solstice_logo_new.png" %>
+          <%= image_tag("boutique-link.jpg", class: "d-block w-100") %>
         <% elsif @product.photos.size == 1 %>
           <img class="d-block w-100" src="<%= cl_image_path @product.photos.first.key %>" alt="photo" >
         <% elsif @product.photos.size > 1 %>
