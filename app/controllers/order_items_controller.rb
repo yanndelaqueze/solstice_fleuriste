@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create, :update, :destroy]
 
   def create
-    @product = Product.find(params[:product_id])
+    @product = Product.friendly.find(params[:product_id])
     @order_item = OrderItem.new(order_item_params)
     @order_item.product = @product
     @order_item.order = current_order

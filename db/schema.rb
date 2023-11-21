@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_13_130323) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_21_133449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -123,7 +123,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_130323) do
     t.datetime "updated_at", null: false
     t.integer "min_price_cents", default: 0, null: false
     t.string "product_type", default: "Custom"
+    t.string "slug"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 
   create_table "shop_statuses", force: :cascade do |t|
