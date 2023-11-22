@@ -1,7 +1,7 @@
 class OrderMailer < ApplicationMailer
   def new_order_email
     @order = params[:order]
-    mail(to: ENV["GMAIL_EMAIL"], subject: "Solstice Fleuriste : Nouvelle Commande !")
+    mail(to: ENV["OVH_EMAIL"], subject: "Solstice Fleuriste : Nouvelle Commande !")
   end
 
   def order_ready_email
