@@ -96,6 +96,7 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
+host = 'solsticefleurs.com'
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.default_url_options = { host: 'solsticefleurs.com' }
 config.action_mailer.smtp_settings = {

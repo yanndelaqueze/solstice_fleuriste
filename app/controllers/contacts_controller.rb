@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      ContactMailer.with(contact: @contact).new_contact_email.deliver_later
+      ContactMailer.with(contact: @contact).new_contact_email.deliver_now
       redirect_to root_path, notice: 'Votre message a bien été envoyé !'
     else
       render :new, notice: 'Ooops, il y a eu un problème !'
