@@ -98,13 +98,12 @@ Rails.application.configure do
 
 host = 'solsticefleurs.com'
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.default_url_options = { host: 'solsticefleurs.com' }
+config.action_mailer.default_url_options = { host: host }
 config.action_mailer.smtp_settings = {
- address:               'ssl0.ovh.net',
- domain:                'solsticefleurs.com',
+ address:               "smtp.gmail.com",
  port:                  587,
- user_name:             ENV["OVH_EMAIL"],
- password:              ENV["OVH_PASSWORD"],
+ user_name:             ENV["GMAIL_EMAIL"],
+ password:              ENV["GMAIL_PASSWORD"],
  authentication:        'plain',
  enable_starttls_auto:  true
 }
