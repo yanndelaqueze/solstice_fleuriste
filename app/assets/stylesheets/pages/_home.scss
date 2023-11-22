@@ -81,7 +81,6 @@
       .contact-section {
         margin-top: 6em;
         margin-bottom: 6em;
-        // margin-left: 5em;
         width: 60%;
         padding: 1em;
         border: solid;
@@ -164,7 +163,6 @@
       justify-content: center;
       .contact-section {
         margin-top: 6em;
-        margin-left: 5em;
         margin-bottom: 6em;
         width: 60%;
         padding: 1em;
@@ -268,7 +266,6 @@
       justify-content: center;
       .contact-section {
         margin-top: 4em;
-        margin-left: 5em;
         margin-bottom: 6em;
         width: 60%;
         padding: 1em;
@@ -372,7 +369,6 @@
       justify-content: center;
       .contact-section {
         margin-top: 4em;
-        margin-left: 5em;
         margin-bottom: 6em;
         width: 60%;
         padding: 1em;
@@ -383,6 +379,117 @@
 
         h1 {
           font-size: 1.5em;
+        }
+
+        .contact-section-content {
+          .contact-section-text {
+            margin-bottom: 3em;
+          }
+
+          .contact-section-image {
+            position: absolute;
+            bottom: -5%;
+            left: 90%;
+            img {
+              height: 7em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    background-color: $background;
+    margin: 0;
+    padding: 0;
+
+    .heading-home {
+      font-size: 1.5em;
+    }
+
+    .menu-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    .home-menu {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .home-menu-element {
+        height: 8em;
+        width: 8em;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.5s ease;
+        margin: 1em;
+      }
+
+      .home-menu-element:hover {
+        transform: scale(1.1);
+      }
+
+      .online-shop {
+        z-index: 1;
+        position: relative;
+      }
+
+      .boutique {
+        z-index: 2;
+        position: relative;
+      }
+
+      .evenements {
+        z-index: 3;
+        position: relative;
+      }
+
+      .deuil {
+        z-index: 4;
+        position: relative;
+      }
+
+      .menu-element-label {
+        position: absolute;
+        text-decoration: none;
+        color: white;
+        background-color: $color4;
+        opacity: 80%;
+        padding: 0.2em 0.5em 0.2em 0.5em;
+      }
+
+      .home-menu-element:hover .menu-element-label {
+        transform: scale(1);
+      }
+    }
+
+    .contact-section-container {
+      display: flex;
+      justify-content: center;
+      .contact-section {
+        margin-top: 4em;
+        margin-bottom: 6em;
+        width: 60%;
+        padding: 1em;
+        border: solid;
+        border-width: thick;
+        border-color: $color5;
+        position: relative;
+
+        h1 {
+          font-size: 1.1em;
+        }
+
+        p {
+          font-size: 0.7em;
         }
 
         .contact-section-content {

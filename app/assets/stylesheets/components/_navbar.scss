@@ -185,3 +185,24 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .navbar-lewagon .navbar-brand img {
+    width: 4em;
+  }
+  .nav-link {
+    margin-right: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    p {
+      display: none;
+    }
+
+    i {
+      font-size: 1em;
+    }
+  }
+}
