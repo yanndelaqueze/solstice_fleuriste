@@ -25,7 +25,7 @@ class Order < ApplicationRecord
 
   def town
     if self.delivery_address.present?
-      return Geocoder.search(Order.last.delivery_address).first.data["address"]["town"]
+      return Geocoder.search(delivery_address).first.data["address"]["town"]
     else
       return ""
     end

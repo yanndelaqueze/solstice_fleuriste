@@ -182,6 +182,19 @@ bouquet_tropical.photos.attach(io: file, filename: "image.png", content_type: "i
 bouquet_tropical.save!
 print "1 product / "
 
+bouquet_test = Product.new(
+  name: "Bouquet Test",
+  description: "Bouquet Test",
+  min_price_cents: 100,
+  position: 7,
+  available: true,
+  category: bouquet,
+  product_type: "Custom"
+)
+
+bouquet_test.save!
+print "1 product / "
+
 paniers_fleuris = Category.new(
   name: "Paniers fleuris",
   position: 2,
