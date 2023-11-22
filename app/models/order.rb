@@ -12,7 +12,6 @@ class Order < ApplicationRecord
   validates :delivery_address, presence: true, if: :delivery_transport?
   before_save :set_default_date
   before_save :set_transport
-  before_save :postcode
   after_save :subtotal_cents
   after_save :delivery_cost_cents
   after_save :total_cents
@@ -24,9 +23,9 @@ class Order < ApplicationRecord
     transport == "Livraison"
   end
 
-  def postcode
+  def town
     if self.delivery_address.present?
-      return Geocoder.search(delivery_address).first.data["address"]["postcode"]
+      return Geocoder.search(Order.last.delivery_address).first.data["address"]["town"]
     else
       return ""
     end
@@ -40,7 +39,7 @@ class Order < ApplicationRecord
     if transport == "Click & Collect"
       0
     elsif in_delivery_area?
-      if postcode == "97429"
+      if town == "Petite-Île"
         0
       else
         1000
