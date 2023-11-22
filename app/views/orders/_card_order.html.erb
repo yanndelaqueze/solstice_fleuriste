@@ -100,7 +100,13 @@
           <div class="order-item">
             <div class="product-info">
               <p>Produit : <%= order_item.product.name  %></p>
-              <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+
+              <% if order_item.product.photos.size > 0 %>
+                <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+              <% else %>
+                <%= image_tag("default.png") %>
+              <% end %>
+
             </div>
             <% if current_user.admin? %>
               <%= simple_form_for [order_item] do |f| %>

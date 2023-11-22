@@ -53,7 +53,13 @@
 
               <% if order_item.product.product_type == "Custom" %>
                 <div class="cart-content-item">
+
+                <% if order_item.product.photos.size > 0 %>
                   <img src="<%= cl_image_path order_item.product.photos.first.key %>" alt="">
+                <% else %>
+                  <%= image_tag("default.png") %>
+                <% end %>
+
                   <div class="cart-content-item-info">
                     <p class="fw-bolder"><%= order_item.product.name  %></p>
                     <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>

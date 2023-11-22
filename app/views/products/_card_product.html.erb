@@ -24,12 +24,21 @@
   <div class="product-info">
     <div class="product-spec1">
       <p><%= product.description %></p>
-      <ul class="product-images">
-        <p><%= pluralize(product.photos.size, 'image') %> </p>
-        <% product.photos.each do |photo| %>
-          <img src="<%= cl_image_path photo.key %>" alt="">
-        <% end %>
-      </ul>
+
+      <% if product.photos.size > 0 %>
+        <ul class="product-images">
+          <p><%= pluralize(product.photos.size, 'image') %> </p>
+          <% product.photos.each do |photo| %>
+            <img src="<%= cl_image_path photo.key %>" alt="">
+          <% end %>
+        </ul>
+      <% else %>
+        <ul class="product-images">
+          <p>Image par défaut : </p>
+          <%= image_tag("default.png") %>
+        </ul>
+      <% end %>
+
     </div>
     <div class="product-spec2">
       <p>Position : <%= product.position %></p>

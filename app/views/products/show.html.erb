@@ -3,7 +3,7 @@
     <div class="product-info">
       <div class="product-image">
         <% if @product.photos.size == 0%>
-          <%= image_tag("boutique-link.jpg", class: "d-block w-100") %>
+          <%= image_tag("default.png", class: "d-block w-100") %>
         <% elsif @product.photos.size == 1 %>
           <img class="d-block w-100" src="<%= cl_image_path @product.photos.first.key %>" alt="photo" >
         <% elsif @product.photos.size > 1 %>
@@ -61,8 +61,8 @@
 
             <div class="message-input-container" data-controller="character-limit">
               <p>3- Rédigez le message que vous souhaitez y joindre :</p>
-              <%= f.input :message, as: :text, placeholder: "", label: false, input_html:  { maxlength: 1000,  data: { character_limit_target: "input", action: "input->character-limit#checkCharacters" }} %>
-              <p class="max-caracteres" data-character-limit-target="counter">max 1000 caractères</p>
+              <%= f.input :message, as: :text, placeholder: "Votre message", label: false, input_html:  { maxlength: 1000,  data: { character_limit_target: "input", action: "input->character-limit#checkCharacters" }} %>
+              <p class="max-caracteres" data-character-limit-target="counter">1000 caractères max.</p>
             </div>
 
 
@@ -76,8 +76,15 @@
 
             <% if @product.category.name == "Deuil" %>
               <p>4- Ajoutez des options :</p>
-              <div class="checkbox-container">
-                <%= f.input :water_bubble, as: :boolean, label: "Ruban Satin / Lettrage Or (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
+              <div class="ribbon-option" data-controller="toggle-ribbon-message">
+                <div class="checkbox-container">
+                  <%= image_tag "ribbon.png"  %>
+                  <%= f.input :ribbon, as: :boolean, label: "Ruban Satin / Lettrage Or (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden', data: { toggle_ribbon_message_target: "ribbonCheck", action: 'change->toggle-ribbon-message#toggleRibbonMessage' } } %>
+                </div>
+                <div class="ribbon_message_input" data-controller="character-limit" data-toggle-ribbon-message-target="messageInputField">
+                  <%= f.input :ribbon_message, as: :text, placeholder: "Texte du ruban", label: false, input_html:  { maxlengthribbon: 100,  data: { character_limit_target: "inputRibbon", action: "input->character-limit#checkCharactersRibbon" }} %>
+                  <p class="max-caracteres" data-character-limit-target="counterRibbon">100 caractères max.</p>
+                </div>
               </div>
             <% end %>
 

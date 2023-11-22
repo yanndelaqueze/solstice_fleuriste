@@ -90,6 +90,8 @@ bouquet = Category.new(
   display: true)
 print "1 category / "
 
+bouquet.save!
+
 bouquet_bisou = Product.new(
   name: "Bouquet Bisou",
   description: "Envie de déclarer votre flamme avec des fleurs ? Choisissez ce délicieux mélange de fleurs rouges et roses pour déployer le romantisme qui sommeille en vous.",
@@ -186,6 +188,8 @@ paniers_fleuris = Category.new(
   display: true)
 print "1 category / "
 
+paniers_fleuris.save!
+
 panier_fleuri = Product.new(
   name: "Panier fleuri",
   description: "Offrez une délicate attention avec ce panier tressé composé d'un joli mélange de fleurs merveilleuses et odorantes.
@@ -203,7 +207,34 @@ panier_fleuri.save!
 print "1 product / "
 
 
-puts "Finished !!"
+deuil = Category.new(
+  name: "Deuil",
+  position: 3,
+  display: true)
+deuil.save!
+print "1 category / "
+
+
+plantes = Category.new(
+  name: "Plantes",
+  position: 3,
+  display: true)
+plantes.save!
+print "1 category / "
+
+roses_eternelles = Category.new(
+  name: "Roses éternelles",
+  position: 3,
+  display: true)
+roses_eternelles.save!
+print "1 category / "
+
+fleurs_sechees = Category.new(
+  name: "Fleurs séchées",
+  position: 3,
+  display: true)
+fleurs_sechees.save!
+print "1 category / "
 
 
 order1 = Order.new(
@@ -287,3 +318,5 @@ orderitem4 = OrderItem.new(
   price_cents: 10000
 )
 orderitem4.save!
+
+puts "Finished !!"
