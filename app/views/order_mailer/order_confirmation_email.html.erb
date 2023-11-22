@@ -58,34 +58,22 @@
                                   padding: 0.5em;
                                   margin-bottom: 0.5em;">
           <h2>Informations Client : </h2>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">
+          <p style="font-family: 'Source Serif 4', 'serif';">
                     Prénom : <%= @order.first_name  %> -  Nom : <%= @order.last_name  %> </p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">email : <%= @order.email  %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">email : <%= @order.email  %></p>
           <h2>Informations Commande : </h2>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Numéro de Commande : <%= @order.id  %></p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Montant : <%= humanized_money_with_symbol(@order.subtotal) %></p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Coût de livraison : <%= humanized_money_with_symbol(@order.delivery_cost) %></p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Total : <%= humanized_money_with_symbol(@order.total) %></p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Type : <%= @order.transport  %></p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Date : <%= @order.date.strftime("%e/%m/%Y")  %></p>
-          <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Créneau : <%= @order.time_slot  %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Numéro de Commande : <%= @order.id  %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Montant : <%= humanized_money_with_symbol(@order.subtotal) %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Coût de livraison : <%= humanized_money_with_symbol(@order.delivery_cost) %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(@order.total) %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Type : <%= @order.transport  %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Date : <%= @order.date.strftime("%e/%m/%Y")  %></p>
+          <p style="font-family: 'Source Serif 4', 'serif';">Créneau : <%= @order.time_slot  %></p>
           <% if @order.transport == "Livraison" %>
               <h2>Informations de Livraison : </h2>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Prénom : <%= @order.delivery_first_name  %> -  Nom : <%= @order.delivery_last_name  %> </p>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Adresse : <%= @order.delivery_address  %></p>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Instructions : <%= @order.delivery_instructions  %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Prénom : <%= @order.delivery_first_name  %> -  Nom : <%= @order.delivery_last_name  %> </p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Adresse : <%= @order.delivery_address  %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Instructions : <%= @order.delivery_instructions  %></p>
           <% end %>
         </div>
 
@@ -103,26 +91,18 @@
               margin-top: 1em;
               margin-bottom: 1em;
               border-radius: 1em;">
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Produit : <%= item.product.name  %></p>
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Budget : <%= humanized_money_with_symbol(item.price) %></p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Produit : <%= item.product.name  %></p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Budget : <%= humanized_money_with_symbol(item.price) %></p>
             <% if item.water_bubble %>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Bulle d'eau : <%= humanized_money_with_symbol(item.options) %></p>
-              <p class="total" style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Bulle d'eau : <%= humanized_money_with_symbol(item.options) %></p>
+              <p class="total" style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
             <% end %>
             <% if item.ribbon %>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(item.options) %></p>
-              <p class="total" style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(item.options) %></p>
+              <p class="total" style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
             <% end %>
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Occasion : <%= item.occasion  %></p>
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Message : "<%= item.message  %>"</p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Occasion : <%= item.occasion  %></p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Message : "<%= item.message  %>"</p>
             </div>
 
           <% elsif item.product.product_type == "Normal" %>
@@ -132,29 +112,21 @@
               margin-top: 1em;
               margin-bottom: 1em;
               border-radius: 1em;">
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Produit : <%= item.product.name  %></p>
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Prix/unitaire : <%= humanized_money_with_symbol(item.price) %></p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Produit : <%= item.product.name  %></p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Prix/unitaire : <%= humanized_money_with_symbol(item.price) %></p>
 
             <% if item.water_bubble %>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Bulle d'eau : <%= humanized_money_with_symbol(item.options) %></p>
-              <p class="total" style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Bulle d'eau : <%= humanized_money_with_symbol(item.options) %></p>
+              <p class="total" style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
             <% end %>
 
             <% if item.ribbon %>
-              <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(item.options) %></p>
-              <p class="total" style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(item.options) %></p>
+              <p class="total" style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
             <% end %>
 
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Occasion : <%= item.occasion  %></p>
-            <p style="font-family: 'Source Serif 4' 'serif';
-                    color: #052a2b;">Message : "<%= item.message  %>"</p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Occasion : <%= item.occasion  %></p>
+            <p style="font-family: 'Source Serif 4', 'serif';">Message : "<%= item.message  %>"</p>
             </div>
           <% end %>
 
