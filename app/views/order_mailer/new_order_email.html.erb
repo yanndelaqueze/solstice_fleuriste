@@ -101,6 +101,7 @@
             <% end %>
             <% if item.ribbon %>
               <p style="font-family: 'Source Serif 4', 'serif';">Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(item.options) %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Message du Ruban : <%= item.ribbon_message  %></p>
               <p class="total" style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
             <% end %>
             <p style="font-family: 'Source Serif 4', 'serif';">Occasion : <%= item.occasion  %></p>
@@ -124,6 +125,7 @@
 
             <% if item.ribbon %>
               <p style="font-family: 'Source Serif 4', 'serif';">Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(item.options) %></p>
+              <p style="font-family: 'Source Serif 4', 'serif';">Message du Ruban : <%= item.ribbon_message  %></p>
               <p class="total" style="font-family: 'Source Serif 4', 'serif';">Total : <%= humanized_money_with_symbol(item.subtotal) %></p>
             <% end %>
 
