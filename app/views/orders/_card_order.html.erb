@@ -56,19 +56,16 @@
 
       <div class="order-user">
         <%= image_tag("order-user.png", class: "order-picto") %>
-        <% if order.user %>
           <div class="user-info">
             <div class="user-identity">
-            <p><i class="fa-solid fa-user"></i> <%= order.user.first_name  %> <%= order.user.last_name %></p>
-            <p><i class="fa-solid fa-at"></i> <%= order.user.email %></p>
-            <p></p>
+              <p><i class="fa-solid fa-user"></i> <%= order.first_name  %> <%= order.last_name %></p>
+              <p><i class="fa-solid fa-at"></i> <%= order.email %></p>
+              <p></p>
             </div>
             <div class="user-home">
-            <!--<p><i class="fa-solid fa-home"></i> <%= order.user.address %></p>-->
-            <p><i class="fa-solid fa-phone"></i> <%= order.user.phone  %></p>
+            <p><i class="fa-solid fa-phone"></i> <%= order.phone  %></p>
             </div>
           </div>
-        <% end %>
       </div>
 
     <div class="order-transport">
