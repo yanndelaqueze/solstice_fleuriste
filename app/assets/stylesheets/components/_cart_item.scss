@@ -51,4 +51,45 @@
     height: 6em;
     border-radius: 50%;
   }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+
+    fieldset {
+      margin-bottom: 0 !important;
+    }
+
+    img {
+      height: 3em;
+      border-radius: 0.375em;
+      margin-right: 1em;
+    }
+
+    .form-check {
+      padding-left: 0;
+    }
+
+    .checkbox-hidden {
+      position: absolute;
+      transform: scale(0);
+    }
+    .checkbox-label {
+      cursor: pointer;
+      display: inline-block;
+      border-radius: 0.375em;
+      padding: 0.1rem 0.5rem;
+      background-color: transparent;
+      color: $font;
+      border: solid;
+      border-width: thin;
+      border-color: $font;
+      // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .checkbox-hidden:checked + .checkbox-label {
+      background-color: $font;
+      color: #fff !important;
+    }
+  }
 }

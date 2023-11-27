@@ -94,17 +94,49 @@
           <% end %>
 
         </div>
-      <% else %>
-        <p>Prix unitaire : <%= humanized_money_with_symbol(@product.min_price) %></p>
-        <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
-          <div class="quantity">
-            <p class="mr-3">Quantité :</p>
-            <%= f.input :quantity, as: :numeric, placeholder: "", label: false %>
-          </div>
-          <p>Rédigez le message que vous souhaitez y joindre :</p>
-          <%= f.input :message, as: :text, placeholder: "", label: false %>
-          <%= f.submit 'Valider', class: "btn-action" %>
-        <% end %>
+      <% elsif @product.product_type == "Normal" %>
+        <div class="custom-form">
+          <p>Prix unitaire : <%= humanized_money_with_symbol(@product.min_price) %></p>
+          <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
+            <div class="quantity">
+              <p class="mr-3">Quantité :</p>
+              <%= f.input :quantity, as: :numeric, placeholder: "", label: false %>
+            </div>
+
+            <p>Précisez l'occasion célébrée :</p>
+              <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+
+            <div class="message-input-container" data-controller="character-limit">
+              <p>Rédigez le message que vous souhaitez y joindre :</p>
+              <%= f.input :message, as: :text, placeholder: "Votre message", label: false, input_html:  { maxlength: 1000,  data: { character_limit_target: "input", action: "input->character-limit#checkCharacters" }} %>
+              <p class="max-caracteres" data-character-limit-target="counter">1000 caractères max.</p>
+            </div>
+
+            <% if @product.category.name == "Bouquets" %>
+                <p>4- Ajoutez des options :</p>
+                <div class="checkbox-container">
+                  <%= image_tag "water-bubble.png"  %>
+                  <%= f.input :water_bubble, as: :boolean, label: "Bulle d'eau (4€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
+                </div>
+              <% end %>
+
+              <% if @product.category.name == "Deuil" %>
+                <p>4- Ajoutez des options :</p>
+                <div class="ribbon-option" data-controller="toggle-ribbon-message">
+                  <div class="checkbox-container">
+                    <%= image_tag "ribbon.png"  %>
+                    <%= f.input :ribbon, as: :boolean, label: "Ruban Satin / Lettrage Or (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden', data: { toggle_ribbon_message_target: "ribbonCheck", action: 'change->toggle-ribbon-message#toggleRibbonMessage' } } %>
+                  </div>
+                  <div class="ribbon_message_input" data-controller="character-limit" data-toggle-ribbon-message-target="messageInputField">
+                    <%= f.input :ribbon_message, as: :text, placeholder: "Texte du ruban", label: false, input_html:  { maxlengthribbon: 100,  data: { character_limit_target: "inputRibbon", action: "input->character-limit#checkCharactersRibbon" }} %>
+                    <p class="max-caracteres" data-character-limit-target="counterRibbon">100 caractères max.</p>
+                  </div>
+                </div>
+              <% end %>
+
+            <%= f.submit 'Valider', class: "btn-action" %>
+          <% end %>
+        </div>
       <% end %>
 
     </div>

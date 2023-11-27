@@ -50,7 +50,7 @@
         <p class="total">Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
       <% end %>
       <% if order_item.ribbon %>
-        <p>Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(order_item.options) %></p>
+        <p>Ruban Satin : <%= humanized_money_with_symbol(order_item.options) %></p>
         <p class="total">Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
       <% end %>
       <p>Occasion : <%= order_item.occasion %></p>
@@ -66,7 +66,7 @@
           <p class="total">Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
         <% end %>
         <% if order_item.ribbon %>
-          <p>Ruban Satin blanc / Lettrage Or : <%= humanized_money_with_symbol(order_item.options) %></p>
+          <p>Ruban Satin : <%= humanized_money_with_symbol(order_item.options) %></p>
           <p class="total">Total : <%= humanized_money_with_symbol(order_item.subtotal) %></p>
         <% end %>
         <p>Occasion : <%= order_item.occasion %></p>

@@ -13,7 +13,27 @@
     <p>Occasion :</p>
     <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false, placeholder: order_item.occasion %>
 
-    <%= f.submit 'Valider', class: "btn-action" %>
+    <% if order_item.product.category.name == "Bouquets" %>
+      <p>Options :</p>
+      <div class="checkbox-container mb-3">
+        <%= f.input :water_bubble, as: :boolean, label: "Bulle d'eau (4€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' },placeholder: order_item.water_bubble %>
+      </div>
+    <% end %>
+
+    <% if order_item.product.category.name == "Deuil" %>
+      <p>Options :</p>
+      <div class="ribbon-option" data-controller="toggle-ribbon-message">
+        <div class="checkbox-container">
+          <%= f.input :ribbon, as: :boolean, label: "Ruban Satin (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden', data: { toggle_ribbon_message_target: "ribbonCheck", action: 'change->toggle-ribbon-message#toggleRibbonMessage' } }, placeholder: order_item.ribbon %>
+        </div>
+        <div class="ribbon_message_input mt-2" data-controller="character-limit" data-toggle-ribbon-message-target="messageInputField">
+          <%= f.input :ribbon_message, as: :text, placeholder: "Texte du ruban", label: false, input_html:  { maxlengthribbon: 100,  data: { character_limit_target: "inputRibbon", action: "input->character-limit#checkCharactersRibbon" }}, placeholder: order_item.ribbon_message %>
+          <p class="max-caracteres" data-character-limit-target="counterRibbon">100 caractères max.</p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= f.submit 'Valider', class: "btn-action mt-2" %>
   <% end %>
 <% elsif order_item.product.product_type == "Normal" %>
   <%= simple_form_for [order_item] do |f| %>
@@ -26,6 +46,29 @@
     <p>Message :</p>
     <%= f.input :message, as: :text, placeholder: order_item.message, label: false %>
 
-    <%= f.submit 'Valider', class: "btn-action" %>
+    <p>Occasion :</p>
+    <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false, placeholder: order_item.occasion %>
+
+    <% if order_item.product.category.name == "Bouquets" %>
+      <p>Options :</p>
+      <div class="checkbox-container mb-3">
+        <%= f.input :water_bubble, as: :boolean, label: "Bulle d'eau (4€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' },placeholder: order_item.water_bubble %>
+      </div>
+    <% end %>
+
+    <% if order_item.product.category.name == "Deuil" %>
+      <p>Options :</p>
+      <div class="ribbon-option" data-controller="toggle-ribbon-message">
+        <div class="checkbox-container">
+          <%= f.input :ribbon, as: :boolean, label: "Ruban Satin (10€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden', data: { toggle_ribbon_message_target: "ribbonCheck", action: 'change->toggle-ribbon-message#toggleRibbonMessage' } }, placeholder: order_item.ribbon %>
+        </div>
+        <div class="ribbon_message_input  mt-2" data-controller="character-limit" data-toggle-ribbon-message-target="messageInputField">
+          <%= f.input :ribbon_message, as: :text, placeholder: order_item.ribbon_message, label: false, input_html:  { maxlengthribbon: 100,  data: { character_limit_target: "inputRibbon", action: "input->character-limit#checkCharactersRibbon" }} %>
+          <p class="max-caracteres" data-character-limit-target="counterRibbon">100 caractères max.</p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= f.submit 'Valider', class: "btn-action mt-2" %>
   <% end %>
 <% end %>
