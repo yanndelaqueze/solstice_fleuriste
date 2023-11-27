@@ -48,16 +48,12 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
 
     if @order.update(order_params)
-      flash[:success] = "Commande mise à jour !!"
+      flash[:info] = "Commande mise à jour"
       if @order.status == "Prête" && @order.transport == "Click & Collect"
         OrderMailer.with(order: @order).order_ready_email.deliver_now
       end
-      # if order.status == "Payée"
-      #   OrderMailer.with(order: @order).new_order_email.deliver_now
-      #   OrderMailer.with(order: @order).order_confirmation_email.deliver_now
-      # end
     else
-      flash[:error] = "Oups, il y a eu un problème !"
+      flash[:danger] = "Oups, il y a eu un problème !"
     end
     redirect_to request.referrer
   end
@@ -74,7 +70,7 @@ class OrdersController < ApplicationController
     @order.update(user_id: current_user.id) if user_signed_in?
 
     if @order.first_name.empty? || @order.last_name.empty? || @order.email.empty? || @order.phone.empty?
-      flash[:alert] = 'Avant de valider, remplissez tous les champs et validez les infos'
+      flash[:danger] = 'Avant de valider, remplissez tous les champs et validez les infos'
       redirect_to panier_path
       return
     end

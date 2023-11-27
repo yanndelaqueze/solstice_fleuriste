@@ -18,7 +18,7 @@ class OrderItemsController < ApplicationController
     if @order_item.update(order_item_params)
       flash[:success] = "Article mis à jour"
     else
-      flash[:error] = "Echec"
+      flash[:danger] = "Echec"
     end
     redirect_to request.referrer
   end

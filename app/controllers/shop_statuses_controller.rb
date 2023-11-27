@@ -20,7 +20,7 @@ class ShopStatusesController < ApplicationController
     if @shop_status.update(shop_status_params)
       flash[:success] = "Status de la Boutique mis à jour !"
     else
-      flash[:error] = "Echec"
+      flash[:danger] = "Echec"
     end
     redirect_to request.referrer
   end
