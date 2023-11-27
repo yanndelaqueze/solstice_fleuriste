@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       flash[:success] = "Commande mise à jour !!"
       if @order.status == "Prête" && @order.transport == "Click & Collect"
-        OrderMailer.with(order: @order).order_ready_email.deliver_later
+        OrderMailer.with(order: @order).order_ready_email.deliver_now
       end
     else
       flash[:error] = "Oups, il y a eu un problème !"
