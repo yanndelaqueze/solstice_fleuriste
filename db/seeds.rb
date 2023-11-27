@@ -32,12 +32,12 @@ print "delivery area OK"
 print "creating users"
 
 admin = User.new(
-  email: 'admin@solstice.com',
-  first_name: "Admin",
+  email: 'laurie@solsticefleurs.com',
+  first_name: "Laurie",
   last_name: "Solstice",
   phone: "+262 262 51 71 79",
-  password: 'password',
-  password_confirmation: 'password',
+  password: '***REDACTED-LEAKED-PASSWORD***',
+  password_confirmation: '***REDACTED-LEAKED-PASSWORD***',
   admin: true
 )
 admin.save!
