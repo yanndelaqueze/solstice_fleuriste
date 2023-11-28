@@ -3,6 +3,8 @@
 Solstice is a flower shop located in Petite Île, south of Reunion Island (France) in the Pacific Ocean. 
 Solstice specializes in creating bouquets for all occasions. The arrangements are crafted based on the seasons, available stock, using high-quality and fresh flowers.
 Solstice also offers potted plants, orchids, dried flowers, and special arrangements (by quote) to adorn various events (weddings, funerals, baptisms, receptions...).
+
+
 www.solstice-fleuriste.fr
 
 ## Site Features :
