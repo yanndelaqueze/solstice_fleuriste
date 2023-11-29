@@ -48,6 +48,45 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
 
     if @order.update(order_params)
+
+      # SETTING TOWN
+        if @order.delivery_address.present?
+          @order.town = Geocoder.search(@order.delivery_address).first.data["address"]["town"]
+        end
+
+      # SETTING IN_DELIVERY_AREA?
+        if @order.delivery_address.present?
+          lat = Geocoder.search(@order.delivery_address).first.data["lat"].to_f
+          lon = Geocoder.search(@order.delivery_address).first.data["lon"].to_f
+          @polygon = Polygon.last
+          polygon_coordinates = JSON.parse(@polygon.coordinates)
+          n = polygon_coordinates.length
+          @order.in_delivery_area = false
+          j = n - 1
+          for i in 0...n
+            xi, yi = polygon_coordinates[i]
+            xj, yj = polygon_coordinates[j]
+            intersect = ((yi > lat) != (yj > lat)) &&
+                        (lon < ((xj - xi) * (lat - yi) / (yj - yi)) + xi)
+            if intersect
+              @order.in_delivery_area = !@order.in_delivery_area
+            end
+            j = i
+          end
+        end
+
+        # SETTING LAT/LON
+        @order.latitude = lat
+        @order.longitude = lon
+
+        # SETTING TRANSPORT
+        if !@order.in_delivery_area
+          @order.transport = "Click & Collect"
+        else
+          @order.transport = "Livraison"
+        end
+
+      @order.save!
       flash[:info] = "Commande mise à jour"
       if @order.status == "Prête" && @order.transport == "Click & Collect"
         OrderMailer.with(order: @order).order_ready_email.deliver_now
@@ -106,4 +145,38 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:first_name, :last_name, :email, :delivery_address, :transport, :date, :delivery_instructions, :phone, :status, :delivery_first_name, :delivery_last_name, :time_slot )
   end
+
+  # def set_town
+
+  #   if @order.delivery_address.present?
+  #     @order.town = Geocoder.search(@order.delivery_address).first.data["address"]["town"]
+  #   else
+  #     @order.town = ""
+  #   end
+  # end
+
+  # def set_in_delivery_area?
+  #   if @order.delivery_address.present?
+  #     lat = Geocoder.search(self.delivery_address).first.data["lat"].to_f
+  #     lon = Geocoder.search(self.delivery_address).first.data["lon"].to_f
+
+  #     @polygon = Polygon.last
+  #     polygon_coordinates = JSON.parse(@polygon.coordinates)
+  #     n = polygon_coordinates.length
+  #     inside = false
+
+  #     j = n - 1
+  #     for i in 0...n
+  #       xi, yi = polygon_coordinates[i]
+  #       xj, yj = polygon_coordinates[j]
+  #       intersect = ((yi > lat) != (yj > lat)) &&
+  #                   (lon < ((xj - xi) * (lat - yi) / (yj - yi)) + xi)
+  #       if intersect
+  #         inside = !inside
+  #       end
+  #       j = i
+  #     end
+  #    @order.in_delivery_area? = inside
+  # end
+
 end

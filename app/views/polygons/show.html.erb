@@ -12,7 +12,7 @@
               <p><i class="fa-solid fa-house"></i> Adresse de livraison choisie :</p>
               <p class="input-address"> <%= @order.delivery_address %></p>
           </div>
-          <% if !@order.in_delivery_area?  %>
+          <% if !@order.in_delivery_area  %>
             <p class="warning-delivery alert-danger mt-2">Désolé, la livraison est impossible à cette adresse 🙁</p>
           <% else %>
             <p class="warning-delivery alert-success mt-2">Youpi ! La livraison est possible à cette adresse 🎉</p>
