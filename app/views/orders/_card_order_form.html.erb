@@ -9,7 +9,7 @@
             <p>Adresse de livraison :</p>
             <p class="input-address"><%= order.delivery_address %></p>
         </div>
-        <% if order.delivery_address.present? && !order.in_delivery_area?  %>
+        <% if order.delivery_address.present? && !order.in_delivery_area  %>
           <p class="warning-delivery alert-danger">Désolé, la livraison est impossible à cette adresse</p>
         <% end %>
         <div class="form-group">

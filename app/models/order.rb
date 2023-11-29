@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :user, optional: true
   geocoded_by :delivery_address
-  after_validation :geocode, if: :will_save_change_to_delivery_address?
+  # after_validation :geocode, if: :will_save_change_to_delivery_address?
   STATUS = ["En cours", "En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"]
   validates :status, inclusion: { in: STATUS }
   TRANSPORT = ["Click & Collect", "Livraison"]
@@ -11,7 +11,6 @@ class Order < ApplicationRecord
   validates :time_slot, inclusion: { in: SLOT }
   validates :delivery_address, presence: true, if: :delivery_transport?
   before_save :set_default_date
-  before_save :set_transport
   after_save :subtotal_cents
   after_save :delivery_cost_cents
   after_save :total_cents
@@ -23,14 +22,6 @@ class Order < ApplicationRecord
     transport == "Livraison"
   end
 
-  def town
-    if self.delivery_address.present?
-      return Geocoder.search(delivery_address).first.data["address"]["town"]
-    else
-      return ""
-    end
-  end
-
   def subtotal_cents
     order_items ? self.order_items.sum { |item| item.subtotal_cents } : 0
   end
@@ -38,7 +29,7 @@ class Order < ApplicationRecord
   def delivery_cost_cents
     if transport == "Click & Collect"
       0
-    elsif in_delivery_area?
+    elsif in_delivery_area
       if town == "Petite-Île"
         0
       else
@@ -53,40 +44,48 @@ class Order < ApplicationRecord
     self.subtotal_cents + self.delivery_cost_cents
   end
 
-  def in_delivery_area?
-    if self.delivery_address.present?
-      if latitude.nil?
-        lat = Geocoder.search(delivery_address).first.data["lat"].to_f
-      else
-        lat = latitude
-      end
+  # def in_delivery_area?
+  #   if self.delivery_address.present?
+  #     if latitude.nil?
+  #       lat = Geocoder.search(delivery_address).first.data["lat"].to_f
+  #     else
+  #       lat = latitude
+  #     end
 
-      if longitude.nil?
-        lon = Geocoder.search(delivery_address).first.data["lon"].to_f
-      else
-        lon = longitude
-      end
-      @polygon = Polygon.last
-      polygon_coordinates = JSON.parse(@polygon.coordinates)
-      n = polygon_coordinates.length
-      inside = false
+  #     if longitude.nil?
+  #       lon = Geocoder.search(delivery_address).first.data["lon"].to_f
+  #     else
+  #       lon = longitude
+  #     end
+  #     @polygon = Polygon.last
+  #     polygon_coordinates = JSON.parse(@polygon.coordinates)
+  #     n = polygon_coordinates.length
+  #     inside = false
 
-      j = n - 1
-      for i in 0...n
-        xi, yi = polygon_coordinates[i]
-        xj, yj = polygon_coordinates[j]
-        intersect = ((yi > lat) != (yj > lat)) &&
-                    (lon < ((xj - xi) * (lat - yi) / (yj - yi)) + xi)
-        if intersect
-          inside = !inside
-        end
-        j = i
-      end
-      return inside
-    else
-      return false
-    end
-  end
+  #     j = n - 1
+  #     for i in 0...n
+  #       xi, yi = polygon_coordinates[i]
+  #       xj, yj = polygon_coordinates[j]
+  #       intersect = ((yi > lat) != (yj > lat)) &&
+  #                   (lon < ((xj - xi) * (lat - yi) / (yj - yi)) + xi)
+  #       if intersect
+  #         inside = !inside
+  #       end
+  #       j = i
+  #     end
+  #     return inside
+  #   else
+  #     return false
+  #   end
+  # end
+
+  # def town
+  #   if self.delivery_address.present?
+  #     return Geocoder.search(delivery_address).first.data["address"]["town"]
+  #   else
+  #     return ""
+  #   end
+  # end
 
   private
 
@@ -94,9 +93,9 @@ class Order < ApplicationRecord
     self.date ||= 2.days.from_now.to_date
   end
 
-  def set_transport
-    if !self.in_delivery_area?
-      self.transport = "Click & Collect"
-    end
-  end
+  # def set_transport
+  #   if !self.in_delivery_area
+  #     self.transport = "Click & Collect"
+  #   end
+  # end
 end
