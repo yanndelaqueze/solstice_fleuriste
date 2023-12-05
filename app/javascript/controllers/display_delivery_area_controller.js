@@ -9,11 +9,9 @@ export default class extends Controller {
   };
 
   connect() {
+    mapboxgl.accessToken = this.apiKeyValue;
     console.log("Polygon Draw - HELLO");
     console.log("polygon coord:", this.currentCoordinatesValue);
-    const polygonCoordinates = [JSON.parse(this.currentCoordinatesValue)];
-    console.log("PARSED polygon coord:", polygonCoordinates);
-    mapboxgl.accessToken = this.apiKeyValue;
 
     // Display Map
     this.map = new mapboxgl.Map({
@@ -27,6 +25,9 @@ export default class extends Controller {
     this.map.addControl(new mapboxgl.NavigationControl());
 
     // Display the current Polygon on Map
+    const polygonCoordinates = JSON.parse(this.currentCoordinatesValue);
+    console.log("PARSED polygon coord:", polygonCoordinates);
+
     this.map.on("load", function () {
       this.addLayer({
         id: "polygon",
@@ -37,7 +38,7 @@ export default class extends Controller {
             type: "Feature",
             geometry: {
               type: "Polygon",
-              coordinates: polygonCoordinates,
+              coordinates: [polygonCoordinates],
             },
           },
         },
