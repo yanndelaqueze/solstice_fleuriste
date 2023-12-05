@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import mapboxgl from "mapbox-gl"; // Don't forget this!
+import mapboxgl from "mapbox-gl";
 
 export default class extends Controller {
   static values = {
@@ -9,11 +9,10 @@ export default class extends Controller {
   };
 
   connect() {
-    const polygonCoordinates = [JSON.parse(this.currentCoordinatesValue)];
-    console.log(polygonCoordinates);
-
-    console.log(JSON.parse(this.currentCoordinatesValue));
     console.log("Polygon Draw - HELLO");
+    console.log("polygon coord:", this.currentCoordinatesValue);
+    const polygonCoordinates = [JSON.parse(this.currentCoordinatesValue)];
+    console.log("PARSED polygon coord:", polygonCoordinates);
     mapboxgl.accessToken = this.apiKeyValue;
 
     // Display Map
@@ -58,7 +57,7 @@ export default class extends Controller {
       .addTo(this.map);
 
     // Add Address Marker to Map
-    console.log(this.addressCoordinatesValue);
+    console.log("Address coord:", this.addressCoordinatesValue);
     if (this.addressCoordinatesValue !== null) {
       const element = document.createElement("div");
       element.className = "marker-address";
