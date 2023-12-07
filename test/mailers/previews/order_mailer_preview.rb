@@ -13,6 +13,11 @@ class OrderMailerPreview < ActionMailer::Preview
     OrderMailer.with(order: order).order_ready_email
   end
 
+  def order_delivery_email
+    order = Order.find_by(email: "kjornet@gmail.com")
+    OrderMailer.with(order: order).order_delivery_email
+  end
+
   def order_confirmation_email
     order = Order.find_by(email: "kjornet@gmail.com")
     OrderMailer.with(order: order).order_confirmation_email

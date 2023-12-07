@@ -37,19 +37,23 @@
   <div class="card-order-info">
     <div class="card-order-main-info">
       <p class="order-date"><%= order.date.strftime("%e/%m/%Y") %></p>
+      <p class="order-time"><%= order.time_slot %></p>
       <p class="order-transport-info"><%= order.transport %></p>
-
-      <% if current_user.admin? %>
-        <%= simple_form_for order, html: { class: "order-edit-status-form"} do |f| %>
-          <%= f.input :status, collection: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"], label: false, html: { class: "btn-action"}, include_blank: false %>
-          <%= f.submit "OK", class:"btn-action ml-2" %>
-        <% end %>
-      <% else %>
-        <p class="order-status"><%= order.status  %></p>
-      <% end %>
-
     </div>
     <button class="card-order-info-btn" data-action="click->toggle-order-details#toggleDetails" data-toggle-order-details-target="button">Afficher les détails</button>
+  </div>
+  <div class="card-order-status" data-controller="toggle-message-input">
+    <% if current_user.admin? %>
+      <%= simple_form_for order do |f| %>
+        <%= f.input :status, collection: ["En Attente de Paiement", "Payée", "En préparation", "Prête", "Livrée", "Annulée", "Remboursée"], label: false, class: "input-status", include_blank: false ,input_html: {data: { target: 'toggle-message-input.status' }, data: { action: 'change->toggle-message-input#toggleInput' }} %>
+        <div id="input-message">
+          <%= f.input :delivery_message_admin, label: "Note concernant la livraison :"%>
+        </div>
+        <%= f.submit "Valider", class:"btn-action" %>
+      <% end %>
+    <% else %>
+      <p class="order-status"><%= order.status  %></p>
+    <% end %>
   </div>
 
   <div class="card-order-details hidden" data-toggle-order-details-target="details">

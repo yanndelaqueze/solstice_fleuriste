@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_124043) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_07_135040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_124043) do
     t.string "time_slot", default: "Midi"
     t.boolean "in_delivery_area", default: false
     t.string "town", default: ""
+    t.text "delivery_message_admin", default: ""
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

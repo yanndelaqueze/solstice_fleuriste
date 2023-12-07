@@ -50,24 +50,26 @@
         <div class="custom-form">
           <%= simple_form_for [@product, @order_item], data: { turbo: "false" } do |f| %>
 
-            <p>1- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
+            <p>- Indiquez votre budget : (minimum <%= @product.min_price %>€)</p>
             <div class="price-input-container", data-controller="price-input-range">
               <span class="value" data-price-input-range-target="labelPrice">€<%= number_with_precision(@product.min_price_cents/100, precision: 2) %></span>
               <%= f.input :price, as: :range, label: false, input_html: { min: @product.min_price_cents/100, max: 150, step: 1, value: @product.min_price_cents/100, class: "range-input", data: { price_input_range_target: "valuePrice", action: "input->price-input-range#changePrice" }} %>
             </div>
 
-            <p>2- Précisez l'occasion célébrée :</p>
-            <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+            <% if @product.category.name != "Deuil" %>
+              <p>- Précisez l'occasion célébrée :</p>
+                <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+            <% end %>
 
             <div class="message-input-container" data-controller="character-limit">
-              <p>3- Rédigez le message que vous souhaitez y joindre :</p>
+              <p>- Rédigez le message que vous souhaitez y joindre :</p>
               <%= f.input :message, as: :text, placeholder: "Votre message", label: false, input_html:  { maxlength: 1000,  data: { character_limit_target: "input", action: "input->character-limit#checkCharacters" }} %>
               <p class="max-caracteres" data-character-limit-target="counter">1000 caractères max.</p>
             </div>
 
 
             <% if @product.category.name == "Bouquets" %>
-              <p>4- Ajoutez des options :</p>
+              <p>- Ajoutez des options :</p>
               <div class="checkbox-container">
                 <%= image_tag "water-bubble.png"  %>
                 <%= f.input :water_bubble, as: :boolean, label: "Bulle d'eau (4€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
@@ -75,7 +77,7 @@
             <% end %>
 
             <% if @product.category.name == "Deuil" %>
-              <p>4- Ajoutez des options :</p>
+              <p>- Ajoutez des options :</p>
               <div class="ribbon-option" data-controller="toggle-ribbon-message">
                 <div class="checkbox-container">
                   <%= image_tag "ribbon.png"  %>
@@ -103,17 +105,19 @@
               <%= f.input :quantity, as: :numeric, placeholder: "", label: false %>
             </div>
 
-            <p>Précisez l'occasion célébrée :</p>
-              <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+            <% if @product.category.name != "Deuil" %>
+              <p>- Précisez l'occasion célébrée :</p>
+                <%= f.input :occasion, collection_wrapper_tag: "div", collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: OrderItem::OCCASIONS, label: false %>
+            <% end %>
 
             <div class="message-input-container" data-controller="character-limit">
-              <p>Rédigez le message que vous souhaitez y joindre :</p>
+              <p>- Rédigez le message que vous souhaitez y joindre :</p>
               <%= f.input :message, as: :text, placeholder: "Votre message", label: false, input_html:  { maxlength: 1000,  data: { character_limit_target: "input", action: "input->character-limit#checkCharacters" }} %>
               <p class="max-caracteres" data-character-limit-target="counter">1000 caractères max.</p>
             </div>
 
             <% if @product.category.name == "Bouquets" %>
-                <p>4- Ajoutez des options :</p>
+                <p>- Ajoutez des options :</p>
                 <div class="checkbox-container">
                   <%= image_tag "water-bubble.png"  %>
                   <%= f.input :water_bubble, as: :boolean, label: "Bulle d'eau (4€)", label_html: { class: 'checkbox-label' }, :input_html => { :class => 'checkbox-hidden' } %>
@@ -121,7 +125,7 @@
               <% end %>
 
               <% if @product.category.name == "Deuil" %>
-                <p>4- Ajoutez des options :</p>
+                <p>- Ajoutez des options :</p>
                 <div class="ribbon-option" data-controller="toggle-ribbon-message">
                   <div class="checkbox-container">
                     <%= image_tag "ribbon.png"  %>

@@ -91,6 +91,9 @@ class OrdersController < ApplicationController
       if @order.status == "Prête" && @order.transport == "Click & Collect"
         OrderMailer.with(order: @order).order_ready_email.deliver_now
       end
+      if @order.status == "Livrée" && @order.transport == "Livraison"
+        OrderMailer.with(order: @order).order_delivery_email.deliver_now
+      end
     else
       flash[:danger] = "Oups, il y a eu un problème !"
     end

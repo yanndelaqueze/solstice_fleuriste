@@ -9,6 +9,11 @@ class OrderMailer < ApplicationMailer
     mail(to: @order.email, subject: "Solstice Fleuriste : Votre commande est prête !")
   end
 
+  def order_delivery_email
+    @order = params[:order]
+    mail(to: @order.email, subject: "Solstice Fleuriste : Votre commande a été livrée !")
+  end
+
   def order_confirmation_email
     @order = params[:order]
     mail(to: @order.email, subject: "Solstice Fleuriste : Confirmation de commande")

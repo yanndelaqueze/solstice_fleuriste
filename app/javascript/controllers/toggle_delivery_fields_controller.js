@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = ["deliveryFields"];
 
   connect() {
-    console.log("hello ToggleDeliveryFields");
-
     const selectedTransport = document.querySelector(
       'input[name="order[transport]"]:checked'
     ).value;

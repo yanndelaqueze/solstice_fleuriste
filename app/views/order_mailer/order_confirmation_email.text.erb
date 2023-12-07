@@ -38,7 +38,7 @@ Nom : <%= @order.delivery_last_name %> / Prénom : <%= @order.delivery_first_nam
 Adresse : <%= @order.delivery_address %>
 Instructions de livraison : <%= @order.delivery_instructions %>
 
-Date de livraison prévue : <%= @order.date.strftime("%e/%m/%Y") %>
+Date de livraison prévue : <%= @order.date.strftime("%e/%m/%Y") %> / <%= @order.time_slot %>
 <% end %>
 
 Articles : <%= @order.order_items.count  %>

@@ -1,0 +1,35 @@
+Votre commande # <%= @order.id %> chez Solstice a été livrée!
+===============================================
+
+Détails :
+--------------------------
+
+Numéro de commande : <%= @order.id %>
+Nom : <%= @order.last_name %> / Prénom : <%= @order.first_name %>
+Email: <%= @order.email %>
+Téléphone : <%= @order.phone %>
+
+Informations de Livraison :
+--------------------------
+Nom : <%= @order.delivery_last_name %> / Prénom : <%= @order.delivery_first_name %>
+Adresse : <%= @order.delivery_address %>
+Date de livraison demandée : <%= @order.date.strftime("%e/%m/%Y") %> / <%= @order.time_slot %>
+Instructions de livraison : <%= @order.delivery_instructions %>
+Note de Solstice concernant la livraison : <%= @order.delivery_message_admin %>
+
+
+Articles : <%= @order.order_items.count  %>
+--------------------------
+<% @order.order_items.each do |order_item| %>
+  Produit : <%= order_item.product.name %>
+  Budget : <%= humanized_money_with_symbol(order_item.subtotal) %>
+  Occasion : <%= order_item.occasion %>
+  Message : "<%= order_item.message %>"
+
+<% end  %>
+
+Merci encore pour votre commande !
+
+Solstice Fleuriste
+32 Rue Joseph Suacot, Petite Île, 97429, La Réunion
+Téléphone : +262 262 51 71 78

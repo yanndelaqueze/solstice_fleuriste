@@ -53,6 +53,15 @@
       border-width: thin;
     }
 
+    .card-order-status {
+      margin-top: 1em;
+      display: block;
+
+      #order_status {
+        width: 25%;
+      }
+    }
+
     .card-order-details {
       overflow: hidden;
       transition: max-height 0.3s ease-in-out;
@@ -91,9 +100,14 @@
       text-align: center;
     }
 
-    .order-edit-status-form {
-      display: flex;
-      align-items: flex-start;
+    .order-time {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      padding: 0.3em;
+      border-radius: 0.5em;
+      border: solid;
+      border-width: thin;
+      margin-right: 1em;
+      text-align: center;
     }
 
     .order-picto {
@@ -211,7 +225,15 @@
       display: block;
     }
 
+    #order_status {
+      width: 10em;
+    }
+
     .order-date {
+      width: 8em;
+    }
+
+    .order-time {
       width: 8em;
     }
 
