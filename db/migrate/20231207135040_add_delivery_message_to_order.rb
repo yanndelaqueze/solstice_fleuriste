@@ -3,4 +3,3 @@ class AddDeliveryMessageToOrder < ActiveRecord::Migration[7.1]
     add_column :orders, :delivery_message_admin, :text, default: ""
   end
 end
-w
