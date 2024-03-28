@@ -1,80 +1,78 @@
-@media (max-width: 2500px) {
-  body {
-    background-color: $background;
-    margin: 0;
-    padding: 0;
+body {
+  background-color: $background;
+  margin: 0;
+  padding: 0;
 
-    .filter {
-      margin-left: 1em;
-      margin-right: 1em;
+  .filter {
+    margin-left: 1em;
+    margin-right: 1em;
 
-      .active-filter {
-        background-color: black;
-        color: white;
-      }
-
-      .cat-filter {
-        border: solid;
-        border-width: thin;
-        border-radius: 0.375em;
-        padding-top: 1em;
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-      }
-
-      .checkboxes {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-
-        span {
-          margin: 0;
-        }
-      }
-
-      .checkbox-hidden {
-        position: absolute;
-        transform: scale(0);
-      }
-
-      .checkbox-container {
-        display: flex;
-        align-items: center;
-      }
-
-      .checkbox-label {
-        cursor: pointer;
-        display: inline-block;
-        border-radius: 0.375em;
-        padding: 0.1rem 0.5rem;
-        background-color: transparent;
-        color: $font;
-        margin-right: 0.6rem;
-        margin-bottom: 0.4rem;
-        border: solid;
-        border-width: thin;
-        border-color: $font;
-      }
-
-      .checkbox-hidden:checked + .checkbox-label {
-        background-color: $font;
-        color: #fff;
-      }
+    .active-filter {
+      background-color: black;
+      color: white;
     }
 
-    .category-header {
-      color: $font;
-      margin-top: 2em;
-      padding-left: 2em;
+    .cat-filter {
+      border: solid;
+      border-width: thin;
+      border-radius: 0.375em;
+      padding-top: 1em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
     }
 
-    .product-container {
+    .checkboxes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 0.75rem;
-      gap: 0.75rem;
-      padding: 0.75rem;
-      justify-items: center;
+
+      span {
+        margin: 0;
+      }
     }
+
+    .checkbox-hidden {
+      position: absolute;
+      transform: scale(0);
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-label {
+      cursor: pointer;
+      display: inline-block;
+      border-radius: 0.375em;
+      padding: 0.1rem 0.5rem;
+      background-color: transparent;
+      color: $font;
+      margin-right: 0.6rem;
+      margin-bottom: 0.4rem;
+      border: solid;
+      border-width: thin;
+      border-color: $font;
+    }
+
+    .checkbox-hidden:checked + .checkbox-label {
+      background-color: $font;
+      color: #fff;
+    }
+  }
+
+  .category-header {
+    color: $font;
+    margin-top: 2em;
+    padding-left: 2em;
+  }
+
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.75rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    justify-items: center;
   }
 }
 

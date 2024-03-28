@@ -1,72 +1,70 @@
-@media (max-width: 2500px) {
-  .footer {
-    width: 100%;
-    background-color: $color1;
-    color: white;
-    padding-top: 1em;
-  }
+.footer {
+  width: 100%;
+  background-color: $color1;
+  color: white;
+  padding-top: 1em;
+}
 
-  .footer-content {
-    display: flex;
-    justify-content: space-evenly;
-  }
+.footer-content {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-  .footer-content-element {
-    margin-right: 1em;
-    margin-left: 1em;
-  }
+.footer-content-element {
+  margin-right: 1em;
+  margin-left: 1em;
+}
 
-  .footer-content-element-header {
-    font-size: 1.2em;
-  }
+.footer-content-element-header {
+  font-size: 1.2em;
+}
 
-  .footer-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
+.footer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
 
-  .footer-footer-element {
-    margin-right: 1em;
-    margin-left: 1em;
-  }
+.footer-footer-element {
+  margin-right: 1em;
+  margin-left: 1em;
+}
 
-  .footer ul {
-    padding: 0px;
-  }
+.footer ul {
+  padding: 0px;
+}
 
-  .social {
-    li {
-      display: inline-block;
-      padding: 0px 20px;
-    }
+.social {
+  li {
+    display: inline-block;
+    padding: 0px 20px;
   }
+}
 
-  .social i {
-    font-size: 3em;
-    color: $white;
-  }
-  .payment i {
-    font-size: 1.5em;
-    color: $white;
-  }
+.social i {
+  font-size: 3em;
+  color: $white;
+}
+.payment i {
+  font-size: 1.5em;
+  color: $white;
+}
 
-  .footer a {
-    text-decoration: none;
-    color: $white;
-  }
+.footer a {
+  text-decoration: none;
+  color: $white;
+}
 
-  span {
-    font-size: 20px;
-    margin: 0px 30px;
-  }
+span {
+  font-size: 20px;
+  margin: 0px 30px;
+}
 
-  .current-order {
-    font-size: 0.4em;
-    margin: 0;
-  }
+.current-order {
+  font-size: 0.4em;
+  margin: 0;
 }
 
 @media (max-width: 750px) {

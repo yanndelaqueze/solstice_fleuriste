@@ -1,82 +1,80 @@
-@media (max-width: 2500px) {
-  .recap-order-details {
-    display: flex;
-    justify-content: space-around;
-  }
+.recap-order-details {
+  display: flex;
+  justify-content: space-around;
+}
 
-  .recap-order-header {
+.recap-order-header {
+  display: flex;
+  justify-content: flex-end;
+
+  .recap-order-buttons {
     display: flex;
     justify-content: flex-end;
-
-    .recap-order-buttons {
-      display: flex;
-      justify-content: flex-end;
-    }
   }
+}
 
-  .recap-and-items {
-    width: 60%;
-    margin-top: 0;
+.recap-and-items {
+  width: 60%;
+  margin-top: 0;
+  border-radius: 1em;
+  margin-right: 1em;
+
+  .recap {
+    margin-top: 1em;
+    margin-left: 1em;
+    padding: 1em;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 1em;
-    margin-right: 1em;
 
-    .recap {
-      margin-top: 1em;
-      margin-left: 1em;
-      padding: 1em;
-      background-color: white;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      border-radius: 1em;
-
-      .recap-section {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .total {
-        border-top: solid;
-        padding-top: 1em;
-        border-top-width: thin;
-      }
+    .recap-section {
+      display: flex;
+      justify-content: space-between;
     }
 
-    .cart-items {
-      margin-top: 1em;
-      margin-left: 1em;
+    .total {
+      border-top: solid;
+      padding-top: 1em;
+      border-top-width: thin;
     }
   }
 
-  .recap-order-info {
-    width: 40%;
+  .cart-items {
+    margin-top: 1em;
+    margin-left: 1em;
+  }
+}
 
-    .recap-order-user-info {
-      width: 100%;
-      background-color: white;
-      padding: 1em;
-      margin-top: 1em;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      border-radius: 1em;
-    }
+.recap-order-info {
+  width: 40%;
 
-    .recap-order-transport-info {
-      width: 100%;
-      background-color: white;
-      padding: 1em;
-      margin-top: 1em;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      border-radius: 1em;
-    }
+  .recap-order-user-info {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    margin-top: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+  }
 
-    .shop-info {
-      border: solid;
-      border-width: thin;
-      border-radius: 1em;
-      padding: 1em;
-    }
+  .recap-order-transport-info {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    margin-top: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1em;
+  }
 
-    .time {
-      font-size: 0.75em;
-    }
+  .shop-info {
+    border: solid;
+    border-width: thin;
+    border-radius: 1em;
+    padding: 1em;
+  }
+
+  .time {
+    font-size: 0.75em;
   }
 }
 

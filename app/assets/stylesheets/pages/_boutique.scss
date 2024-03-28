@@ -1,98 +1,96 @@
-@media (max-width: 2500px) {
-  .boutique-infos {
-    margin-top: 1em;
-    margin-left: 1em;
+.boutique-infos {
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 1em;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 1em;
+  color: $font;
+}
+
+.boutique-section-container {
+  display: flex;
+  justify-content: center;
+
+  .boutique-section {
+    margin-top: 6em;
+    margin-bottom: 6em;
+    // margin-left: 5em;
+    width: 60%;
     padding: 1em;
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 1em;
-    color: $font;
-  }
+    border: solid;
+    border-width: thick;
+    border-color: $color5;
+    position: relative;
 
-  .boutique-section-container {
-    display: flex;
-    justify-content: center;
+    .boutique-section-content {
+      .boutique-section-text {
+        margin-bottom: 3em;
+      }
 
-    .boutique-section {
-      margin-top: 6em;
-      margin-bottom: 6em;
-      // margin-left: 5em;
-      width: 60%;
-      padding: 1em;
-      border: solid;
-      border-width: thick;
-      border-color: $color5;
-      position: relative;
+      .boutique-images-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2em;
+      }
 
-      .boutique-section-content {
-        .boutique-section-text {
-          margin-bottom: 3em;
+      .boutique-images {
+        display: flex;
+        justify-content: center;
+
+        .boutique-image {
+          height: 15em;
+          width: 15em;
+          transition: transform 0.5s ease;
+          background-size: cover;
+          background-position: center;
         }
 
-        .boutique-images-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 2em;
+        .boutique-image:hover {
+          transform: scale(1.1);
         }
 
-        .boutique-images {
-          display: flex;
-          justify-content: center;
+        .image1 {
+          margin-right: -1em;
+          z-index: 1;
+          position: relative;
+        }
 
-          .boutique-image {
-            height: 15em;
-            width: 15em;
-            transition: transform 0.5s ease;
-            background-size: cover;
-            background-position: center;
-          }
+        .image2 {
+          margin-right: -1em;
+          margin-top: 1em;
+          z-index: 2;
+          position: relative;
+        }
 
-          .boutique-image:hover {
-            transform: scale(1.1);
-          }
+        .image3 {
+          z-index: 3;
+          position: relative;
+        }
 
-          .image1 {
-            margin-right: -1em;
-            z-index: 1;
-            position: relative;
-          }
-
-          .image2 {
-            margin-right: -1em;
-            margin-top: 1em;
-            z-index: 2;
-            position: relative;
-          }
-
-          .image3 {
-            z-index: 3;
-            position: relative;
-          }
-
-          .image4 {
-            margin-left: -1em;
-            margin-top: 1em;
-            z-index: 4;
-            position: relative;
-          }
+        .image4 {
+          margin-left: -1em;
+          margin-top: 1em;
+          z-index: 4;
+          position: relative;
         }
       }
     }
   }
+}
 
-  .boutique-infos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.boutique-infos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-    .boutique-infos-section {
-      margin-bottom: 2em;
-    }
+  .boutique-infos-section {
+    margin-bottom: 2em;
+  }
 
-    .mapboxgl-map {
-      height: 20em !important;
-      margin-bottom: 1em;
-    }
+  .mapboxgl-map {
+    height: 20em !important;
+    margin-bottom: 1em;
   }
 }
 

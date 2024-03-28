@@ -1,105 +1,103 @@
-@media (max-width: 2500px) {
-  body {
-    background-color: $background;
-    margin: 0;
-    padding: 0;
+body {
+  background-color: $background;
+  margin: 0;
+  padding: 0;
 
-    .heading-home {
-      font-size: 5em;
-    }
+  .heading-home {
+    font-size: 5em;
+  }
 
-    .menu-container {
+  .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+  }
+
+  .home-menu {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+
+    .home-menu-element {
+      height: 15em;
+      width: 15em;
+      background-size: cover;
+      background-position: center;
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
-      margin-top: 2em;
+      transition: transform 0.5s ease;
     }
 
-    .home-menu {
+    .home-menu-element:hover {
+      transform: scale(1.1);
+    }
+
+    .online-shop {
+      margin-right: -1em;
+      z-index: 1;
+      position: relative;
+    }
+
+    .boutique {
+      margin-right: -1em;
+      margin-top: 1em;
+      z-index: 2;
+      position: relative;
+    }
+
+    .evenements {
+      z-index: 3;
+      position: relative;
+    }
+
+    .deuil {
+      margin-left: -1em;
+      margin-top: 1em;
+      z-index: 4;
+      position: relative;
+    }
+
+    .menu-element-label {
+      position: absolute;
+      text-decoration: none;
+      color: white;
+      background-color: $color4;
+      opacity: 80%;
+      padding: 0.2em 0.5em 0.2em 0.5em;
+    }
+
+    .home-menu-element:hover .menu-element-label {
+      transform: scale(1);
+    }
+  }
+
+  .contact-section-container {
+    display: flex;
+    justify-content: center;
+
+    .contact-section {
+      margin-top: 6em;
+      margin-bottom: 6em;
       width: 60%;
-      display: flex;
-      justify-content: center;
+      padding: 1em;
+      border: solid;
+      border-width: thick;
+      border-color: $color5;
+      position: relative;
 
-      .home-menu-element {
-        height: 15em;
-        width: 15em;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: transform 0.5s ease;
-      }
+      .contact-section-content {
+        .contact-section-text {
+          margin-bottom: 3em;
+        }
 
-      .home-menu-element:hover {
-        transform: scale(1.1);
-      }
-
-      .online-shop {
-        margin-right: -1em;
-        z-index: 1;
-        position: relative;
-      }
-
-      .boutique {
-        margin-right: -1em;
-        margin-top: 1em;
-        z-index: 2;
-        position: relative;
-      }
-
-      .evenements {
-        z-index: 3;
-        position: relative;
-      }
-
-      .deuil {
-        margin-left: -1em;
-        margin-top: 1em;
-        z-index: 4;
-        position: relative;
-      }
-
-      .menu-element-label {
-        position: absolute;
-        text-decoration: none;
-        color: white;
-        background-color: $color4;
-        opacity: 80%;
-        padding: 0.2em 0.5em 0.2em 0.5em;
-      }
-
-      .home-menu-element:hover .menu-element-label {
-        transform: scale(1);
-      }
-    }
-
-    .contact-section-container {
-      display: flex;
-      justify-content: center;
-
-      .contact-section {
-        margin-top: 6em;
-        margin-bottom: 6em;
-        width: 60%;
-        padding: 1em;
-        border: solid;
-        border-width: thick;
-        border-color: $color5;
-        position: relative;
-
-        .contact-section-content {
-          .contact-section-text {
-            margin-bottom: 3em;
-          }
-
-          .contact-section-image {
-            position: absolute;
-            bottom: -55%;
-            left: 85%;
-            img {
-              height: 15em;
-            }
+        .contact-section-image {
+          position: absolute;
+          bottom: -55%;
+          left: 85%;
+          img {
+            height: 15em;
           }
         }
       }

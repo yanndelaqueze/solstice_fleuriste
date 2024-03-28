@@ -1,105 +1,103 @@
-@media (max-width: 2500px) {
-  .page-content {
-    min-height: calc(100vh - 4em);
-  }
+.page-content {
+  min-height: calc(100vh - 4em);
+}
 
-  .btn-action {
-    background-color: $button;
-    padding: 1em;
-    text-decoration: none !important;
-    font-family: $body-font;
-    color: white !important;
-    border: none;
+.btn-action {
+  background-color: $button;
+  padding: 1em;
+  text-decoration: none !important;
+  font-family: $body-font;
+  color: white !important;
+  border: none;
 
-    font-size: 1em;
-    line-height: 0.4;
-    border-radius: 0.375em;
-    text-align: center;
-    margin-right: 0.5em;
-  }
+  font-size: 1em;
+  line-height: 0.4;
+  border-radius: 0.375em;
+  text-align: center;
+  margin-right: 0.5em;
+}
 
-  .btn-personnaliser {
-    background-color: $color2;
-    padding: 1em;
-    text-decoration: none !important;
-    font-family: $body-font;
-    color: white !important;
-    border: none;
+.btn-personnaliser {
+  background-color: $color2;
+  padding: 1em;
+  text-decoration: none !important;
+  font-family: $body-font;
+  color: white !important;
+  border: none;
 
-    font-size: 1em;
-    line-height: 0.4;
-    border-radius: 0.375em;
-    text-align: center;
-    margin-right: 0.5em;
-  }
+  font-size: 1em;
+  line-height: 0.4;
+  border-radius: 0.375em;
+  text-align: center;
+  margin-right: 0.5em;
+}
 
-  .btn-personnaliser-thin {
-    background-color: $color2;
-    padding: 0.5em;
-    text-decoration: none !important;
-    font-family: $body-font;
-    color: white !important;
-    border: none;
+.btn-personnaliser-thin {
+  background-color: $color2;
+  padding: 0.5em;
+  text-decoration: none !important;
+  font-family: $body-font;
+  color: white !important;
+  border: none;
 
-    font-size: 1em;
-    line-height: 0.4;
-    border-radius: 0.375em;
-    text-align: center;
-    margin-right: 0.5em;
-  }
+  font-size: 1em;
+  line-height: 0.4;
+  border-radius: 0.375em;
+  text-align: center;
+  margin-right: 0.5em;
+}
 
-  .btn-all {
-    background-color: $font;
-    padding: 1em;
-    text-decoration: none !important;
-    font-family: $body-font;
-    color: white !important;
-    border: none;
+.btn-all {
+  background-color: $font;
+  padding: 1em;
+  text-decoration: none !important;
+  font-family: $body-font;
+  color: white !important;
+  border: none;
 
-    font-size: 1em;
-    line-height: 0.4;
-    border-radius: 0.375em;
-    text-align: center;
-    margin-right: 0.5em;
-  }
+  font-size: 1em;
+  line-height: 0.4;
+  border-radius: 0.375em;
+  text-align: center;
+  margin-right: 0.5em;
+}
 
-  .fa-pen-to-square {
-    color: $button;
-  }
+.fa-pen-to-square {
+  color: $button;
+}
 
-  .fa-trash-can {
-    color: $button;
-  }
+.fa-trash-can {
+  color: $button;
+}
 
-  #scrollBtn {
-    display: none;
-    position: fixed;
-    bottom: 76%;
-    left: 1%;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: $font;
-    color: white;
-    cursor: pointer;
-    border-radius: 20%;
-    font-size: 1em;
-    height: 3em;
-    width: 3em;
-    opacity: 60%;
-  }
+#scrollBtn {
+  display: none;
+  position: fixed;
+  bottom: 76%;
+  left: 1%;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: $font;
+  color: white;
+  cursor: pointer;
+  border-radius: 20%;
+  font-size: 1em;
+  height: 3em;
+  width: 3em;
+  opacity: 60%;
+}
 
-  #scrollBtn:hover {
-    opacity: 100%;
-  }
+#scrollBtn:hover {
+  opacity: 100%;
+}
 
-  .form-select {
-    border-radius: 0.375em;
-  }
+.form-select {
+  border-radius: 0.375em;
+}
 
-  .form-control {
-    border-radius: 0.375em;
-  }
+.form-control {
+  border-radius: 0.375em;
 }
 
 @media (max-width: 400px) {
