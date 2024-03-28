@@ -17,13 +17,15 @@ export default class extends Controller {
       minDate.setDate(minDate.getDate() + 1); // Add one more day to skip Monday
     }
 
-    // // Check if it's Sunday and remove "Soir" from the time slot collection
-    // if (selectedDate.getDay() === 0) {
-    //   const soir = v
-    //   console.log(soir);
-    //   console.log(soir.parentElement);
-    //   soir.parentElement.remove();
-    // }
+    // Array to store bank holidays (format: month/day)
+    const bankHolidays = ["1/1", "12/25", "7/14"];
+
+    // Check if the selected date is a bank holiday
+    const selectedMonth = selectedDate.getMonth() + 1; // Month is zero-indexed
+    const selectedDay = selectedDate.getDate();
+    const formattedSelectedDate = `${selectedMonth}/${selectedDay}`;
+    console.log(formattedSelectedDate);
+    const isBankHoliday = bankHolidays.includes(formattedSelectedDate);
 
     if (selectedDate.getDay() === 0) {
       this.toggleSoirOption(false);
@@ -32,11 +34,18 @@ export default class extends Controller {
       this.toggleSoirOption(true);
     }
 
-    if (selectedDate < minDate || selectedDate.getDay() === 1) {
+    if (
+      selectedDate < minDate ||
+      selectedDate.getDay() === 1 ||
+      isBankHoliday
+    ) {
       const modalMessage = this.modalMessageTarget;
       if (selectedDate.getDay() === 1) {
         modalMessage.textContent =
           "Nous ne livrons pas le Lundi 🙁, merci de choisir un autre jour";
+      } else if (isBankHoliday) {
+        modalMessage.textContent =
+          "Nous ne livrons pas les jours fériés 🙁, merci de choisir un autre jour";
       } else {
         modalMessage.textContent =
           "Merci de choisir une date dans 2 jours ou plus (Lundis exclus)";
