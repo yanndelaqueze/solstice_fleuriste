@@ -6,6 +6,8 @@ export default class extends Controller {
   checkDate(event) {
     const selectedDate = new Date(this.dateInputTarget.value);
     const today = new Date();
+    // Set the time component to midnight
+    today.setHours(0, 0, 0, 0);
 
     // Calculate the minimum allowed date (2 days from now)
     const minDate = new Date(today);
