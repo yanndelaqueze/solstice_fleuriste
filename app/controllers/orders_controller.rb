@@ -117,6 +117,12 @@ class OrdersController < ApplicationController
       return
     end
 
+    if @order.date.monday? || (@order.date.sunday? && ['Soir'].include?(@order.time_slot))
+      flash[:danger] = 'Nous ne livrons pas le dimanche après midi et le lundi toute la journée. Merci de choisir une autre date'
+      redirect_to panier_path
+      return
+    end
+
     if @order.transport == "Livraison" && (@order.delivery_first_name.empty? || @order.delivery_last_name.empty?)
       redirect_to panier_path
       return
