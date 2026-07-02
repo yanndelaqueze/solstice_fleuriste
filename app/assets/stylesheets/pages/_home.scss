@@ -4,7 +4,8 @@ body {
   padding: 0;
 
   .heading-home {
-    font-size: 5em;
+    font-size: 3.5em;
+    font-weight: 600;
   }
 
   .menu-container {
@@ -61,11 +62,13 @@ body {
 
     .menu-element-label {
       position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
       text-decoration: none;
       color: white;
-      background-color: $color4;
-      opacity: 90%;
-      padding: 0.2em 0.5em 0.2em 0.5em;
+      background-color: rgba(5, 42, 43, 0.6);
+      padding: 0.4em 0.5em;
     }
 
     .home-menu-element:hover .menu-element-label {
@@ -81,10 +84,10 @@ body {
       margin-top: 6em;
       margin-bottom: 6em;
       width: 60%;
-      padding: 1em;
-      border: solid;
-      border-width: thick;
-      border-color: $color5;
+      padding: 2em;
+      background-color: $color3;
+      border-radius: 1em;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       position: relative;
 
       .contact-section-content {
@@ -112,7 +115,8 @@ body {
     padding: 0;
 
     .heading-home {
-      font-size: 4em;
+      font-size: 3em;
+      font-weight: 600;
     }
 
     .home-menu {
@@ -163,10 +167,10 @@ body {
         margin-top: 6em;
         margin-bottom: 6em;
         width: 60%;
-        padding: 1em;
-        border: solid;
-        border-width: thick;
-        border-color: $color5;
+        padding: 2em;
+        background-color: $color3;
+        border-radius: 1em;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         position: relative;
 
         .contact-section-content {
@@ -195,7 +199,8 @@ body {
     padding: 0;
 
     .heading-home {
-      font-size: 2em;
+      font-size: 1.9em;
+      font-weight: 600;
     }
 
     .menu-container {
@@ -247,11 +252,13 @@ body {
 
       .menu-element-label {
         position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
         text-decoration: none;
         color: white;
-        background-color: $color4;
-        opacity: 80%;
-        padding: 0.2em 0.5em 0.2em 0.5em;
+        background-color: rgba(5, 42, 43, 0.6);
+        padding: 0.4em 0.5em;
       }
 
       .home-menu-element:hover .menu-element-label {
@@ -266,10 +273,10 @@ body {
         margin-top: 4em;
         margin-bottom: 6em;
         width: 60%;
-        padding: 1em;
-        border: solid;
-        border-width: thick;
-        border-color: $color5;
+        padding: 2em;
+        background-color: $color3;
+        border-radius: 1em;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         position: relative;
 
         .contact-section-content {
@@ -298,7 +305,8 @@ body {
     padding: 0;
 
     .heading-home {
-      font-size: 2em;
+      font-size: 1.9em;
+      font-weight: 600;
     }
 
     .menu-container {
@@ -350,11 +358,13 @@ body {
 
       .menu-element-label {
         position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
         text-decoration: none;
         color: white;
-        background-color: $color4;
-        opacity: 80%;
-        padding: 0.2em 0.5em 0.2em 0.5em;
+        background-color: rgba(5, 42, 43, 0.6);
+        padding: 0.4em 0.5em;
       }
 
       .home-menu-element:hover .menu-element-label {
@@ -369,10 +379,10 @@ body {
         margin-top: 4em;
         margin-bottom: 6em;
         width: 60%;
-        padding: 1em;
-        border: solid;
-        border-width: thick;
-        border-color: $color5;
+        padding: 2em;
+        background-color: $color3;
+        border-radius: 1em;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         position: relative;
 
         h1 {
@@ -406,6 +416,7 @@ body {
 
     .heading-home {
       font-size: 1.5em;
+      font-weight: 600;
     }
 
     .menu-container {
@@ -457,11 +468,13 @@ body {
 
       .menu-element-label {
         position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
         text-decoration: none;
         color: white;
-        background-color: $color4;
-        opacity: 80%;
-        padding: 0.2em 0.5em 0.2em 0.5em;
+        background-color: rgba(5, 42, 43, 0.6);
+        padding: 0.4em 0.5em;
       }
 
       .home-menu-element:hover .menu-element-label {
@@ -476,10 +489,10 @@ body {
         margin-top: 4em;
         margin-bottom: 6em;
         width: 60%;
-        padding: 1em;
-        border: solid;
-        border-width: thick;
-        border-color: $color5;
+        padding: 2em;
+        background-color: $color3;
+        border-radius: 1em;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         position: relative;
 
         h1 {
