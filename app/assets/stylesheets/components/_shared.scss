@@ -12,7 +12,7 @@
 
   font-size: 1em;
   line-height: 0.4;
-  border-radius: 0.375em;
+  border-radius: 0.5em;
   text-align: center;
   margin-right: 0.5em;
 }
@@ -27,7 +27,7 @@
 
   font-size: 1em;
   line-height: 0.4;
-  border-radius: 0.375em;
+  border-radius: 0.5em;
   text-align: center;
   margin-right: 0.5em;
 }
@@ -42,7 +42,7 @@
 
   font-size: 1em;
   line-height: 0.4;
-  border-radius: 0.375em;
+  border-radius: 0.5em;
   text-align: center;
   margin-right: 0.5em;
 }
@@ -57,9 +57,35 @@
 
   font-size: 1em;
   line-height: 0.4;
-  border-radius: 0.375em;
+  border-radius: 0.5em;
   text-align: center;
   margin-right: 0.5em;
+}
+
+.btn-action,
+.btn-personnaliser,
+.btn-personnaliser-thin,
+.btn-all {
+  display: inline-block;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-action:hover,
+.btn-personnaliser:hover,
+.btn-personnaliser-thin:hover,
+.btn-all:hover {
+  filter: brightness(0.92);
+  transform: translateY(-1px);
+  box-shadow: rgba(5, 42, 43, 0.18) 0px 4px 12px;
+}
+
+.btn-action:active,
+.btn-personnaliser:active,
+.btn-personnaliser-thin:active,
+.btn-all:active {
+  filter: brightness(0.85);
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .fa-pen-to-square {
@@ -93,11 +119,11 @@
 }
 
 .form-select {
-  border-radius: 0.375em;
+  border-radius: 0.5em;
 }
 
 .form-control {
-  border-radius: 0.375em;
+  border-radius: 0.5em;
 }
 
 @media (max-width: 400px) {
@@ -111,7 +137,7 @@
 
     font-size: 0.7em;
     line-height: 0.4;
-    border-radius: 0.375em;
+    border-radius: 0.5em;
     text-align: center;
     margin-right: 0.5em;
   }
@@ -126,7 +152,7 @@
 
     font-size: 0.7em;
     line-height: 0.4;
-    border-radius: 0.375em;
+    border-radius: 0.5em;
     text-align: center;
     margin-right: 0.5em;
   }
@@ -141,7 +167,7 @@
 
     font-size: 0.7em;
     line-height: 0.4;
-    border-radius: 0.375em;
+    border-radius: 0.5em;
     text-align: center;
     margin-right: 0.5em;
   }
@@ -156,7 +182,7 @@
 
     font-size: 0.7em;
     line-height: 0.4;
-    border-radius: 0.375em;
+    border-radius: 0.5em;
     text-align: center;
     margin-right: 0.5em;
   }
@@ -192,10 +218,10 @@
   }
 
   .form-select {
-    border-radius: 0.375em;
+    border-radius: 0.5em;
   }
 
   .form-control {
-    border-radius: 0.375em;
+    border-radius: 0.5em;
   }
 }
