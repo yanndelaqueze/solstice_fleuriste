@@ -1,0 +1,19 @@
+bouquet_personnalise:
+  name: Bouquet personnalisé
+  description: Un bouquet composé selon votre budget
+  available: true
+  category: bouquets
+  position: 1
+  min_price_cents: 3000
+  product_type: Custom
+  slug: bouquet-personnalise
+
+orchidee:
+  name: Orchidée
+  description: Orchidée en pot
+  available: true
+  category: plantes
+  position: 1
+  min_price_cents: 2500
+  product_type: Normal
+  slug: orchidee

@@ -1,0 +1,9 @@
+bouquets:
+  name: Bouquets
+  position: 1
+  display: true
+
+plantes:
+  name: Plantes
+  position: 2
+  display: true
