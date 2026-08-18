@@ -31,13 +31,17 @@ print "delivery area OK"
 
 print "creating users"
 
+admin_password = ENV.fetch("ADMIN_SEED_PASSWORD") do
+  raise "Set ADMIN_SEED_PASSWORD in your .env before running db:seed"
+end
+
 admin = User.new(
   email: 'laurie@solsticefleurs.com',
   first_name: "Laurie",
   last_name: "Solstice",
   phone: "+262 262 51 71 79",
-  password: '***REDACTED-LEAKED-PASSWORD***',
-  password_confirmation: '***REDACTED-LEAKED-PASSWORD***',
+  password: admin_password,
+  password_confirmation: admin_password,
   admin: true
 )
 admin.save!
